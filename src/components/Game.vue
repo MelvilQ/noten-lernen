@@ -203,9 +203,11 @@ button:active {
 }
 
 #screen {
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  max-width: 720px;
   height: 75vh;
 }
 
