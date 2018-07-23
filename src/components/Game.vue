@@ -4,7 +4,7 @@
     <NoteDisplay :currentExercise="currentExercise" />
     <FeedbackLine :feedback="feedback" />
     <div v-if="inputMethod === 'button'" id="note-button-input">
-      <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams(value-1)">
+      <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams[value-1]">
         <button @click="checkAnswer(value-1)">{{noteNames[value-1]}}</button>
       </div>
     </div>
@@ -57,6 +57,12 @@ export default {
       } else {
         return ['C', 'Des', 'D', 'Es', 'E', 'F', 'Ges', 'G', 'As', 'A', 'B', 'H'];
       }
+    },
+    gridParams(){
+      return Array.from(Array(12).keys()).map(v => ({
+        'grid-row': Utils.hasAccidental(v) ? 1 : 2,
+        'grid-column': (v <= 4 ? v+1 : v+2) + '/ span 2'
+      }));
     }
   },
   methods: {
@@ -100,12 +106,6 @@ export default {
       this.result.numWrong += 1;
       this.feedback.showCorrectFeedback = false;
       this.feedback.showWrongFeedback = true;
-    },
-    gridParams(v){
-      return {
-        'grid-row': Utils.hasAccidental(v) ? 1 : 2,
-        'grid-column': (v <= 4 ? v+1 : v+2) + '/ span 2'
-      };
     }
   },
   mounted(){
