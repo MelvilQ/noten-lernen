@@ -3,11 +3,7 @@
     <ScoreLine :result="result" :timeLeft="timeLeft" />
     <NoteDisplay :currentExercise="currentExercise" />
     <FeedbackLine :feedback="feedback" />
-    <div v-if="inputMethod === 'button'" id="note-button-input">
-      <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams[value-1]">
-        <button @click="checkAnswer(value-1)">{{noteNames[value-1]}}</button>
-      </div>
-    </div>
+    <ButtonInput v-if="inputMethod === 'button'" :isSharp="currentExercise.isSharp" @solved="checkAnswer"/>      
     <div v-else id="note-key-input">
       TODO
     </div>
@@ -18,8 +14,7 @@
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
-
-import Utils from '../model/Utils';
+import ButtonInput from './ButtonInput';
 
 import * as _ from 'lodash';
 
@@ -28,7 +23,8 @@ export default {
   components: { 
     ScoreLine,
     NoteDisplay,
-    FeedbackLine
+    FeedbackLine,
+    ButtonInput
   },
   data () {
     return {
@@ -48,21 +44,6 @@ export default {
         showCorrectFeedback: false,
         showWrongFeedback: false
       }
-    }
-  },
-  computed: {
-    noteNames(){
-      if(this.currentExercise.isSharp){
-        return ['C', 'Cis', 'D', 'Dis', 'E', 'F', 'Fis', 'G', 'Gis', 'A', 'Ais', 'H'];
-      } else {
-        return ['C', 'Des', 'D', 'Es', 'E', 'F', 'Ges', 'G', 'As', 'A', 'B', 'H'];
-      }
-    },
-    gridParams(){
-      return Array.from(Array(12).keys()).map(v => ({
-        'grid-row': Utils.hasAccidental(v) ? 1 : 2,
-        'grid-column': (v <= 4 ? v+1 : v+2) + '/ span 2'
-      }));
     }
   },
   methods: {
@@ -122,28 +103,6 @@ body {
   padding: 0;
 }
 
-.button-container {
-  height: 50px;
-}
-
-button {
-  width: 95%;
-  height: 95%;
-  background-color: lightblue;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  font-weight: bold;
-}
-
-button:hover {
-  background-color: deepskyblue;
-}
-
-button:active {
-  background-color: yellow;
-}
-
 #screen {
   margin: 0 auto;
   display: flex;
@@ -151,9 +110,5 @@ button:active {
   flex-direction: column;
   max-width: 720px;
   height: 75vh;
-}
-
-#note-button-input {
-  display: grid;
 }
 </style>
