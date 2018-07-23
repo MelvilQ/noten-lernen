@@ -1,7 +1,7 @@
 <template>
   <div id="screen">
     <ScoreLine :result="result" :timeLeft="timeLeft" />
-    <NoteDisplay :abc="abc" />
+    <NoteDisplay :currentExercise="currentExercise" />
     <FeedbackLine :feedback="feedback" />
     <div v-if="inputMethod === 'button'" id="note-button-input">
       <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams(value-1)">
@@ -18,6 +18,8 @@
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
+
+import Utils from '../model/Utils';
 
 import * as _ from 'lodash';
 
@@ -49,55 +51,6 @@ export default {
     }
   },
   computed: {
-    accidental(){
-      const v = this.currentExercise.value % 12;
-      const hasAccidental = (v === 1 || v === 3 || v === 6 || v === 8 || v === 10);
-      if(!hasAccidental){
-        return '';
-      }
-      return this.currentExercise.isSharp ? '^' : '_';
-    },
-    noteLetter(){
-      const v = this.currentExercise.value % 12;
-      const isSharp = this.currentExercise.isSharp;
-      switch(v){
-        case 0: return 'C';
-        case 1: return isSharp ? 'C' : 'D';
-        case 2: return 'D';
-        case 3: return isSharp ? 'D' : 'E';
-        case 4: return 'E';
-        case 5: return 'F';
-        case 6: return isSharp ? 'F' : 'G';
-        case 7: return 'G';
-        case 8: return isSharp ? 'G' : 'A';
-        case 9: return 'A';
-        case 10: return isSharp ? 'A' : 'B';
-        case 11: return 'B'
-      }
-    },
-    note(){
-      const value = this.currentExercise.value;
-      if(value < 12){
-        return this.noteLetter + ',,,';
-      } else if(value < 24){
-        return this.noteLetter + ',,';
-      } else if(value < 36){
-        return this.noteLetter + ',';
-      } else if(value < 48){
-        return this.noteLetter;
-      } else if(value < 60){
-        return this.noteLetter.toLowerCase();
-      } else {
-        return this.noteLetter.toLowerCase() + '\'';
-      }
-    },
-    abc(){
-      return (
-        'L:1/4\nK:C ' + this.currentExercise.clef 
-        + '\n' 
-        + this.accidental + this.note
-      );
-    },
     noteNames(){
       if(this.currentExercise.isSharp){
         return ['C', 'Cis', 'D', 'Dis', 'E', 'F', 'Fis', 'G', 'Gis', 'A', 'Ais', 'H'];
@@ -149,9 +102,8 @@ export default {
       this.feedback.showWrongFeedback = true;
     },
     gridParams(v){
-      const hasAccidental = (v === 1 || v === 3 || v === 6 || v === 8 || v === 10);
       return {
-        'grid-row': hasAccidental ? 1 : 2,
+        'grid-row': Utils.hasAccidental(v) ? 1 : 2,
         'grid-column': (v <= 4 ? v+1 : v+2) + '/ span 2'
       };
     }
