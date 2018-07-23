@@ -1,7 +1,7 @@
 <template>
   <div id="screen">
     <ScoreLine :result="result" :timeLeft="timeLeft" />
-    <div id="note-display"></div>
+    <NoteDisplay :abc="abc" />
     <FeedbackLine :feedback="feedback" />
     <div v-if="inputMethod === 'button'" id="note-button-input">
       <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams(value-1)">
@@ -16,15 +16,16 @@
 
 <script>
 import ScoreLine from './ScoreLine';
+import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
 
-import abcjs from 'abcjs';
 import * as _ from 'lodash';
 
 export default {
   name: 'Game',
   components: { 
     ScoreLine,
+    NoteDisplay,
     FeedbackLine
   },
   data () {
@@ -128,7 +129,6 @@ export default {
         value: isBass ? _.random(11, 41) : _.random(31, 62),
         isSharp: _.sample([true, false])
       };
-      this.render();
     },
     checkAnswer(value){
       if(value === this.currentExercise.value % 12){
@@ -147,9 +147,6 @@ export default {
       this.result.numWrong += 1;
       this.feedback.showCorrectFeedback = false;
       this.feedback.showWrongFeedback = true;
-    },
-    render(){
-      abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 3});
     },
     gridParams(v){
       const hasAccidental = (v === 1 || v === 3 || v === 6 || v === 8 || v === 10);
@@ -202,12 +199,6 @@ button:active {
   flex-direction: column;
   max-width: 720px;
   height: 75vh;
-}
-
-#noten-display {
-  margin: 0 auto;
-  min-height: 340px;
-  max-height: 340px;
 }
 
 #note-button-input {
