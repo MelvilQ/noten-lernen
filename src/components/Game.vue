@@ -85,7 +85,7 @@ export default {
       const isBass =  _.sample([true, false]);
       this.currentExercise = {
         clef: isBass ? 'bass' : 'treble',
-        value: isBass ? _.random(11, 41) : _.random(31, 62),
+        value: isBass ? _.random(7, 45) : _.random(28, 65),
         isSharp: _.sample([true, false])
       };
     },
