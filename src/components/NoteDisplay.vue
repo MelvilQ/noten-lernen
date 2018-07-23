@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #note-display {
   margin: 0 auto;
   min-height: 340px;

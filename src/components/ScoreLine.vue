@@ -51,7 +51,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .score-line {
   display: flex;
   flex-direction: row;

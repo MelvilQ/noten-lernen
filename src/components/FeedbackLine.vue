@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .feedback {
   text-align: center;
   line-height: 2;
