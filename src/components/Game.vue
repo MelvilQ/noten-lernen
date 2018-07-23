@@ -1,23 +1,6 @@
 <template>
   <div id="screen">
-    <div id="score-display">
-      <div>
-        <div>{{timeLeftFormatted}}</div>
-        <div class="label">ZEIT</div>
-      </div>
-      <div>
-        <div>{{numCorrect}}</div>
-        <div class="label">RICHTIG</div>  
-      </div>
-      <div>
-        <div>{{accuracy}}</div>
-        <div class="label">GENAUIGKEIT</div>  
-      </div>
-      <div>
-        <div>{{score}}</div>
-        <div class="label">PUNKTE</div>
-      </div>
-    </div>
+    <ScoreLine :result="result" :timeLeft="timeLeft" />
     <div id="note-display"></div>
     <div id="feedback-display">
       <span class="feedback correct" v-if="showCorrectFeedback">Richtig!</span>
@@ -35,11 +18,16 @@
 </template>
 
 <script>
+import ScoreLine from './ScoreLine';
+
 import abcjs from 'abcjs';
 import * as _ from 'lodash';
 
 export default {
   name: 'Game',
+  components: { 
+    ScoreLine 
+  },
   data () {
     return {
       inputMethod: 'button',
@@ -59,26 +47,6 @@ export default {
     }
   },
   computed: {
-    timeLeftFormatted(){
-      var formatterDate = new Date(null);
-      formatterDate.setSeconds(this.timeLeft);
-      return formatterDate.toISOString().substr(15, 4);
-    },
-    numCorrect(){
-      return this.result.numCorrect;
-    },
-    accuracy(){
-      if(this.result.numCorrect <= 0 && this.result.numWrong <= 0){
-        return '0 %';
-      }
-      return Math.round(100 * this.result.numCorrect / (this.result.numCorrect + this.result.numWrong)) + ' %';
-    },
-    score(){
-      if(this.result.numCorrect <= 0 && this.result.numWrong <= 0){
-        return 0;
-      }
-      return Math.round(100 * this.result.numCorrect * this.result.numCorrect / (this.result.numCorrect + this.result.numWrong));
-    },
     accidental(){
       const v = this.currentExercise.value % 12;
       const hasAccidental = (v === 1 || v === 3 || v === 6 || v === 8 || v === 10);
@@ -233,17 +201,6 @@ button:active {
   flex-direction: column;
   max-width: 720px;
   height: 75vh;
-}
-
-#score-display {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.label {
-  font-size: 8pt;
-  color: grey;
 }
 
 #noten-display {
