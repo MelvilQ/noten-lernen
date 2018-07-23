@@ -3,10 +3,8 @@
     <ScoreLine :result="result" :timeLeft="timeLeft" />
     <NoteDisplay :currentExercise="currentExercise" />
     <FeedbackLine :feedback="feedback" />
-    <ButtonInput v-if="inputMethod === 'button'" :isSharp="currentExercise.isSharp" @solved="checkAnswer"/>      
-    <div v-else id="note-key-input">
-      TODO
-    </div>
+    <ButtonInput v-if="inputMethod === 'button'" :isSharp="currentExercise.isSharp" @solved="checkAnswer" />      
+    <KeyboardInput v-else @solved="checkAnswer" />
   </div>
 </template>
 
@@ -15,6 +13,7 @@ import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
+import KeyboardInput from './KeyboardInput';
 
 import * as _ from 'lodash';
 
@@ -24,11 +23,12 @@ export default {
     ScoreLine,
     NoteDisplay,
     FeedbackLine,
-    ButtonInput
+    ButtonInput,
+    KeyboardInput
   },
   data () {
     return {
-      inputMethod: 'button',
+      inputMethod: 'keyboard',
       currentExercise: {
         clef: 'treble',
         value: 36,
@@ -109,6 +109,6 @@ body {
   justify-content: space-between;
   flex-direction: column;
   max-width: 720px;
-  height: 75vh;
+  height: 80vh;
 }
 </style>
