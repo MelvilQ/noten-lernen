@@ -1,10 +1,19 @@
 <template>
   <div class="game-screen">
-    <ScoreLine :result="result" :timeLeft="timeLeft" />
-    <NoteDisplay :currentExercise="currentExercise" />
-    <FeedbackLine :feedback="feedback" />
-    <ButtonInput v-if="inputMethod === 'button'" :isSharp="currentExercise.isSharp" @solved="checkAnswer" />      
-    <KeyboardInput v-else @solved="checkAnswer" />
+    <ScoreLine 
+      :result="result" 
+      :timeLeft="timeLeft" />
+    <NoteDisplay 
+      :currentExercise="currentExercise" />
+    <FeedbackLine 
+      :feedback="feedback" />
+    <ButtonInput 
+      v-if="options.inputMode === 'button'" 
+      :isSharp="currentExercise.isSharp" 
+      @solved="checkAnswer" />  
+    <KeyboardInput 
+      v-if="options.inputMode === 'keyboard'" 
+      @solved="checkAnswer" />
   </div>
 </template>
 
@@ -14,6 +23,8 @@ import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
+
+import Options from '../model/Options';
 
 import * as _ from 'lodash';
 
@@ -28,7 +39,7 @@ export default {
   },
   data () {
     return {
-      inputMethod: 'keyboard',
+      options: Options,
       currentExercise: {
         clef: 'treble',
         value: 36,
