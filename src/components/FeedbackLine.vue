@@ -2,7 +2,7 @@
   <div class="feedback-line">
     <span class="feedback correct" v-if="feedback.showCorrectFeedback">Richtig!</span>
     <span class="feedback wrong" v-else-if="feedback.showWrongFeedback">Falsch!</span>
-    <span v-else> </span>
+    <span class="feedback dummy" v-else>dummy</span>
   </div>
 </template>
 
@@ -27,5 +27,9 @@ export default {
 
 .wrong {
   color: red;
+}
+
+.dummy {
+  color: white;
 }
 </style>
