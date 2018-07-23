@@ -72,7 +72,7 @@ export default {
 <style scoped>
 #note-display {
   margin: 0 auto;
-  min-height: 340px;
-  max-height: 340px;
+  min-height: 280px;
+  max-height: 280px;
 }
 </style>

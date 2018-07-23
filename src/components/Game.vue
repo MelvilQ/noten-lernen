@@ -1,5 +1,5 @@
 <template>
-  <div id="screen">
+  <div class="game-screen">
     <ScoreLine :result="result" :timeLeft="timeLeft" />
     <NoteDisplay :currentExercise="currentExercise" />
     <FeedbackLine :feedback="feedback" />
@@ -96,19 +96,11 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-#screen {
+.game-screen {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   max-width: 720px;
-  height: 80vh;
 }
 </style>

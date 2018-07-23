@@ -1,19 +1,19 @@
 <template>
 	<div class="score-line">
     <div>
-      <div>{{timeLeftFormatted}}</div>
+      <div class="score-value">{{timeLeftFormatted}}</div>
       <div class="score-label">ZEIT</div>
     </div>
     <div>
-      <div>{{numCorrect}}</div>
+      <div class="score-value">{{numCorrect}}</div>
       <div class="score-label">RICHTIG</div>  
     </div>
     <div>
-      <div>{{accuracy}}</div>
+      <div class="score-value">{{accuracy}}</div>
       <div class="score-label">GENAUIGKEIT</div>  
     </div>
     <div>
-      <div>{{score}}</div>
+      <div class="score-value">{{score}}</div>
       <div class="score-label">PUNKTE</div>
     </div>
   </div>
@@ -53,9 +53,15 @@ export default {
 
 <style scoped>
 .score-line {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.score-value {
+  font-size: 15pt;
+  color: #2c3e50;
 }
 
 .score-label {
