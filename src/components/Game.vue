@@ -2,10 +2,7 @@
   <div id="screen">
     <ScoreLine :result="result" :timeLeft="timeLeft" />
     <div id="note-display"></div>
-    <div id="feedback-display">
-      <span class="feedback correct" v-if="showCorrectFeedback">Richtig!</span>
-      <span class="feedback wrong" v-if="showWrongFeedback">Falsch!</span>
-    </div>
+    <FeedbackLine :feedback="feedback" />
     <div v-if="inputMethod === 'button'" id="note-button-input">
       <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams(value-1)">
         <button @click="checkAnswer(value-1)">{{noteNames[value-1]}}</button>
@@ -19,6 +16,7 @@
 
 <script>
 import ScoreLine from './ScoreLine';
+import FeedbackLine from './FeedbackLine';
 
 import abcjs from 'abcjs';
 import * as _ from 'lodash';
@@ -26,7 +24,8 @@ import * as _ from 'lodash';
 export default {
   name: 'Game',
   components: { 
-    ScoreLine 
+    ScoreLine,
+    FeedbackLine
   },
   data () {
     return {
@@ -42,8 +41,10 @@ export default {
       },
       timeLeft: 0,
       timer: null,
-      showCorrectFeedback: false,
-      showWrongFeedback: false,
+      feedback: {
+        showCorrectFeedback: false,
+        showWrongFeedback: false
+      }
     }
   },
   computed: {
@@ -139,13 +140,13 @@ export default {
     },
     onCorrectAnswer(){
       this.result.numCorrect += 1;
-      this.showWrongFeedback = false;
-      this.showCorrectFeedback = true;
+      this.feedback.showWrongFeedback = false;
+      this.feedback.showCorrectFeedback = true;
     },
     onWrongAnswer(){
       this.result.numWrong += 1;
-      this.showCorrectFeedback = false;
-      this.showWrongFeedback = true;
+      this.feedback.showCorrectFeedback = false;
+      this.feedback.showWrongFeedback = true;
     },
     render(){
       abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 3});
@@ -211,18 +212,5 @@ button:active {
 
 #note-button-input {
   display: grid;
-}
-
-.feedback {
-  text-align: center;
-  line-height: 2;
-}
-
-.correct {
-  color: green;
-}
-
-.wrong {
-  color: red;
 }
 </style>
