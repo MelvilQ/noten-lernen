@@ -1,14 +1,27 @@
 <template>
   <div id="screen">
     <div id="score-display">
-      <div>{{timeLeftFormatted}}</div>
-      <div>Punkte: {{numCorrect}}</div>
-      <div>Genauigkeit: {{accuracy}}</div>
+      <div>
+        <div>{{timeLeftFormatted}}</div>
+        <div class="label">ZEIT</div>
+      </div>
+      <div>
+        <div>{{numCorrect}}</div>
+        <div class="label">RICHTIG</div>  
+      </div>
+      <div>
+        <div>{{accuracy}}</div>
+        <div class="label">GENAUIGKEIT</div>  
+      </div>
+      <div>
+        <div>{{score}}</div>
+        <div class="label">PUNKTE</div>
+      </div>
     </div>
     <div id="note-display"></div>
     <div id="feedback-display">
-      <span id="correct-feedback" v-if="showCorrectFeedback">Richtig!</span>
-      <span id="wrong-feedback" v-if="showWrongFeedback">Falsch!</span>
+      <span class="feedback correct" v-if="showCorrectFeedback">Richtig!</span>
+      <span class="feedback wrong" v-if="showWrongFeedback">Falsch!</span>
     </div>
     <div v-if="inputMethod === 'button'" id="note-button-input">
       <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams(value-1)">
@@ -35,8 +48,10 @@ export default {
         value: 36,
         isSharp: false
       },
-      numCorrect: 0,
-      numWrong: 0,
+      result: {
+        numCorrect: 0,
+        numWrong: 0,
+      },
       timeLeft: 0,
       timer: null,
       showCorrectFeedback: false,
@@ -49,11 +64,20 @@ export default {
       formatterDate.setSeconds(this.timeLeft);
       return formatterDate.toISOString().substr(15, 4);
     },
+    numCorrect(){
+      return this.result.numCorrect;
+    },
     accuracy(){
-      if(this.numCorrect <= 0 && this.numWrong <= 0){
+      if(this.result.numCorrect <= 0 && this.result.numWrong <= 0){
         return '0 %';
       }
-      return Math.round(100 * this.numCorrect / (this.numCorrect + this.numWrong)) + ' %';
+      return Math.round(100 * this.result.numCorrect / (this.result.numCorrect + this.result.numWrong)) + ' %';
+    },
+    score(){
+      if(this.result.numCorrect <= 0 && this.result.numWrong <= 0){
+        return 0;
+      }
+      return Math.round(100 * this.result.numCorrect * this.result.numCorrect / (this.result.numCorrect + this.result.numWrong));
     },
     accidental(){
       const v = this.currentExercise.value % 12;
@@ -114,8 +138,8 @@ export default {
   },
   methods: {
     startGame(){
-      this.numCorrect = 0;
-      this.numWrong = 0;
+      this.result.numCorrect = 0;
+      this.result.numWrong = 0;
       this.timeLeft = 60;
       this.timer = setInterval(() => {
         this.timeLeft -= 1;
@@ -146,12 +170,12 @@ export default {
       this.generateNewExercise();
     },
     onCorrectAnswer(){
-      this.numCorrect += 1;
+      this.result.numCorrect += 1;
       this.showWrongFeedback = false;
       this.showCorrectFeedback = true;
     },
     onWrongAnswer(){
-      this.numWrong += 1;
+      this.result.numWrong += 1;
       this.showCorrectFeedback = false;
       this.showWrongFeedback = true;
     },
@@ -217,6 +241,11 @@ button:active {
   justify-content: space-around;
 }
 
+.label {
+  font-size: 8pt;
+  color: grey;
+}
+
 #noten-display {
   margin: 0 auto;
   min-height: 340px;
@@ -227,13 +256,16 @@ button:active {
   display: grid;
 }
 
-#correct-feedback {
-  color: green;
+.feedback {
   text-align: center;
+  line-height: 2;
 }
 
-#wrong-feedback {
+.correct {
+  color: green;
+}
+
+.wrong {
   color: red;
-  text-align: center;
 }
 </style>
