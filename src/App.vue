@@ -1,16 +1,32 @@
 <template>
   <div id="app">
-    <Game/>
+    <Menu v-if="page === 'menu'" @startGame="startGame" />
+    <Game v-if="page === 'game'" @gameEnded="returnToMenu" />
   </div>
 </template>
 
 <script>
-import Game from './components/Game'
+import Menu from './components/Menu';
+import Game from './components/Game';
 
 export default {
   name: 'App',
   components: {
-    Game
+    Menu,
+    Game,
+  },
+  data(){
+    return {
+      page: 'menu'
+    }
+  },
+  methods: {
+    returnToMenu(){
+      this.page = 'menu';
+    },
+    startGame(){
+      this.page = 'game';
+    }
   }
 }
 </script>

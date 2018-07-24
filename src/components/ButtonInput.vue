@@ -56,6 +56,11 @@ button {
   font-weight: bold;
 }
 
+button:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
 button:hover {
   background-color: deepskyblue;
 }

@@ -25,6 +25,7 @@ import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
 
 import Options from '../model/Options';
+import Statistics from '../model/Statistics';
 
 import * as _ from 'lodash';
 
@@ -61,10 +62,10 @@ export default {
     startGame(){
       this.result.numCorrect = 0;
       this.result.numWrong = 0;
-      this.timeLeft = 60;
+      this.timeLeft = this.options.gameLength;
       this.timer = setInterval(() => {
         this.timeLeft -= 1;
-        if(this.timeLeft <= 0){
+        if(this.timeLeft < 0){
           this.onGameFinished();
         }
       }, 1000)
@@ -72,6 +73,11 @@ export default {
     },
     onGameFinished(){
       clearInterval(this.timer);
+      const score = (this.result.numCorrect === 0) ? 0 // TODO this is duplicate code, refactor this
+        : Math.round(100 * this.result.numCorrect * this.result.numCorrect 
+          / (this.result.numCorrect + this.result.numWrong));
+      Statistics.addScore(score);
+      this.$emit('gameEnded'); // TODO add some info about the game as argument
     },
     generateNewExercise(){
       const isBass =  _.sample([true, false]);
