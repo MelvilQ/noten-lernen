@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     minBassValue(){
-      switch(this.options){
+      switch(this.options.difficulty){
         case 'easy':
           return 24;
         case 'normal':
@@ -71,7 +71,7 @@ export default {
       }
     },
     maxBassValue(){
-      switch(this.options){
+      switch(this.options.difficulty){
         case 'easy':
           return 36;
         case 'normal':
