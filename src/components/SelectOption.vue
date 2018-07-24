@@ -53,6 +53,8 @@ export default {
   justify-content: center;
   font-size: 10pt;
   user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .value-box:hover {

@@ -3,7 +3,7 @@
 		<div class="start-container">
 			<button class="start" @click="startGame">START</button>
 		</div>
-		<StatisticsGraph v-if="statistics.lastScores.length >= 2" />
+		<StatisticsGraph v-if="statistics.lastScores.length" />
 		<div class="settings">
 			<h3>Optionen</h3>
 			<div class="setting">

@@ -2,7 +2,8 @@
   <div class="keyboard-input">
     <div 
       v-for="value in 12" 
-      :key="value" class="key" 
+      :key="value" 
+      class="key" 
       :style="keyStyle[value-1]" 
       @click.stop="solve(value-1)">
     </div>
@@ -56,5 +57,8 @@ export default {
   top: 0;
   border: solid 1px black;
   cursor: pointer;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>
