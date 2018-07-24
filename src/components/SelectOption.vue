@@ -52,6 +52,7 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 10pt;
+  user-select: none;
 }
 
 .value-box:hover {

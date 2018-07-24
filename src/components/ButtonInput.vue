@@ -55,15 +55,15 @@ button {
   border: none;
   outline: none;
   font-weight: bold;
-}
-
-button:focus {
-  background-color: lightblue;
-  outline: none;
+  user-select: none;
 }
 
 button:hover {
   background-color: deepskyblue;
+}
+
+button:focus {
+  background-color: lightblue;
 }
 
 button:active {
