@@ -19,6 +19,7 @@ export default {
 .feedback {
   text-align: center;
   line-height: 2;
+  user-select: none;
 }
 
 .correct {
