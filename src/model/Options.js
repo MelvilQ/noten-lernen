@@ -5,16 +5,14 @@ export default {
   gameLength: 60,
   clef: "all",
   difficulty: "easy",
+  accidentals: "no",
 
   loadOptions() {
     const loadedOptions = Lockr.get("options");
     if (!loadedOptions) {
       return;
     }
-    this.inputMode = loadedOptions.inputMode;
-    this.gameLength = loadedOptions.gameLength;
-    this.clef = loadedOptions.clef;
-    this.difficulty = loadedOptions.difficulty;
+    Object.assign(this, loadedOptions);
   },
   saveOptions() {
     Lockr.set("options", this);

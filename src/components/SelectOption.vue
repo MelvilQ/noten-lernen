@@ -27,13 +27,9 @@ export default {
 </script>
 
 <style>
-.select-option {
-  margin-top: 10px;
-}
-
 .label {
-  font-size: 8pt;
-  color: gray;
+  font-size: 9pt;
+  color: black;
 }
 
 .options-container {
@@ -59,7 +55,6 @@ export default {
 }
 
 .value-box:hover {
-  background-color: deepskyblue;
   color: black;
   border: 1px solid black;
 }
@@ -68,5 +63,9 @@ export default {
   background-color: lightblue;
   color: black;
   border: 1px solid black;
+}
+
+.selected:hover {
+  background-color: lightblue;
 }
 </style>

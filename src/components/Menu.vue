@@ -18,6 +18,9 @@
 			<div class="setting">
 				<SelectOption label="SCHWIERIGKEITSGRAD" :items="difficultyOptions" v-model="options.difficulty" />
 			</div>
+			<div class="setting">
+				<SelectOption label="VORZEICHEN" :items="accidentalOptions" v-model="options.accidentals" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -65,6 +68,14 @@ export default {
 				{value: 'normal', label: 'Mittel'},
 				{value: 'hard', label: 'Schwer'}
 			];
+		},
+		accidentalOptions() {
+			return [
+				{value: 'no', label: 'Keine'},
+				{value: 'onlySharp', label: '♯'},
+				{value: 'onlyFlat', label: '♭'},
+				{value: 'both', label: '♯ und ♭'}
+			]
 		}
 	},
 	methods: {
@@ -112,5 +123,9 @@ button.start:hover {
 
 button.start:active {
   background-color: yellow;
+}
+
+.setting {
+  margin-top: 10px;
 }
 </style>

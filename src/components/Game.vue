@@ -24,6 +24,7 @@ import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
 
+import Utils from '../model/Utils';
 import Options from '../model/Options';
 import Statistics from '../model/Statistics';
 
@@ -131,9 +132,24 @@ export default {
       this.currentExercise = {
         clef: isBass ? 'bass' : 'treble',
         value: isBass ? _.random(this.minBassValue, this.maxBassValue) 
-          : _.random(this.minTrebleValue,this.maxTrebleValue),
-        isSharp: _.sample([true, false])
+          : _.random(this.minTrebleValue,this.maxTrebleValue)
       };
+      switch(this.options.accidentals){
+        case 'no':
+          this.currentExercise.isSharp = false;
+          if(Utils.hasAccidental(this.currentExercise.value)){
+            _.sample([true, false]) ? this.currentExercise.value++ : this.currentExercise.value--;
+          }
+          break;
+        case 'onlySharp':
+          this.currentExercise.isSharp = true;
+          break;
+        case 'onlyFlat':
+          this.currentExercise.isSharp = false;
+          break;
+        case 'all':
+          this.currentExercise.isSharp = _.sample([true, false])
+      }
     },
     checkAnswer(value){
       if(value === this.currentExercise.value % 12){
