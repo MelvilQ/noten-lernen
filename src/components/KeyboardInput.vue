@@ -1,6 +1,10 @@
 <template>
   <div class="keyboard-input">
-    <div v-for="value in 12" :key="value" class="key" :style="keyStyle[value-1]" @click.stop="solve(value-1)">
+    <div 
+      v-for="value in 12" 
+      :key="value" class="key" 
+      :style="keyStyle[value-1]" 
+      @click.stop="solve(value-1)">
     </div>
   </div>
 </template>
@@ -51,5 +55,6 @@ export default {
   position: absolute;
   top: 0;
   border: solid 1px black;
+  cursor: pointer;
 }
 </style>
