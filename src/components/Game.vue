@@ -58,6 +58,52 @@ export default {
       }
     }
   },
+  computed: {
+    minBassValue(){
+      switch(this.options){
+        case 'easy':
+          return 24;
+        case 'normal':
+          return 10;
+        case 'hard':
+        default:
+          return 7;
+      }
+    },
+    maxBassValue(){
+      switch(this.options){
+        case 'easy':
+          return 36;
+        case 'normal':
+          return 36;
+        case 'hard':
+        default:
+          return 45;
+      }
+    },
+    minTrebleValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 36;
+        case 'normal':
+          return 36;
+        case 'hard':
+        default:
+          return 28;
+      }
+    },
+    maxTrebleValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 48;
+        case 'normal':
+          return 55;
+        case 'hard':
+        default:
+          return 65;
+      }
+    }
+  },
   methods: {
     startGame(){
       this.result.numCorrect = 0;
@@ -80,10 +126,12 @@ export default {
       this.$emit('gameEnded'); // TODO add some info about the game as argument
     },
     generateNewExercise(){
-      const isBass = this.options.clef === 'all' ? _.sample([true, false]) : this.options.clef === 'bass';
+      const isBass = this.options.clef === 'all' ? _.sample([true, false]) 
+        : this.options.clef === 'bass';
       this.currentExercise = {
         clef: isBass ? 'bass' : 'treble',
-        value: isBass ? _.random(7, 45) : _.random(28, 65),
+        value: isBass ? _.random(this.minBassValue, this.maxBassValue) 
+          : _.random(this.minTrebleValue,this.maxTrebleValue),
         isSharp: _.sample([true, false])
       };
     },

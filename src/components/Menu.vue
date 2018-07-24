@@ -15,6 +15,9 @@
 			<div class="setting">
 				<SelectOption label="NOTENSCHLÜSSEL" :items="clefOptions" v-model="options.clef" />
 			</div>
+			<div class="setting">
+				<SelectOption label="SCHWIERIGKEITSGRAD" :items="difficultyOptions" v-model="options.difficulty" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -54,6 +57,13 @@ export default {
 				{value: 'all', label: 'Beide'},
 				{value: 'treble', label: 'Violinschlüssel'},
 				{value: 'bass', label: 'Bassschlüssel'}
+			];
+		},
+		difficultyOptions() {
+			return [
+				{value: 'easy', label: 'Leicht'},
+				{value: 'normal', label: 'Mittel'},
+				{value: 'hard', label: 'Schwer'}
 			];
 		}
 	},
