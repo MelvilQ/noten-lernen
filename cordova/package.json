@@ -1,0 +1,24 @@
+{
+  "name": "de.melvil.noten",
+  "displayName": "Noten lernen",
+  "version": "1.0.0",
+  "description": "Learn to read sheet music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MelvilQ",
+  "license": "MIT",
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-plugin-whitelist": "^1.3.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}

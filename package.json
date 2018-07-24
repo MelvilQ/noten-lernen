@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Learn to read sheet music",
   "author": "MelvilQ",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "mobile": "node build/build.js && cp -a dist/* cordova/www/ && cd cordova && cordova run android"
   },
   "dependencies": {
     "abcjs": "^5.1.2",
