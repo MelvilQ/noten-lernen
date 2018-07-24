@@ -52,6 +52,7 @@ button {
   height: 95%;
   background-color: lightblue;
   border-radius: 5px;
+  cursor: pointer;
   border: none;
   outline: none;
   font-weight: bold;
@@ -59,7 +60,7 @@ button {
 }
 
 button:hover {
-  background-color: deepskyblue;
+  background-color: steelblue;
 }
 
 button:focus {

@@ -3,7 +3,8 @@
     <div 
       v-for="value in 12" 
       :key="value" 
-      class="key" 
+      class="key"
+      :class="{black: isBlack(value-1), white: !isBlack(value-1)}" 
       :style="keyStyle[value-1]" 
       @click.stop="solve(value-1)">
     </div>
@@ -19,13 +20,13 @@ export default {
     keyStyle(){
       return Array.from(Array(12).keys()).map(v => Utils.hasAccidental(v) ? 
       {
-        'background-color': 'black',
+        // black keys
         height: '65%',
         width: '8%',
         'z-index': 2,
         left: (14.27 * (this.keyPos(v-1)) + 10.27) + '%'
       } : {
-        'background-color': 'white',
+        // white keys
         height: '100%',
         width: '14.27%',
         'z-index': 1,
@@ -34,6 +35,9 @@ export default {
     }
   },
   methods: {
+    isBlack(v){
+      return Utils.hasAccidental(v);
+    },
     keyPos(v){
       return (v <= 4) ? Math.floor(v / 2) : Math.floor((v+1) / 2)
     },
@@ -60,5 +64,25 @@ export default {
   user-select: none;
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.white {
+  background-color: white;
+}
+
+.white:hover {
+  background-color: #dddddd;
+}
+
+.black {
+  background-color: black;
+}
+
+.black:hover {
+  background-color: #333333;
+}
+
+.key:active {
+  background-color: yellow;
 }
 </style>

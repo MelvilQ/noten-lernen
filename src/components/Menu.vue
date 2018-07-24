@@ -108,6 +108,7 @@ button.start {
   background-color: lightblue;
   font-size: 16pt;
   font-weight: bold;
+  cursor: pointer;
   border: none;
   outline: none;
 }
@@ -118,7 +119,7 @@ button.start:focus {
 }
 
 button.start:hover {
-  background-color: deepskyblue;
+  background-color: steelblue;
 }
 
 button.start:active {

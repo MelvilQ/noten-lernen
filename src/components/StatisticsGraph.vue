@@ -1,6 +1,5 @@
 <template>
 	<div class="statistics-graph">
-		<h3>Letzte Runden</h3>
 		<chartist
 		    ratio="history"
 		    type="Line"
