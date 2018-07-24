@@ -40,6 +40,7 @@ export default {
 <style scoped>
 .button-input {
   display: grid;
+  grid-template-columns: repeat(14, 1fr);
 }
 
 .button-container {
