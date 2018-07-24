@@ -51,6 +51,7 @@ export default {
   background-color: white;
   color: gray;
   border: 1px solid gray;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;

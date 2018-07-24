@@ -3,6 +3,7 @@
 		<div class="start-container">
 			<button class="start" @click="startGame">START</button>
 		</div>
+		<StatisticsGraph v-if="statistics.lastScores.length >= 2" />
 		<div class="settings">
 			<h3>Optionen</h3>
 			<div class="setting">
@@ -11,8 +12,10 @@
 			<div class="setting">
 				<SelectOption label="NOTENEINGABE" :items="inputModeOptions" v-model="options.inputMode" />
 			</div>
+			<div class="setting">
+				<SelectOption label="NOTENSCHLÜSSEL" :items="clefOptions" v-model="options.clef" />
+			</div>
 		</div>
-		<StatisticsGraph v-if="statistics.lastScores.length >= 2" />
 	</div>
 </template>
 
@@ -45,6 +48,13 @@ export default {
 				{value: 'button', label:'Buttons'},
 				{value: 'keyboard', label: 'Klaviatur'}
 			];
+		},
+		clefOptions() {
+			return [
+				{value: 'all', label: 'Beide'},
+				{value: 'treble', label: 'Violinschlüssel'},
+				{value: 'bass', label: 'Bassschlüssel'}
+			];
 		}
 	},
 	methods: {
@@ -61,15 +71,21 @@ export default {
 </script>
 
 <style scoped>
+.menu {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .start-container {
   padding: 20px;
 }
 
 button.start {
   width: 100%;
-  padding: 10px;
+  padding: 20px 10px;
   border-radius: 10px;
   background-color: lightblue;
+  font-size: 16pt;
   font-weight: bold;
   border: none;
   outline: none;

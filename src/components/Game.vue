@@ -80,7 +80,7 @@ export default {
       this.$emit('gameEnded'); // TODO add some info about the game as argument
     },
     generateNewExercise(){
-      const isBass =  _.sample([true, false]);
+      const isBass = this.options.clef === 'all' ? _.sample([true, false]) : this.options.clef === 'bass';
       this.currentExercise = {
         clef: isBass ? 'bass' : 'treble',
         value: isBass ? _.random(7, 45) : _.random(28, 65),
