@@ -86,7 +86,7 @@ export default {
   background-color: #333333;
 }
 
-black:focus {
+.black:focus {
   background-color: black;
 }
 
