@@ -181,10 +181,10 @@ export default {
     checkAnswer(value){
       if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
+        this.generateNewExercise();
       } else {
         this.onWrongAnswer(value);
       }
-      this.generateNewExercise();
     },
     onCorrectAnswer(){
       this.numCorrect += 1;
