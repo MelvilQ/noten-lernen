@@ -9,7 +9,8 @@
     <NoteDisplay 
       :currentExercise="currentExercise" />
     <FeedbackLine 
-      :feedback="feedback" />
+      :feedback="feedback"
+      :uniqueId="numAnswers" />
     <ButtonInput 
       v-if="options.inputMode === 'button'" 
       :isSharp="currentExercise.isSharp" 
@@ -56,13 +57,13 @@ export default {
       },
       timeLeft: 0,
       timer: null,
-      feedback: {
-        showCorrectFeedback: false,
-        showWrongFeedback: false
-      }
+      feedback: 'none'
     }
   },
   computed: {
+    numAnswers(){
+      return this.result.numCorrect + this.result.numWrong;
+    },
     minBassValue(){
       switch(this.options.difficulty){
         case 'easy':
@@ -168,13 +169,11 @@ export default {
     },
     onCorrectAnswer(){
       this.result.numCorrect += 1;
-      this.feedback.showWrongFeedback = false;
-      this.feedback.showCorrectFeedback = true;
+      this.feedback = 'correct';
     },
     onWrongAnswer(){
       this.result.numWrong += 1;
-      this.feedback.showCorrectFeedback = false;
-      this.feedback.showWrongFeedback = true;
+      this.feedback = 'wrong';
     }
   },
   mounted(){
