@@ -88,7 +88,7 @@ export default {
         case 'easy':
           return 24;
         case 'normal':
-          return 10;
+          return 16;
         case 'hard':
         default:
           return 7;
@@ -121,7 +121,7 @@ export default {
         case 'easy':
           return 48;
         case 'normal':
-          return 55;
+          return 57;
         case 'hard':
         default:
           return 65;

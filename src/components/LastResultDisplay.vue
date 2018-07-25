@@ -5,7 +5,8 @@
       Punktzahl: <strong>{{lastResult.score}}</strong>
       </div>
     <div class="line">
-      Genauigkeit: {{lastResult.accuracy}} % ({{lastResult.numCorrect}} richtig, {{lastResult.numWrong}} falsch)
+      Genauigkeit: {{lastResult.accuracy}} % 
+      ({{lastResult.numCorrect}} richtig, {{lastResult.numWrong}} falsch)
     </div>
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
 
 <style scoped>
 .last-result-display {
-  background-color: #ddddcc;
+  background-color: #dddddd;
   margin-bottom: 15px;
   padding: 5px;
 }

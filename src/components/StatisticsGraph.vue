@@ -6,7 +6,7 @@
 		    :data="chartData"
 		    :options="chartOptions">
 		</chartist>
-		<div>Rekord: {{statistics.record}}</div>
+		<div class="record">Rekord: {{statistics.record}}</div>
 	</div>
 </template>
 
@@ -48,4 +48,8 @@ export default {
 
 <style>
 @import url("../../node_modules/chartist/dist/chartist.min.css");
+
+.record {
+  font-size: 11pt;
+}
 </style>
