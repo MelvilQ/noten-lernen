@@ -5,6 +5,10 @@ import App from "./App";
 
 Vue.config.productionTip = false;
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('static/sw.js');
+}
+
 Vue.use(require("vue-chartist"));
 
 /* eslint-disable no-new */
