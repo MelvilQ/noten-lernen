@@ -51,10 +51,9 @@ export default {
         value: 36,
         isSharp: false
       },
-      result: {
-        numCorrect: 0,
-        numWrong: 0,
-      },
+      numCorrect: 0,
+      numWrong: 0,
+      mistakes: [],
       timeLeft: 0,
       timer: null,
       feedback: 'none'
@@ -62,7 +61,29 @@ export default {
   },
   computed: {
     numAnswers(){
-      return this.result.numCorrect + this.result.numWrong;
+      return this.numCorrect + this.numWrong;
+    },
+    accuracy(){
+      if(this.numAnswers === 0){
+        return 0;
+      }
+      return Math.round(100 * this.numCorrect / this.numAnswers);
+    },
+    score(){
+      if(this.numAnswers === 0){
+        return 0;
+      }
+      return Math.round(100 * this.numCorrect * this.numCorrect / this.numAnswers);
+    },
+    result(){
+      return {
+        numAnswers: this.numAnswers,
+        numCorrect: this.numCorrect,
+        numWrong: this.numWrong,
+        accuracy: this.accuracy,
+        score: this.score,
+        mistakes: this.mistakes
+      }
     },
     minBassValue(){
       switch(this.options.difficulty){
@@ -111,8 +132,9 @@ export default {
   },
   methods: {
     startGame(){
-      this.result.numCorrect = 0;
-      this.result.numWrong = 0;
+      this.numCorrect = 0;
+      this.numWrong = 0;
+      this.mistakes = [];
       this.timeLeft = this.options.gameLength;
       this.timer = setInterval(() => {
         this.timeLeft -= 1;
@@ -124,11 +146,8 @@ export default {
     },
     onGameFinished(){
       clearInterval(this.timer);
-      const score = (this.result.numCorrect === 0) ? 0 // TODO this is duplicate code, refactor this
-        : Math.round(100 * this.result.numCorrect * this.result.numCorrect 
-          / (this.result.numCorrect + this.result.numWrong));
-      Statistics.addScore(score);
-      this.$emit('gameEnded'); // TODO add some info about the game as argument
+      Statistics.addScore(this.score);
+      this.$emit('gameEnded', this.result); 
     },
     quit(){
       clearInterval(this.timer);
@@ -163,16 +182,21 @@ export default {
       if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
       } else {
-        this.onWrongAnswer();
+        this.onWrongAnswer(value);
       }
       this.generateNewExercise();
     },
     onCorrectAnswer(){
-      this.result.numCorrect += 1;
+      this.numCorrect += 1;
       this.feedback = 'correct';
     },
-    onWrongAnswer(){
-      this.result.numWrong += 1;
+    onWrongAnswer(wrongValue){
+      this.numWrong += 1;
+      this.mistakes.push({
+        noteValue: this.currentExercise.value,
+        correctValue: this.currentExercise.value % 12,
+        wrongValue: wrongValue
+      });
       this.feedback = 'wrong';
     }
   },

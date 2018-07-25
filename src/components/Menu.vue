@@ -3,7 +3,8 @@
 		<div class="start-container">
 			<button class="start" @click="startGame">START</button>
 		</div>
-		<StatisticsGraph v-if="statistics.lastScores.length" />
+		<LastResultDisplay v-if="lastResult" :lastResult="lastResult" />
+		<StatisticsGraph v-if="statistics.lastScores.length >= 2" />
 		<div class="settings">
 			<h3>Optionen</h3>
 			<div class="setting">
@@ -27,6 +28,7 @@
 
 <script>
 import SelectOption from './SelectOption';
+import LastResultDisplay from './LastResultDisplay';
 import StatisticsGraph from './StatisticsGraph';
 
 import Options from '../model/Options';
@@ -34,7 +36,10 @@ import Statistics from '../model/Statistics';
 
 export default {
 	name: 'Menu',
-	components: { SelectOption, StatisticsGraph },
+	components: { SelectOption, LastResultDisplay, StatisticsGraph },
+	props: {
+		lastResult: Object
+	},
 	data(){
 		return {
 			options: Options,

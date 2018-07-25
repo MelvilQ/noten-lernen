@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Menu v-if="page === 'menu'" @startGame="startGame" />
+    <Menu v-if="page === 'menu'" @startGame="startGame" :lastResult="lastResult" />
     <Game v-if="page === 'game'" @gameEnded="returnToMenu" />
   </div>
 </template>
@@ -17,11 +17,13 @@ export default {
   },
   data(){
     return {
-      page: 'menu'
+      page: 'menu',
+      lastResult: null
     }
   },
   methods: {
-    returnToMenu(){
+    returnToMenu(result){
+      this.lastResult = result;
       this.page = 'menu';
     },
     startGame(){
