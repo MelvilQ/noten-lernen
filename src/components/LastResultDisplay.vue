@@ -32,5 +32,6 @@ h3 {
 
 .line {
   font-size: 10pt;
+  margin: 2px;
 }
 </style>

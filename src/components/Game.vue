@@ -218,7 +218,6 @@ export default {
 button.quit {
   padding: 5px;
   font-weight: bold;
-  border-radius: 0px 0px 5px 5px;
   border: none;
   outline: none;
   background-color: lightblue;
