@@ -1,5 +1,8 @@
 <template>
   <div class="game-screen">
+    <button class="quit" @click="quit">
+      RUNDE ABBRECHEN
+    </button>
     <ScoreLine 
       :result="result" 
       :timeLeft="timeLeft" />
@@ -126,6 +129,10 @@ export default {
       Statistics.addScore(score);
       this.$emit('gameEnded'); // TODO add some info about the game as argument
     },
+    quit(){
+      clearInterval(this.timer);
+      this.$emit('gameEnded', null);
+    },
     generateNewExercise(){
       const isBass = this.options.clef === 'all' ? _.sample([true, false]) 
         : this.options.clef === 'bass';
@@ -183,5 +190,27 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   max-width: 720px;
+}
+
+button.quit {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 0px 0px 5px 5px;
+  border: none;
+  outline: none;
+  background-color: lightblue;
+}
+
+button.quit:hover {
+  background-color: steelblue;
+}
+
+button.quit:focus {
+  outline: none;
+  background-color: lightblue;
+}
+
+button.quit:active {
+  background-color: yellow;
 }
 </style>

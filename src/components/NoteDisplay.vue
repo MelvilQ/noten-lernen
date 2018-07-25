@@ -63,7 +63,7 @@ export default {
   },
   watch: {
     abc(value){
-      abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 3});
+      abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 2.5});
     }
   }
 }
@@ -72,7 +72,7 @@ export default {
 <style scoped>
 #note-display {
   margin: 0 auto;
-  min-height: 280px;
-  max-height: 280px;
+  min-height: 225px;
+  max-height: 225px;
 }
 </style>

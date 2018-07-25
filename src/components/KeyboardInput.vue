@@ -76,6 +76,7 @@ export default {
 
 .white:focus {
   background-color: white;
+  outline: none;
 }
 
 .black {
@@ -88,6 +89,7 @@ export default {
 
 .black:focus {
   background-color: black;
+  outline: none;
 }
 
 .key:active {
