@@ -53,7 +53,6 @@ export default {
       },
       numCorrect: 0,
       numWrong: 0,
-      mistakes: [],
       timeLeft: 0,
       timer: null,
       feedback: 'none'
@@ -81,8 +80,7 @@ export default {
         numCorrect: this.numCorrect,
         numWrong: this.numWrong,
         accuracy: this.accuracy,
-        score: this.score,
-        mistakes: this.mistakes
+        score: this.score
       }
     },
     minBassValue(){
@@ -134,7 +132,6 @@ export default {
     startGame(){
       this.numCorrect = 0;
       this.numWrong = 0;
-      this.mistakes = [];
       this.timeLeft = this.options.gameLength;
       this.timer = setInterval(() => {
         this.timeLeft -= 1;
@@ -200,11 +197,6 @@ export default {
     },
     onWrongAnswer(wrongValue){
       this.numWrong += 1;
-      this.mistakes.push({
-        noteValue: this.currentExercise.value,
-        correctValue: this.currentExercise.value % 12,
-        wrongValue: wrongValue
-      });
       this.feedback = 'wrong';
     }
   },

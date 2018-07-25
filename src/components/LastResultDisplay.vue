@@ -1,10 +1,12 @@
 <template>
   <div class="last-result-display">
     <h3>Letzte Runde</h3>
-    <div>Punktzahl: {{lastResult.score}}</div>
-    <div>Genauigkeit: {{lastResult.accuracy}} %</div>
-    <div>Richtig: {{lastResult.numCorrect}}</div>
-		<div>Fehler: {{lastResult.numWrong}}</div>
+    <div class="line">
+      Punktzahl: <strong>{{lastResult.score}}</strong>
+      </div>
+    <div class="line">
+      Genauigkeit: {{lastResult.accuracy}} % ({{lastResult.numCorrect}} richtig, {{lastResult.numWrong}} falsch)
+    </div>
   </div>
 </template>
 
@@ -26,5 +28,9 @@ export default {
 
 h3 {
   margin: 5px 0;
+}
+
+.line {
+  font-size: 10pt;
 }
 </style>
