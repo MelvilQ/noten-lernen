@@ -74,12 +74,20 @@ export default {
   background-color: #dddddd;
 }
 
+.white:focus {
+  background-color: white;
+}
+
 .black {
   background-color: black;
 }
 
 .black:hover {
   background-color: #333333;
+}
+
+black:focus {
+  background-color: black;
 }
 
 .key:active {
