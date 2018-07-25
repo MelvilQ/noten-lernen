@@ -18,19 +18,22 @@ export default {
 <style scoped>
 .feedback {
   text-align: center;
-  line-height: 2;
+  line-height: 3;
+  color: white;
   user-select: none;
+  border-radius: 5px;
+  padding: 1px 5px;
 }
 
 .correct {
-  color: green;
+  background-color: green;
 }
 
 .wrong {
-  color: red;
+  background-color: red;
 }
 
 .dummy {
-  color: white;
+  background-color: white;
 }
 </style>
