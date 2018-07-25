@@ -98,7 +98,7 @@ export default {
 }
 
 .start-container {
-  padding: 20px;
+  padding: 15px;
 }
 
 button.start {
