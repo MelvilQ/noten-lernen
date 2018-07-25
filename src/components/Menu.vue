@@ -79,7 +79,7 @@ export default {
 				{value: 'no', label: 'Keine'},
 				{value: 'onlySharp', label: '♯'},
 				{value: 'onlyFlat', label: '♭'},
-				{value: 'both', label: '♯ und ♭'}
+				{value: 'sharpAndFlat', label: '♯ und ♭'}
 			]
 		}
 	},

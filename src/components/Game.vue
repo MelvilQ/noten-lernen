@@ -178,8 +178,9 @@ export default {
         case 'onlyFlat':
           exercise.isSharp = false;
           break;
-        case 'all':
+        case 'sharpAndFlat':
           exercise.isSharp = _.sample([true, false])
+          break;
       }
       return exercise;
     },
