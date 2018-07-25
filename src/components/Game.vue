@@ -154,29 +154,37 @@ export default {
       this.$emit('gameEnded', null);
     },
     generateNewExercise(){
+      let exercise = this.currentExercise;
+      while(exercise.value === this.currentExercise.value){
+        exercise = this.generateExercise();
+      }
+      this.currentExercise = exercise;
+    },
+    generateExercise(){
       const isBass = this.options.clef === 'all' ? _.sample([true, false]) 
         : this.options.clef === 'bass';
-      this.currentExercise = {
+      const exercise = {
         clef: isBass ? 'bass' : 'treble',
         value: isBass ? _.random(this.minBassValue, this.maxBassValue) 
-          : _.random(this.minTrebleValue,this.maxTrebleValue)
+          : _.random(this.minTrebleValue, this.maxTrebleValue)
       };
       switch(this.options.accidentals){
         case 'no':
-          this.currentExercise.isSharp = false;
-          if(Utils.hasAccidental(this.currentExercise.value)){
-            _.sample([true, false]) ? this.currentExercise.value++ : this.currentExercise.value--;
+          exercise.isSharp = false;
+          if(Utils.hasAccidental(exercise.value)){
+            _.sample([true, false]) ? exercise.value++ : exercise.value--;
           }
           break;
         case 'onlySharp':
-          this.currentExercise.isSharp = true;
+          exercise.isSharp = true;
           break;
         case 'onlyFlat':
-          this.currentExercise.isSharp = false;
+          exercise.isSharp = false;
           break;
         case 'all':
-          this.currentExercise.isSharp = _.sample([true, false])
+          exercise.isSharp = _.sample([true, false])
       }
+      return exercise;
     },
     checkAnswer(value){
       if(value === this.currentExercise.value % 12){
