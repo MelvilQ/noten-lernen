@@ -57,9 +57,9 @@ export default {
 		},
 		clefOptions() {
 			return [
-				{value: 'all', label: 'Beide'},
 				{value: 'treble', label: 'Violinschlüssel'},
-				{value: 'bass', label: 'Bassschlüssel'}
+				{value: 'bass', label: 'Bassschlüssel'},
+				{value: 'all', label: 'Beide'}
 			];
 		},
 		difficultyOptions() {
