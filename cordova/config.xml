@@ -2,11 +2,16 @@
 <widget id="de.melvil.noten" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Noten lernen</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Learn to read sheet music
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="patpp17@web.de" href="https://github.com/MelvilQ/">
+        MelvilQ
     </author>
+    <icon density="mdpi" src="res/icon-48.png" />
+    <icon density="hdpi" src="res/icon-72.png" />
+    <icon density="xhdpi" src="res/icon-96.png" />
+    <icon density="xxhdpi" src="res/icon-144.png" />
+    <icon density="xxxhdpi" src="res/icon-192.png" />
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
