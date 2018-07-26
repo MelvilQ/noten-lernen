@@ -5,8 +5,8 @@ import App from "./App";
 
 Vue.config.productionTip = false;
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('static/sw.js');
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
 }
 
 Vue.use(require("vue-chartist"));
