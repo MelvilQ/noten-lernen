@@ -1,17 +1,17 @@
 {
   "name": "Noten lernen",
-  "short_name": "Noten lernen",
+  "short_name": "Noten",
   "start_url": "/",
   "lang": "de-DE",
   "description": "Noten lesen lernen",
   "icons": [
     {
-      "src": "/icon/icon-192.png",
+      "src": "/static/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icon/icon-512.png",
+      "src": "/static/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
