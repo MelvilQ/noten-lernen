@@ -1,2 +1,4 @@
 platforms
 plugins
+keystore.jks
+build.json
