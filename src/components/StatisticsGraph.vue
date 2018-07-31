@@ -14,7 +14,7 @@
 import Statistics from '../model/Statistics';
 
 import Chartist from 'chartist';
-import 'chartist/'
+import 'chartist/dist/chartist.min.css';
 
 export default {
 	name: 'StatisticsGraph',
@@ -46,9 +46,7 @@ export default {
 }
 </script>
 
-<style>
-@import url("../../node_modules/chartist/dist/chartist.min.css");
-
+<style scoped>
 .record {
   font-size: 11pt;
 }
