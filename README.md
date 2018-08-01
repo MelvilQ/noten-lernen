@@ -10,13 +10,17 @@ You can see the current status of the app on [netlify](https://sad-heisenberg-b0
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot1.png" width="150">
+<p float="left">
 
-<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot2.png" width="150">
+<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot1.png" width="250">
 
-<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot3.png" width="150">
+<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot2.png" width="250">
 
-<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot4.png" width="150">
+<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot3.png" width="250">
+
+<img src="https://raw.githubusercontent.com/MelvilQ/noten-lernen/master/screenshots/screenshot4.png" width="250">
+
+</p>
 
 ## Technologies
 
