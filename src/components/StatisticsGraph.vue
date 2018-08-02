@@ -1,10 +1,10 @@
 <template>
 	<div class="statistics-graph">
 		<chartist
-		    ratio="history"
-		    type="Line"
-		    :data="chartData"
-		    :options="chartOptions">
+	    ratio="history"
+	    type="Line"
+	    :data="chartData"
+	    :options="chartOptions">
 		</chartist>
 		<div>
 			<span class="record">Rekord: {{statistics.record}}</span>
