@@ -6,7 +6,10 @@
 		    :data="chartData"
 		    :options="chartOptions">
 		</chartist>
-		<div class="record">Rekord: {{statistics.record}}</div>
+		<div>
+			<span class="record">Rekord: {{statistics.record}}</span>
+			<button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
+		</div>
 	</div>
 </template>
 
@@ -42,6 +45,11 @@ export default {
 				lineSmooth: false
 			};
 		}
+	},
+	methods: {
+		resetRecord(){
+			Statistics.resetRecord();
+		}
 	}
 }
 </script>
@@ -49,5 +57,13 @@ export default {
 <style scoped>
 .record {
   font-size: 11pt;
+}
+
+button.reset {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  user-select: none;
 }
 </style>

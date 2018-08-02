@@ -21,5 +21,9 @@ export default {
       this.record = score;
     }
     this.saveStatistics();
+  },
+  resetRecord() {
+    this.record = 0;
+    this.saveStatistics();
   }
 };
