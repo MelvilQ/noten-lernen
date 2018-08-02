@@ -1,5 +1,10 @@
-var CACHE = "noten-lernen-cache-1";
-var precacheFiles = ["index.html"];
+var CACHE = "noten-lernen-cache-2";
+var precacheFiles = [
+  "/",
+  "/index.html",
+  "/static/manifest.json",
+  "/static/favicon.png"
+];
 
 self.addEventListener("install", function(evt) {
   evt.waitUntil(
