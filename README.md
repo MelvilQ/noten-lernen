@@ -29,3 +29,4 @@ You can see the current status of the app on [netlify](https://sad-heisenberg-b0
 - Frontend-Framework: [Vue](https://vuejs.org/)
 - Rendering music with JavaScript: [abc.js](https://abcjs.net/)
 - Statistics line chart: [chartist.js](https://gionkunz.github.io/chartist-js/)
+- Multilinguality Plugin: [vue-i18n](https://kazupon.github.io/vue-i18n/)
