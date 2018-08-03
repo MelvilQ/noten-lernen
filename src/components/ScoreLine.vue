@@ -2,19 +2,19 @@
 	<div class="score-line">
     <div>
       <div class="score-value">{{timeLeftFormatted}}</div>
-      <div class="score-label">ZEIT</div>
+      <div class="score-label">{{$t('TIME')}}</div>
     </div>
     <div>
       <div class="score-value">{{result.numCorrect}}</div>
-      <div class="score-label">RICHTIG</div>  
+      <div class="score-label">{{$t('CORRECT')}}</div>  
     </div>
     <div>
       <div class="score-value">{{result.accuracy}} %</div>
-      <div class="score-label">GENAUIGKEIT</div>  
+      <div class="score-label">{{$t('ACCURACY')}}</div>  
     </div>
     <div>
       <div class="score-value">{{result.score}}</div>
-      <div class="score-label">PUNKTE</div>
+      <div class="score-label">{{$t('SCORE')}}</div>
     </div>
   </div>
 </template>

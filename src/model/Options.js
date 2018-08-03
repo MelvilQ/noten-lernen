@@ -6,6 +6,7 @@ export default {
   clef: "treble",
   difficulty: "easy",
   accidentals: "no",
+  language: null,
 
   loadOptions() {
     const loadedOptions = Lockr.get("options");

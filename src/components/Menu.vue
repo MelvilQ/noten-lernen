@@ -1,26 +1,29 @@
 <template>
 	<div class="menu">
 		<div class="start-container">
-			<button class="start" @click="startGame">START</button>
+			<button class="start" @click="startGame">{{$t('START')}}</button>
 		</div>
 		<LastResultDisplay v-if="lastResult" :lastResult="lastResult" />
 		<StatisticsGraph v-if="statistics.lastScores.length >= 2" />
 		<div class="settings">
-			<h3>Optionen</h3>
+			<h3>{{$t('settings')}}</h3>
 			<div class="setting">
-				<SelectOption label="RUNDENLÄNGE" :items="gameLengthOptions" v-model="options.gameLength" />
+				<SelectOption :label="$t('ROUND_LENGTH')" :items="gameLengthOptions" v-model="options.gameLength" />
 			</div>
 			<div class="setting">
-				<SelectOption label="NOTENEINGABE" :items="inputModeOptions" v-model="options.inputMode" />
+				<SelectOption :label="$t('NOTE_INPUT')" :items="inputModeOptions" v-model="options.inputMode" />
 			</div>
 			<div class="setting">
-				<SelectOption label="NOTENSCHLÜSSEL" :items="clefOptions" v-model="options.clef" />
+				<SelectOption :label="$t('CLEF')" :items="clefOptions" v-model="options.clef" />
 			</div>
 			<div class="setting">
-				<SelectOption label="SCHWIERIGKEITSGRAD" :items="difficultyOptions" v-model="options.difficulty" />
+				<SelectOption :label="$t('DIFFICULTY')" :items="difficultyOptions" v-model="options.difficulty" />
 			</div>
 			<div class="setting">
-				<SelectOption label="VORZEICHEN" :items="accidentalOptions" v-model="options.accidentals" />
+				<SelectOption :label="$t('ACCIDENTALS')" :items="accidentalOptions" v-model="options.accidentals" />
+			</div>
+			<div>
+				<SelectOption :label="$t('LANGUAGE')" :items="languageOptions" v-model="options.language" />
 			</div>
 		</div>
 	</div>
@@ -49,38 +52,49 @@ export default {
 	computed: {
 		gameLengthOptions(){
 			return [
-				{value: 20, label: '20 Sekunden'}, 
-				{value: 60, label: '1 Minute'}, 
-				{value: 300, label: '5 Minuten'}
+				{value: 20, label: this.$t('twentySeconds')}, 
+				{value: 60, label: this.$t('oneMinute')}, 
+				{value: 300, label: this.$t('fiveMinutes')}
 			];
 		},
 		inputModeOptions(){
 			return [
-				{value: 'button', label:'Buttons'},
-				{value: 'keyboard', label: 'Klaviatur'}
+				{value: 'button', label: this.$t('buttons')},
+				{value: 'keyboard', label: this.$t('piano')}
 			];
 		},
 		clefOptions() {
 			return [
-				{value: 'treble', label: 'Violinschlüssel'},
-				{value: 'bass', label: 'Bassschlüssel'},
-				{value: 'all', label: 'Beide'}
+				{value: 'treble', label: this.$t('trebleClef')},
+				{value: 'bass', label: this.$t('bassClef')},
+				{value: 'all', label: this.$t('both')}
 			];
 		},
 		difficultyOptions() {
 			return [
-				{value: 'easy', label: 'Leicht'},
-				{value: 'normal', label: 'Mittel'},
-				{value: 'hard', label: 'Schwer'}
+				{value: 'easy', label: this.$t('easy')},
+				{value: 'normal', label: this.$t('normal')},
+				{value: 'hard', label: this.$t('hard')}
 			];
 		},
 		accidentalOptions() {
 			return [
-				{value: 'no', label: 'Keine'},
-				{value: 'onlySharp', label: '♯'},
-				{value: 'onlyFlat', label: '♭'},
-				{value: 'sharpAndFlat', label: '♯ und ♭'}
-			]
+				{value: 'no', label: this.$t('none')},
+				{value: 'onlySharp', label: this.$t('sharp')},
+				{value: 'onlyFlat', label: this.$t('flat')},
+				{value: 'sharpAndFlat', label: this.$t('sharpAndFlat')}
+			];
+		},
+		languageOptions() {
+			return [
+				{value: 'en', label: 'EN'},
+				{value: 'de', label: 'DE'}
+			];
+		}
+	},
+	watch: {
+		'options.language': function(lang){
+			this.$i18n.locale = lang;
 		}
 	},
 	methods: {

@@ -17,9 +17,25 @@ export default {
   computed: {
     noteNames(){
       if(this.isSharp){
-        return ['C', 'Cis', 'D', 'Dis', 'E', 'F', 'Fis', 'G', 'Gis', 'A', 'Ais', 'H'];
+        return [
+          this.$t('C'), this.$t('CSharp'), 
+          this.$t('D'), this.$t('DSharp'), 
+          this.$t('E'), 
+          this.$t('F'), this.$t('FSharp'), 
+          this.$t('G'), this.$t('GSharp'), 
+          this.$t('A'), this.$t('ASharp'), 
+          this.$t('B')
+        ];
       } else {
-        return ['C', 'Des', 'D', 'Es', 'E', 'F', 'Ges', 'G', 'As', 'A', 'B', 'H'];
+        return [
+          this.$t('C'), this.$t('DFlat'), 
+          this.$t('D'), this.$t('EFlat'), 
+          this.$t('E'), 
+          this.$t('F'), this.$t('GFlat'), 
+          this.$t('G'), this.$t('AFlat'), 
+          this.$t('A'), this.$t('BFlat'), 
+          this.$t('B')
+        ];
       }
     },
     gridParams(){

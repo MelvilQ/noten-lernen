@@ -7,7 +7,7 @@
 	    :options="chartOptions">
 		</chartist>
 		<div>
-			<span class="record">Rekord: {{statistics.record}}</span>
+			<span class="record">{{$t('record')}}: {{statistics.record}}</span>
 			<button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
 		</div>
 	</div>

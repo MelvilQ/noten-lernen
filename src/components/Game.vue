@@ -1,7 +1,7 @@
 <template>
   <div class="game-screen">
     <button class="quit" @click="quit">
-      RUNDE ABBRECHEN
+      {{$t('ABORT')}}
     </button>
     <ScoreLine 
       :result="result" 

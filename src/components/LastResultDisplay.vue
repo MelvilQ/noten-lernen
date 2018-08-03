@@ -1,12 +1,12 @@
 <template>
   <div class="last-result-display">
-    <h3>Letzte Runde</h3>
+    <h3>{{$t('lastRound')}}</h3>
     <div class="line">
-      Punktzahl: <strong>{{lastResult.score}}</strong>
+      {{$t('score')}}: <strong>{{lastResult.score}}</strong>
       </div>
     <div class="line">
-      Genauigkeit: {{lastResult.accuracy}} % 
-      ({{lastResult.numCorrect}} richtig, {{lastResult.numWrong}} falsch)
+      {{$t('accuracy')}}: {{lastResult.accuracy}} % 
+      ({{lastResult.numCorrect}} {{$t('correct')}}, {{lastResult.numWrong}} {{$t('wrong')}})
     </div>
   </div>
 </template>
