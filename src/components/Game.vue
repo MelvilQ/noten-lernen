@@ -264,6 +264,7 @@ button.quit {
   border: none;
   outline: none;
   background-color: lightblue;
+  cursor: pointer;
 }
 
 button.quit:hover {
