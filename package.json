@@ -18,7 +18,8 @@
     "lodash": "^4.17.10",
     "vue": "^2.5.17",
     "vue-chartist": "^2.1.2",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "vue-mousetrap": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

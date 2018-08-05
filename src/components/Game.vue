@@ -199,9 +199,51 @@ export default {
     onWrongAnswer(wrongValue){
       this.numWrong += 1;
       this.feedback = 'wrong';
+    },
+    initMousetrap(){
+      this.$mousetrap.bind('y', () => this.checkAnswer(0));
+      this.$mousetrap.bind('s', () => this.checkAnswer(1));
+      this.$mousetrap.bind('x', () => this.checkAnswer(2));
+      this.$mousetrap.bind('d', () => this.checkAnswer(3));
+      this.$mousetrap.bind('c', () => this.checkAnswer(4));
+      this.$mousetrap.bind('v', () => this.checkAnswer(5));
+      this.$mousetrap.bind('g', () => this.checkAnswer(6));
+      this.$mousetrap.bind('b', () => this.checkAnswer(7));
+      this.$mousetrap.bind('h', () => this.checkAnswer(8));
+      this.$mousetrap.bind('n', () => this.checkAnswer(9));
+      this.$mousetrap.bind('j', () => this.checkAnswer(10));
+      this.$mousetrap.bind('m', () => this.checkAnswer(11));
+
+      this.$mousetrap.bind(',', () => this.checkAnswer(0));
+      this.$mousetrap.bind('l', () => this.checkAnswer(1));
+      this.$mousetrap.bind('.', () => this.checkAnswer(2));
+      this.$mousetrap.bind('ö', () => this.checkAnswer(3));
+      this.$mousetrap.bind('-', () => this.checkAnswer(4));
+
+      this.$mousetrap.bind('q', () => this.checkAnswer(0));
+      this.$mousetrap.bind('2', () => this.checkAnswer(1));
+      this.$mousetrap.bind('w', () => this.checkAnswer(2));
+      this.$mousetrap.bind('3', () => this.checkAnswer(3));
+      this.$mousetrap.bind('e', () => this.checkAnswer(4));
+      this.$mousetrap.bind('r', () => this.checkAnswer(5));
+      this.$mousetrap.bind('5', () => this.checkAnswer(6));
+      this.$mousetrap.bind('t', () => this.checkAnswer(7));
+      this.$mousetrap.bind('6', () => this.checkAnswer(8));
+      this.$mousetrap.bind('z', () => this.checkAnswer(9));
+      this.$mousetrap.bind('7', () => this.checkAnswer(10));
+      this.$mousetrap.bind('u', () => this.checkAnswer(11));
+
+      this.$mousetrap.bind('i', () => this.checkAnswer(0));
+      this.$mousetrap.bind('9', () => this.checkAnswer(1));
+      this.$mousetrap.bind('o', () => this.checkAnswer(2));
+      this.$mousetrap.bind('0', () => this.checkAnswer(3));
+      this.$mousetrap.bind('p', () => this.checkAnswer(4));
+      this.$mousetrap.bind('ü', () => this.checkAnswer(5));
+      this.$mousetrap.bind('+', () => this.checkAnswer(7));
     }
   },
   mounted(){
+    this.initMousetrap();
     this.startGame();
   }
 }

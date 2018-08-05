@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import VueMousetrap from "vue-mousetrap";
 import strings from "./resources/strings";
 import App from "./App";
 import Options from "./model/Options";
@@ -12,6 +13,7 @@ if ("serviceWorker" in navigator) {
 
 Vue.use(require("vue-chartist"));
 Vue.use(VueI18n);
+Vue.use(VueMousetrap);
 
 Options.loadOptions();
 Options.language = Options.language || navigator.language.substr(0, 2);
