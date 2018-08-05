@@ -88,7 +88,8 @@ export default {
 		languageOptions() {
 			return [
 				{value: 'en', label: 'EN'},
-				{value: 'de', label: 'DE'}
+				{value: 'de', label: 'DE'},
+				{value: 'pl', label: 'PL'}
 			];
 		}
 	},
