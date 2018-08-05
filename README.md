@@ -6,7 +6,7 @@ Learn to read sheet music.
 
 ## Demo
 
-You can see the current status of the app on [netlify](https://sad-heisenberg-b00008.netlify.com/).
+You can see the current status of the app on [netlify](https://noten-lernen.netlify.com/).
 
 ## Screenshots
 
