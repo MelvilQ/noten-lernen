@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .keyboard-input {
   position: relative;
-  width: 80%;
+  width: 90%;
   height: 150px;
   margin: 0 auto;
 }
