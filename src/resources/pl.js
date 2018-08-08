@@ -20,11 +20,11 @@ export default {
   correctExcl: "Poprawna!",
   wrongExcl: "Zła!",
 
-  ABORT: "PRZERWAĆ PARTIĘ",
+  ABORT: "PRZERWIJ PARTIĘ",
 
-  lastRound: "Ubiegła partia",
+  lastRound: "Poprzednia partia",
   score: "Punkty",
-  accuracy: "Dokładność",
+  accuracy: "Poprawność",
   correct: "poprawne",
   wrong: "złe",
 
@@ -54,7 +54,7 @@ export default {
 
   TIME: "CZAS",
   CORRECT: "POPRAWNE",
-  ACCURACY: "DOKŁADNOŚĆ",
+  ACCURACY: "POPRAWNOŚĆ",
   SCORE: "PUNKTY",
 
   record: "Rekord"
