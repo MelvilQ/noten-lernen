@@ -189,6 +189,7 @@ export default {
       return exercise;
     },
     checkAnswer(value){
+      this.playAnswer(value);
       if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
         this.generateNewExercise();
@@ -204,6 +205,10 @@ export default {
       this.numWrong += 1;
       this.feedback = 'wrong';
     },
+    playAnswer(value){
+      let sample = new Audio('/static/samples/piano/' + (value + 36) + '.mp3');
+      sample.play();
+    }
   },
   mounted(){
     this.startGame();
