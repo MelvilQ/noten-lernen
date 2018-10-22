@@ -189,7 +189,7 @@ export default {
       return exercise;
     },
     checkAnswer(value){
-      this.playAnswer(value);
+      this.playAnswer(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
       if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
         this.generateNewExercise();
@@ -206,7 +206,7 @@ export default {
       this.feedback = 'wrong';
     },
     playAnswer(value){
-      let sample = new Audio('/static/samples/piano/' + (value + 36) + '.mp3');
+      let sample = new Audio('/static/samples/piano/' + value + '.mp3');
       sample.play();
     }
   },
