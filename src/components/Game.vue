@@ -206,6 +206,9 @@ export default {
       this.feedback = 'wrong';
     },
     playAnswer(value){
+      if(!this.options.sound){
+        return;
+      }
       let sample = new Audio('static/samples/piano/' + value + '.mp3');
       sample.play();
     }

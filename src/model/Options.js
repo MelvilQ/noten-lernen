@@ -6,6 +6,7 @@ export default {
   clef: "treble",
   difficulty: "easy",
   accidentals: "no",
+  sound: false,
   language: null,
 
   loadOptions() {

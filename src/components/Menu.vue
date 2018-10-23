@@ -23,6 +23,9 @@
 				<SelectOption :label="$t('ACCIDENTALS')" :items="accidentalOptions" v-model="options.accidentals" />
 			</div>
 			<div>
+				<SelectOption :label="$t('SOUND')" :items="soundOptions" v-model="options.sound" />
+			</div>
+			<div>
 				<SelectOption :label="$t('LANGUAGE')" :items="languageOptions" v-model="options.language" />
 			</div>
 		</div>
@@ -83,6 +86,12 @@ export default {
 				{value: 'onlySharp', label: this.$t('sharp')},
 				{value: 'onlyFlat', label: this.$t('flat')},
 				{value: 'sharpAndFlat', label: this.$t('sharpAndFlat')}
+			];
+		},
+		soundOptions(){
+			return [
+				{value: false, label: this.$t('off')},
+				{value: true, label: this.$t('on')}
 			];
 		},
 		languageOptions() {
