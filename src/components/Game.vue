@@ -59,7 +59,8 @@ export default {
       numWrong: 0,
       timeLeft: 0,
       timer: null,
-      feedback: 'none'
+      feedback: 'none',
+      sample: null,
     }
   },
   computed: {
@@ -209,8 +210,11 @@ export default {
       if(!this.options.sound){
         return;
       }
-      let sample = new Audio('static/samples/piano/' + value + '.mp3');
-      sample.play();
+      if(!!this.sample && !this.sample.paused){
+        this.sample.pause();
+      }
+      this.sample = new Audio('static/samples/piano/' + value + '.mp3');
+      this.sample.play();
     }
   },
   mounted(){
