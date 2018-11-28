@@ -146,13 +146,19 @@ export default {
       }, 1000)
       this.generateNewExercise();
     },
-    onGameFinished(){
+    onExit(){
       clearInterval(this.timer);
+      if(this.sample){
+        this.sample.pause();
+      }
+    },
+    onGameFinished(){
+      this.onExit();
       Statistics.addScore(this.score);
       this.$emit('gameEnded', this.result); 
     },
     quit(){
-      clearInterval(this.timer);
+      this.onExit();
       this.$emit('gameEnded', null);
     },
     generateNewExercise(){
