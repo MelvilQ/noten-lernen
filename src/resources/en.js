@@ -51,7 +51,7 @@ export default {
   sharp: "♯",
   flat: "♭",
   sharpAndFlat: "♯ and ♭",
-  sound: "SOUND",
+  SOUND: "SOUND",
   on: "On",
   off: "Off",
 
