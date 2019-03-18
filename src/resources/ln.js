@@ -40,7 +40,7 @@ export default {
   oneMinute: "1 monúti",
   fiveMinutes: "5 minúti",
   buttons: "Mapúngu",
-  piano: "Líkembé lya mpótó",
+  piano: "Mángolá",
   trebleClef: "lifungóla lya sol",
   bassClef: "lifungóla lya bási",
   both: "míbalé",
