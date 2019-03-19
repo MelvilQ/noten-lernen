@@ -40,7 +40,7 @@ export default {
   oneMinute: "1 minute",
   fiveMinutes: "5 minutes",
   buttons: "Boutons",
-  piano: "Clavier",
+  piano: "Piano",
   trebleClef: "clé de sol",
   bassClef: "clé de basse",
   both: "les deux",
