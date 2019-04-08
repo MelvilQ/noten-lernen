@@ -14,7 +14,7 @@ export default {
   },
   addScore(score) {
     this.lastScores.push(score);
-    if (this.lastScores.length > 7) {
+    if (this.lastScores.length > 25) {
       this.lastScores.shift();
     }
     if (score > this.record) {
