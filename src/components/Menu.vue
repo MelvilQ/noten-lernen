@@ -116,7 +116,7 @@ export default {
         { value: "de", label: "DE" },
         { value: "fr", label: "FR" },
         { value: "pl", label: "PL" },
-        { value: "ln", label: "LN" }
+        // { value: "ln", label: "LN" }
       ];
     }
   },
