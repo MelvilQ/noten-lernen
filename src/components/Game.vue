@@ -77,7 +77,10 @@ export default {
       if(this.numAnswers === 0){
         return 0;
       }
-      return Math.round(100 * this.numCorrect * this.numCorrect / this.numAnswers);
+      return Math.round(this.baseFactor * this.numCorrect * this.numCorrect / this.numAnswers);
+    },
+    baseFactor(){
+      return 6000 / this.options.gameLength; // 20s -> 300, 1min -> 100, 5min -> 20
     },
     result(){
       return {
