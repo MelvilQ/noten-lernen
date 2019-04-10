@@ -5,7 +5,7 @@
   "description": "Learn to read sheet music",
   "main": "index.js",
   "scripts": {
-    "build": "cordova build android --release --debug"
+    "build": "cordova build android --release"
   },
   "author": "MelvilQ",
   "license": "MIT",
