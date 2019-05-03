@@ -214,6 +214,9 @@ export default {
     onWrongAnswer(wrongValue){
       this.numWrong += 1;
       this.feedback = 'wrong';
+      if('vibrate' in navigator) {
+        navigator.vibrate(200);
+      }
     },
     playAnswer(value){
       if(!this.options.sound){
