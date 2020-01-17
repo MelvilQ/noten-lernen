@@ -39,6 +39,7 @@ export default {
   twentySeconds: "20 secondes",
   oneMinute: "1 minute",
   fiveMinutes: "5 minutes",
+  infinite: "Infini",
   buttons: "Boutons",
   piano: "Piano",
   trebleClef: "clé de sol",

@@ -73,7 +73,8 @@ export default {
       return [
         { value: 20, label: this.$t("twentySeconds") },
         { value: 60, label: this.$t("oneMinute") },
-        { value: 300, label: this.$t("fiveMinutes") }
+        { value: 300, label: this.$t("fiveMinutes") },
+        { value: 0, label: this.$t("infinite") }
       ];
     },
     inputModeOptions() {

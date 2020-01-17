@@ -39,6 +39,7 @@ export default {
   twentySeconds: "20 sɛgɔ́ndi",
   oneMinute: "1 monúti",
   fiveMinutes: "5 minúti",
+  infinite: "∞",
   buttons: "Mapúngu",
   piano: "Mángolá",
   trebleClef: "lifungóla lya sol",

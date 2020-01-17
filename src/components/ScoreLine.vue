@@ -1,6 +1,6 @@
 <template>
 	<div class="score-line">
-    <div>
+    <div v-if="!isInfiniteRound">
       <div class="score-value">{{timeLeftFormatted}}</div>
       <div class="score-label">{{$t('TIME')}}</div>
     </div>
@@ -12,7 +12,7 @@
       <div class="score-value">{{result.accuracy}} %</div>
       <div class="score-label">{{$t('ACCURACY')}}</div>  
     </div>
-    <div>
+    <div v-if="!isInfiniteRound">
       <div class="score-value">{{result.score}}</div>
       <div class="score-label">{{$t('SCORE')}}</div>
     </div>
@@ -25,6 +25,7 @@ export default {
   props: {
     result: Object,
     timeLeft: Number,
+    isInfiniteRound: Boolean,
   },
   computed: {
     timeLeftFormatted(){
