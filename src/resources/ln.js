@@ -36,7 +36,6 @@ export default {
   DIFFICULTY: "MPƐ́TƐ́",
   ACCIDENTALS: "LIYÉBISI",
   LANGUAGE: "LOKÓTÁ",
-  twentySeconds: "20 sɛgɔ́ndi",
   oneMinute: "1 monúti",
   fiveMinutes: "5 minúti",
   infinite: "∞",

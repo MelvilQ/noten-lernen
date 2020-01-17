@@ -36,7 +36,6 @@ export default {
   DIFFICULTY: "TRUDNOŚĆ",
   ACCIDENTALS: "ZNAKI CHROMATYCZNE",
   LANGUAGE: "JĘZYK",
-  twentySeconds: "20 sekund",
   oneMinute: "1 minuta",
   fiveMinutes: "5 minut",
   infinite: "Niekończący",

@@ -36,7 +36,6 @@ export default {
   DIFFICULTY: "DIFFICULTY",
   ACCIDENTALS: "ACCIDENTALS",
   LANGUAGE: "LANGUAGE",
-  twentySeconds: "20 seconds",
   oneMinute: "1 minute",
   fiveMinutes: "5 minutes",
   infinite: "Infinite",
