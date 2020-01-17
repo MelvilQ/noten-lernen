@@ -1,7 +1,7 @@
 <template>
   <div class="keyboard-input">
     <button 
-      v-for="value in 12" 
+      v-for="value in 13" 
       :key="value" 
       class="key"
       :class="{black: isBlack(value-1), white: !isBlack(value-1)}" 
@@ -17,19 +17,19 @@ export default {
   name: 'KeyboardInput',
   computed: {
     keyStyle(){
-      return Array.from(Array(12).keys()).map(v => Utils.hasAccidental(v) ? 
+      return Array.from(Array(13).keys()).map(v => Utils.hasAccidental(v) ? 
       {
         // black keys
         height: '65%',
-        width: '8%',
+        width: '7.5%',
         'z-index': 2,
-        left: (14.27 * (this.keyPos(v-1)) + 10.27) + '%'
+        left: (12.5 * (this.keyPos(v-1)) + 8.75) + '%'
       } : {
         // white keys
         height: '100%',
-        width: '14.27%',
+        width: '12.5%',
         'z-index': 1,
-        left: (14.27 * this.keyPos(v)) + '%'
+        left: (12.5 * this.keyPos(v)) + '%'
       });
     }
   },
@@ -38,10 +38,10 @@ export default {
       return Utils.hasAccidental(v);
     },
     keyPos(v){
-      return (v <= 4) ? Math.floor(v / 2) : Math.floor((v+1) / 2)
+      return (v <= 4) ? Math.floor(v / 2) : (v <= 11) ? Math.floor((v+1) / 2) : 7;
     },
     solve(v){
-      this.$emit('solved', v);
+      this.$emit('solved', v % 12);
     }
   }
 }
@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .keyboard-input {
   position: relative;
-  width: 90%;
+  width: 92%;
   height: 150px;
   margin: 0 auto;
 }
