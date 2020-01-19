@@ -1,7 +1,7 @@
 {
   "name": "de.melvil.noten",
   "displayName": "Noten lernen",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "Learn to read sheet music",
   "main": "index.js",
   "scripts": {
