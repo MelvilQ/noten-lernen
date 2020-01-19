@@ -36,6 +36,7 @@ export default {
   DIFFICULTY: "SCHWIERIGKEITSGRAD",
   ACCIDENTALS: "VORZEICHEN",
   LANGUAGE: "SPRACHE",
+  twentySeconds: "20 Sekunden",
   oneMinute: "1 Minute",
   fiveMinutes: "5 Minuten",
   infinite: "Unendlich",
