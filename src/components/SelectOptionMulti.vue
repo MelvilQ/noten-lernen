@@ -22,7 +22,7 @@ export default {
     select(value){
       if (!this.value.includes(value)) {
         this.$emit('input', [...this.value, value]);
-      } else {
+      } else if (this.value.length > 1) {
         this.$emit('input', this.value.filter(v => v !== value));
       }
     }
