@@ -22,7 +22,7 @@
         />
       </div>
       <div class="setting">
-        <SelectOption :label="$t('CLEF')" :items="clefOptions" v-model="options.clef"/>
+        <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-model="options.clef"/>
       </div>
       <div class="setting">
         <SelectOption
@@ -50,6 +50,7 @@
 
 <script>
 import SelectOption from "./SelectOption";
+import SelectOptionMulti from "./SelectOptionMulti";
 import LastResultDisplay from "./LastResultDisplay";
 import StatisticsGraph from "./StatisticsGraph";
 
@@ -58,7 +59,7 @@ import Statistics from "../model/Statistics";
 
 export default {
   name: "Menu",
-  components: { SelectOption, LastResultDisplay, StatisticsGraph },
+  components: { SelectOption, SelectOptionMulti, LastResultDisplay, StatisticsGraph },
   props: {
     lastResult: Object
   },
@@ -87,7 +88,8 @@ export default {
       return [
         { value: "treble", label: this.$t("trebleClef") },
         { value: "bass", label: this.$t("bassClef") },
-        { value: "all", label: this.$t("both") }
+        { value: "alto", label: this.$t("altoClef") },
+        { value: "tenor", label: this.$t("tenorClef") }
       ];
     },
     difficultyOptions() {

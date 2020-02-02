@@ -15,6 +15,14 @@ export default {
       return;
     }
     Object.assign(this, loadedOptions);
+    this.convertOldClefValues();
+  },
+  convertOldClefValues() {
+    if (this.clef === 'all') {
+      this.clef = ['treble', 'bass'];
+    } else if (this.clef === 'treble' || this.clef === 'bass') {
+      this.clef = [this.clef];
+    }
   },
   saveOptions() {
     Lockr.set("options", this);

@@ -136,6 +136,50 @@ export default {
         default:
           return 65;
       }
+    },
+    minAltoValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 31;
+        case 'normal':
+          return 24;
+        case 'hard':
+        default:
+          return 17;
+      }
+    },
+    maxAltoValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 43;
+        case 'normal':
+          return 48;
+        case 'hard':
+        default:
+          return 55;
+      }
+    },
+    minTenorValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 31;
+        case 'normal':
+          return 24;
+        case 'hard':
+        default:
+          return 14;
+      }
+    },
+    maxTenorValue(){
+      switch(this.options.difficulty){
+        case 'easy':
+          return 43;
+        case 'normal':
+          return 48;
+        case 'hard':
+        default:
+          return 52;
+      }
     }
   },
   methods: {
@@ -176,13 +220,8 @@ export default {
       this.currentExercise = exercise;
     },
     generateExercise(){
-      const isBass = this.options.clef === 'all' ? _.sample([true, false]) 
-        : this.options.clef === 'bass';
-      const exercise = {
-        clef: isBass ? 'bass' : 'treble',
-        value: isBass ? _.random(this.minBassValue, this.maxBassValue) 
-          : _.random(this.minTrebleValue, this.maxTrebleValue)
-      };
+      const clef = _.sample(this.options.clef);
+      const exercise = { clef, value: this.getRandomNoteForClef(clef) };
       switch(this.options.accidentals){
         case 'no':
           exercise.isSharp = false;
@@ -201,6 +240,18 @@ export default {
           break;
       }
       return exercise;
+    },
+    getRandomNoteForClef(clef){
+      switch(clef){
+        case 'treble': 
+          return _.random(this.minTrebleValue, this.maxTrebleValue);
+        case 'bass':
+          return _.random(this.minBassValue, this.maxBassValue);
+        case 'alto':
+          return _.random(this.minAltoValue, this.maxAltoValue);
+        case 'tenor':
+          return _.random(this.minTenorValue, this.maxTenorValue);
+      }
     },
     checkAnswer(value){
       this.playAnswer(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
