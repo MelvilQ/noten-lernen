@@ -1,11 +1,12 @@
 {
   "name": "de.melvil.noten",
   "displayName": "Noten lernen",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Learn to read sheet music",
   "main": "index.js",
   "scripts": {
-    "build": "cordova build android --release"
+    "copy-locales": "cp -r ./locales/android/values-en ./platforms/android/app/src/main/res/",
+    "build": "npm run copy-locales && cordova build android --release"
   },
   "author": "MelvilQ",
   "license": "MIT",
