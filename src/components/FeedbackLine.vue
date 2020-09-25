@@ -50,7 +50,6 @@ export default {
   text-align: center;
   line-height: 3;
   color: white;
-  user-select: none;
   border-radius: 5px;
   padding: 1px 5px;
   opacity: 0;

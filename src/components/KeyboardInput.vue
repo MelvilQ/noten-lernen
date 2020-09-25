@@ -62,7 +62,6 @@ export default {
   box-sizing: content-box;
   border: solid 1px black;
   cursor: pointer;
-  user-select: none;
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

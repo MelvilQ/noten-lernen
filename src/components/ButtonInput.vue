@@ -72,7 +72,6 @@ button {
   border: none;
   outline: none;
   font-weight: bold;
-  user-select: none;
 }
 
 button:hover {

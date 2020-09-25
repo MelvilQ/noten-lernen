@@ -64,6 +64,5 @@ button.reset {
   outline: none;
   cursor: pointer;
   background-color: white;
-  user-select: none;
 }
 </style>
