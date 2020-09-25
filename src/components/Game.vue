@@ -8,7 +8,8 @@
       :timeLeft="timeLeft"
       :isInfiniteRound="!options.gameLength" />
     <NoteDisplay 
-      :currentExercise="currentExercise" />
+      :currentExercise="currentExercise"
+      @play="playNote(currentExercise.value)" />
     <FeedbackLine 
       :feedback="feedback"
       :uniqueId="numAnswers" />
@@ -254,7 +255,7 @@ export default {
       }
     },
     checkAnswer(value){
-      this.playAnswer(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
+      this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
       if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
         this.generateNewExercise();
@@ -273,7 +274,7 @@ export default {
         navigator.vibrate(200);
       }
     },
-    playAnswer(value){
+    playNote(value){
       if(!this.options.sound){
         return;
       }

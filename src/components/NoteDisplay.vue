@@ -1,5 +1,5 @@
 <template>
-  <div id="note-display"></div>
+  <div id="note-display" @click="playCurrentNote"></div>
 </template>
 
 <script>
@@ -59,11 +59,21 @@ export default {
         + '\n' 
         + this.accidental + this.note
       );
-    }
+    },
   },
   watch: {
     abc(value){
-      abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 2.5});
+      abcjs.renderAbc('note-display', this.abc, {staffwidth: 200, scale: 2.5, clickListener: () => this.unselect()});
+    }
+  },
+  methods: {
+	  playCurrentNote(){
+      this.$emit('play');
+    },
+    unselect(){
+      Array.from(document.getElementsByTagName('path'))
+        .filter(p => p.getAttribute('fill') === '#ff0000')
+        .forEach(p => p.setAttribute('fill', null));
     }
   }
 }
@@ -74,5 +84,6 @@ export default {
   margin: 0 auto;
   min-height: 225px;
   max-height: 225px;
+  cursor: pointer;
 }
 </style>
