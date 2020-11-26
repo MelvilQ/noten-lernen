@@ -1,0 +1,22 @@
+App name
+========
+Noten lernen
+
+Short description
+=================
+Musiknoten lernen. Alle Notenschlüssel. Werbefrei und Open Source!
+
+Full description
+================
+Mit dieser kostenlosen App kann jeder schnell und kinderleicht Musiknoten lernen!
+
+Features:
+
+* deutschsprachig
+* Eingabe-Modi: Buttons oder Klaviertastatur
+* Spielrunden-Historie (so sieht man super, wie schnell man sich verbessert!)
+* Notenschlüssel einstellen (Violinschlüssel, Bassschlüssel, Altschlüssel, Tenorschlüssel)
+* Drei Schwierigkeitsgrade (je schwerer, desto größer der Tonumfang)
+* Vorzeichen einstellen
+* Kostenlos und werbefrei!
+* Quellcode ist Open Source: https://github.com/MelvilQ/noten-lernen

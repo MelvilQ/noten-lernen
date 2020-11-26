@@ -1,0 +1,16 @@
+App name
+========
+Learn Music Notes
+
+Short description
+=================
+Learn music notation easily. All clefs. No Ads. Free and Open Source!
+
+Full description
+================
+* Input modes: Buttons or Piano
+* Score history (You'll see quickly how much you improve!)
+* Practice all clefs (treble, bass, alto, tenor) that you need to master
+* Three difficulty levels (the harder, the more notes with ledger lines you'll get)
+* ♯ and ♭ accidentals
+* Source code of this app is open-sourced at https://github.com/MelvilQ/noten-lernen
