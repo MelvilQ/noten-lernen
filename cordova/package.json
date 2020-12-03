@@ -18,10 +18,14 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-vibration": {}
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-midi-sender": {}
     },
     "platforms": [
       "android"
     ]
+  },
+  "devDependencies": {
+    "cordova-plugin-midi-sender-android": "^0.1.8"
   }
 }

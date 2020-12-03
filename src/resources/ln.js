@@ -41,6 +41,7 @@ export default {
   fiveMinutes: "5 min",
   infinite: "∞",
   buttons: "Mapúngu",
+  realDevice: "Real Device",
   piano: "Mángolá",
   trebleClef: "sol",
   bassClef: "bási",

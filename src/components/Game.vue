@@ -20,6 +20,9 @@
     <KeyboardInput 
       v-if="options.inputMode === 'keyboard'" 
       @solved="checkAnswer" />
+    <RealDeviceInput 
+      v-if="options.inputMode === 'realDevice'" 
+      @solved="checkAnswer" />
     <MousetrapInput 
       @solved="checkAnswer" />
   </div>
@@ -32,6 +35,7 @@ import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
 import MousetrapInput from './MousetrapInput';
+import RealDeviceInput from './RealDeviceInput';
 
 import Utils from '../model/Utils';
 import Options from '../model/Options';
@@ -47,7 +51,8 @@ export default {
     FeedbackLine,
     ButtonInput,
     KeyboardInput,
-    MousetrapInput
+    MousetrapInput,
+    RealDeviceInput
   },
   data () {
     return {

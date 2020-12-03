@@ -81,6 +81,7 @@ export default {
     inputModeOptions() {
       return [
         { value: "button", label: this.$t("buttons") },
+        { value: "realDevice", label: this.$t("realDevice") },
         { value: "keyboard", label: this.$t("piano") }
       ];
     },
