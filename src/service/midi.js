@@ -19,11 +19,11 @@ export default {
     midiFunc(() => {
       console.log("Adding Listner");
       var input = WebMidi.inputs[0];
+      onAvailable();
       if(!input){
         console.log("no inputs found, reconnect usb jack");
         return;
       }
-      onAvailable();
       input.on("noteon", "all", function (e) {
         onPressed(e)
       })
