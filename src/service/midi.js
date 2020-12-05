@@ -20,7 +20,7 @@ export default {
       console.log("Adding Listner");
       var input = WebMidi.inputs[0];
       if(!input){
-        console.log("no imputs found, reconnect usb jack");
+        console.log("no inputs found, reconnect usb jack");
         return;
       }
       onAvailable();

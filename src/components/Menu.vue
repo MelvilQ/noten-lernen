@@ -15,13 +15,6 @@
         />
       </div>
       <div class="setting">
-        <SelectOption
-          :label="$t('NOTE_INPUT')"
-          :items="inputModeOptions"
-          v-model="options.inputMode"
-        />
-      </div>
-      <div class="setting">
         <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-model="options.clef"/>
       </div>
       <div class="setting">
@@ -76,13 +69,6 @@ export default {
         { value: 60, label: this.$t("oneMinute") },
         { value: 300, label: this.$t("fiveMinutes") },
         { value: 0, label: this.$t("infinite") }
-      ];
-    },
-    inputModeOptions() {
-      return [
-        { value: "button", label: this.$t("buttons") },
-        { value: "realDevice", label: this.$t("realDevice") },
-        { value: "keyboard", label: this.$t("piano") }
       ];
     },
     clefOptions() {

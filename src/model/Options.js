@@ -1,7 +1,6 @@
 import * as Lockr from "lockr";
 
 export default {
-  inputMode: "button",
   gameLength: 60,
   clef: ["treble"],
   difficulty: "easy",

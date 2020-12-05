@@ -1,5 +1,5 @@
 <template>
-    <div>  <h1> {{displayPressed}} </h1>  </div>
+    <div>   {{displayPressed}}   </div>
 </template>
 
 <script>
@@ -18,9 +18,9 @@ export default {
                 return "Keyboard not found, Refresh or Reconnect Keyboad"
             }
             if(!this.currentInput){
-                return "Press a key in Keyboard"
+                return "Press key in Keyboard"
             }
-            return "keep trying"
+            return "keep trying" 
         },
         noteName(){
             return this.currentInput.note.name
@@ -32,7 +32,7 @@ export default {
     methods: {
         pressed(v){
             this.currentInput = v
-            this.$emit('solved',this.noteValue % 12)
+            this.$emit('solved',this.noteValue)
         },
         keyboardAvaialbe(){
             this.isKeyBoardAvaialble = true;

@@ -7,23 +7,13 @@
       :result="result" 
       :timeLeft="timeLeft"
       :isInfiniteRound="!options.gameLength" />
-    <NoteDisplay 
-      :currentExercise="currentExercise"
-      @play="playNote(currentExercise.value)" />
     <FeedbackLine 
       :feedback="feedback"
       :uniqueId="numAnswers" />
-    <ButtonInput 
-      v-if="options.inputMode === 'button'" 
-      :isSharp="currentExercise.isSharp" 
-      @solved="checkAnswer" />  
-    <KeyboardInput 
-      v-if="options.inputMode === 'keyboard'" 
-      @solved="checkAnswer" />
+    <NoteDisplay 
+      :currentExercise="currentExercise"
+      @play="playNote(currentExercise.value)" />
     <RealDeviceInput 
-      v-if="options.inputMode === 'realDevice'" 
-      @solved="checkAnswer" />
-    <MousetrapInput 
       @solved="checkAnswer" />
   </div>
 </template>
@@ -32,9 +22,6 @@
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
-import ButtonInput from './ButtonInput';
-import KeyboardInput from './KeyboardInput';
-import MousetrapInput from './MousetrapInput';
 import RealDeviceInput from './RealDeviceInput';
 
 import Utils from '../model/Utils';
@@ -49,9 +36,6 @@ export default {
     ScoreLine,
     NoteDisplay,
     FeedbackLine,
-    ButtonInput,
-    KeyboardInput,
-    MousetrapInput,
     RealDeviceInput
   },
   data () {
@@ -261,7 +245,7 @@ export default {
     },
     checkAnswer(value){
       this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
-      if(value === this.currentExercise.value % 12){
+      if(value === this.currentExercise.value){
         this.onCorrectAnswer();
         this.generateNewExercise();
       } else {
