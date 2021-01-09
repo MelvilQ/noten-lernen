@@ -2,6 +2,7 @@ import de from "./de";
 import en from "./en";
 import fr from "./fr";
 import pl from "./pl";
-// import ln from "./ln";
+import cz from "./cz";
+import ln from "./ln";
 
-export default { de, en, fr, pl };
+export default { de, en, fr, pl, cz, ln };

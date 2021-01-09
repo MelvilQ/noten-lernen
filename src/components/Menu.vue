@@ -22,7 +22,11 @@
         />
       </div>
       <div class="setting">
-        <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-model="options.clef"/>
+        <SelectOptionMulti 
+          :label="$t('CLEF')"
+          :items="clefOptions"
+          v-model="options.clef"
+        />
       </div>
       <div class="setting">
         <SelectOption
@@ -38,11 +42,19 @@
           v-model="options.accidentals"
         />
       </div>
-      <div>
-        <SelectOption :label="$t('SOUND')" :items="soundOptions" v-model="options.sound"/>
+      <div class="setting">
+        <SelectOption 
+          :label="$t('SOUND')"
+          :items="soundOptions" 
+          v-model="options.sound"
+        />
       </div>
-      <div>
-        <SelectOption :label="$t('LANGUAGE')" :items="languageOptions" v-model="options.language"/>
+      <div class="setting">
+        <SelectOptionDropdown
+          :label="$t('LANGUAGE')"
+          :items="languageOptions"
+          v-model="options.language"
+        />
       </div>
     </div>
   </div>
@@ -51,6 +63,7 @@
 <script>
 import SelectOption from "./SelectOption";
 import SelectOptionMulti from "./SelectOptionMulti";
+import SelectOptionDropdown from "./SelectOptionDropdown";
 import LastResultDisplay from "./LastResultDisplay";
 import StatisticsGraph from "./StatisticsGraph";
 
@@ -59,7 +72,7 @@ import Statistics from "../model/Statistics";
 
 export default {
   name: "Menu",
-  components: { SelectOption, SelectOptionMulti, LastResultDisplay, StatisticsGraph },
+  components: { SelectOption, SelectOptionMulti, SelectOptionDropdown, LastResultDisplay, StatisticsGraph },
   props: {
     lastResult: Object
   },
@@ -119,7 +132,8 @@ export default {
         { value: "de", label: "DE" },
         { value: "fr", label: "FR" },
         { value: "pl", label: "PL" },
-        // { value: "ln", label: "LN" }
+        { value: "cz", label: "CZ" },
+        { value: "ln", label: "LN" },
       ];
     }
   },
