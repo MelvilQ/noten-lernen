@@ -20,7 +20,11 @@
     <KeyboardInput 
       v-if="options.inputMode === 'keyboard'" 
       @solved="checkAnswer" />
+    <MidiInput
+      v-if="options.inputMode === 'midi'"
+      @solved="checkAnswer" />
     <MousetrapInput 
+      v-if="options.inputMode !== 'midi'"
       @solved="checkAnswer" />
   </div>
 </template>
@@ -31,6 +35,7 @@ import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
+import MidiInput from './MidiInput';
 import MousetrapInput from './MousetrapInput';
 
 import Utils from '../model/Utils';
@@ -47,7 +52,8 @@ export default {
     FeedbackLine,
     ButtonInput,
     KeyboardInput,
-    MousetrapInput
+    MidiInput,
+    MousetrapInput,
   },
   data () {
     return {
