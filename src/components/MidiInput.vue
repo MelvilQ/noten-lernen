@@ -1,5 +1,6 @@
 <template>
   <div class="midi-input">
+    <div class="ready" v-if="midiIsReady && !lastNotePlayed">Play the note on your MIDI keyboard.</div>
     <div class="last-note" v-if="lastNotePlayed">Last note played: {{lastNotePlayed}}</div>
     <div class="error-message" v-if="errorMessage">{{errorMessage}}</div>
   </div>
@@ -15,6 +16,7 @@ export default {
   },
   data() {
     return {
+      midiIsReady: false,
       lastNotePlayed: null,
       errorMessage: '',
     }
@@ -62,6 +64,7 @@ export default {
         return;
       }
       midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.number % 12));
+      this.midiIsReady = true;
     });
   },
   beforeDestroy() {
@@ -71,6 +74,10 @@ export default {
 </script>
 
 <style scoped>
+.ready {
+  font-style: italic;
+}
+
 .last-note {
   text-align: center;
 }
