@@ -54,7 +54,7 @@ export default {
     WebMidi.enable(error => {
       if (error) {
         console.log(error);
-        this.errorMessage = error;
+        this.errorMessage = 'Sorry, your device does not support MIDI.';
       }
       const midiInput = WebMidi.inputs[0];
       if(!midiInput) {
