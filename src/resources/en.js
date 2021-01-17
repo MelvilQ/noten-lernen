@@ -42,6 +42,7 @@ export default {
   infinite: "Infinite",
   buttons: "Buttons",
   piano: "Piano",
+  realDevice: "Real Device",
   trebleClef: "Treble",
   bassClef: "Bass",
   altoClef: "Alto",

@@ -15,6 +15,7 @@
         />
       </div>
       <div class="setting">
+<<<<<<< HEAD
         <SelectOption
           :label="$t('NOTE_INPUT')"
           :items="inputModeOptions"
@@ -27,6 +28,9 @@
           :items="clefOptions"
           v-model="options.clef"
         />
+=======
+        <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-model="options.clef"/>
+>>>>>>> paramadeep-master
       </div>
       <div class="setting">
         <SelectOption
@@ -91,6 +95,7 @@ export default {
         { value: 0, label: this.$t("infinite") }
       ];
     },
+<<<<<<< HEAD
     inputModeOptions() {
       return [
         { value: "button", label: this.$t("buttons") },
@@ -98,6 +103,8 @@ export default {
         { value: "midi", label: 'MIDI' }
       ];
     },
+=======
+>>>>>>> paramadeep-master
     clefOptions() {
       return [
         { value: "treble", label: this.$t("trebleClef") },

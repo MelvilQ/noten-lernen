@@ -41,6 +41,7 @@ export default {
   fiveMinutes: "5'",
   infinite: "Infini",
   buttons: "Boutons",
+  realDevice: "Real Device",
   piano: "Piano",
   trebleClef: "sol",
   bassClef: "basse",
