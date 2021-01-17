@@ -62,5 +62,6 @@ export default {
   ACCURACY: "POLÉLÉ",
   SCORE: "MONGÉTÉ",
 
-  record: "Elónga"
+  record: "Elónga",
+  history: "History" // TODO: English placeholder, because I couldn't find a translation online.
 };

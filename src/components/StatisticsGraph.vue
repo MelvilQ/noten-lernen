@@ -6,9 +6,17 @@
 	    :data="chartData"
 	    :options="chartOptions">
 		</chartist>
-		<div>
-			<span class="record">{{$t('record')}}: {{statistics.record}}</span>
-			<button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
+		<div class="grid-container">
+            <div/>
+            <div>
+                <span class="record">{{$t('record')}}: {{statistics.record}}</span>
+                <button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
+            </div>
+            <div>
+                <span class="record">{{$t('history')}}: </span>
+                <button class="reset" @click="resetHistory" v-if="statistics.lastScores.length >= 2">❌</button>
+            </div>
+            <div/>
 		</div>
 	</div>
 </template>
@@ -49,6 +57,9 @@ export default {
 	methods: {
 		resetRecord(){
 			Statistics.resetRecord();
+		},
+		resetHistory(){
+			Statistics.resetHistory();
 		}
 	}
 }
@@ -64,5 +75,11 @@ button.reset {
   outline: none;
   cursor: pointer;
   background-color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 80px auto auto 80px;
+    padding: 5px;
 }
 </style>

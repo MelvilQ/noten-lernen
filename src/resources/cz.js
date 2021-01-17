@@ -62,5 +62,6 @@ export default {
   ACCURACY: "PŘESNOST",
   SCORE: "SKǑRE",
 
-  record: "Nejvyšší skóre"
+  record: "Nejvyšší skóre",
+  history: "Dějiny"
 };
