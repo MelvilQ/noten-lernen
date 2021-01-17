@@ -41,7 +41,6 @@ export default {
   fiveMinutes: "5 min",
   infinite: "Niekończący",
   buttons: "Przyciski",
-  realDevice: "Real Device",
   piano: "Klawiatura",
   trebleClef: "wiolinowy",
   bassClef: "basowy",

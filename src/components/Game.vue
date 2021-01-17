@@ -7,10 +7,12 @@
       :result="result" 
       :timeLeft="timeLeft"
       :isInfiniteRound="!options.gameLength" />
+    <NoteDisplay 
+      :currentExercise="currentExercise"
+      @play="playNote(currentExercise.value)" />
     <FeedbackLine 
       :feedback="feedback"
       :uniqueId="numAnswers" />
-<<<<<<< HEAD
     <ButtonInput 
       v-if="options.inputMode === 'button'" 
       :isSharp="currentExercise.isSharp" 
@@ -23,12 +25,6 @@
       @solved="checkAnswer" />
     <MousetrapInput 
       v-if="options.inputMode !== 'midi'"
-=======
-    <NoteDisplay 
-      :currentExercise="currentExercise"
-      @play="playNote(currentExercise.value)" />
-    <RealDeviceInput 
->>>>>>> paramadeep-master
       @solved="checkAnswer" />
   </div>
 </template>
@@ -37,14 +33,10 @@
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
 import FeedbackLine from './FeedbackLine';
-<<<<<<< HEAD
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
 import MidiInput from './MidiInput';
 import MousetrapInput from './MousetrapInput';
-=======
-import RealDeviceInput from './RealDeviceInput';
->>>>>>> paramadeep-master
 
 import Utils from '../model/Utils';
 import Options from '../model/Options';
@@ -58,14 +50,10 @@ export default {
     ScoreLine,
     NoteDisplay,
     FeedbackLine,
-<<<<<<< HEAD
     ButtonInput,
     KeyboardInput,
     MidiInput,
     MousetrapInput,
-=======
-    RealDeviceInput
->>>>>>> paramadeep-master
   },
   data () {
     return {
@@ -277,7 +265,7 @@ export default {
     },
     checkAnswer(value){
       this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
-      if(value === this.currentExercise.value){
+      if(value === this.currentExercise.value % 12){
         this.onCorrectAnswer();
         this.generateNewExercise();
       } else {
