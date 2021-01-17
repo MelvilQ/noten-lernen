@@ -141,17 +141,30 @@ export default {
   watch: {
     "options.language": function(lang) {
       this.$i18n.locale = lang;
+    },
+    "options.clef": function() {
+      this.updateGameType();
+    },
+    "options.difficulty": function() {
+      this.updateGameType();
+    },
+    "options.accidentals": function() {
+      this.updateGameType();
     }
   },
   methods: {
     startGame() {
       Options.saveOptions();
       this.$emit("startGame");
+    },
+    updateGameType() {
+        Statistics.loadStatistics(Options.clef, Options.difficulty, Options.accidentals);
     }
   },
   created() {
     Options.loadOptions();
-    Statistics.loadStatistics();
+    Statistics.init();
+    Statistics.loadStatistics(Options.clef, Options.difficulty, Options.accidentals);
   }
 };
 </script>

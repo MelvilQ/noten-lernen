@@ -62,5 +62,6 @@ export default {
   ACCURACY: "ACCURACY",
   SCORE: "SCORE",
 
-  record: "High Score"
+  record: "High Score",
+  history: "History"
 };

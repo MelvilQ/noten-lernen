@@ -212,7 +212,10 @@ export default {
     },
     onGameFinished(){
       this.onExit();
-      Statistics.addScore(this.score);
+      Statistics.addScore(this.score,
+                          this.options.clef,
+                          this.options.difficulty,
+                          this.options.accidentals);
       this.$emit('gameEnded', this.result); 
     },
     quit(){

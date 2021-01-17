@@ -63,5 +63,6 @@ export default {
   ACCURACY: "POPRAWNOŚĆ",
   SCORE: "PUNKTY",
 
-  record: "Rekord"
+  record: "Rekord",
+  history: "Historia"
 };

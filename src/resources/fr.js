@@ -63,5 +63,6 @@ export default {
   ACCURACY: "PRÉCISION",
   SCORE: "POINTS",
 
-  record: "Record"
+  record: "Record",
+  history: "Histoire"
 };
