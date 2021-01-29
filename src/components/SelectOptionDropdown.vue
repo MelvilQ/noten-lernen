@@ -1,7 +1,7 @@
 <template>
   <div class="select-option-dropdown">
     <div class="label">{{label}}</div>
-    <select :selected="value" @input="select($event.target.value)">
+    <select :value="value" @input="select($event.target.value)">
       <option 
         v-for="item in items" 
         :key="item.value"
