@@ -234,7 +234,7 @@ export default {
       const exercise = { clef, value: this.getRandomNoteForClef(clef) };
       switch(this.options.accidentals){
         case 'no':
-          exercise.isSharp = false;
+          exercise.isSharp = true;
           if(Utils.hasAccidental(exercise.value)){
             _.sample([true, false]) ? exercise.value++ : exercise.value--;
           }
