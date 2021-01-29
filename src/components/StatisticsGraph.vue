@@ -7,7 +7,6 @@
 	    :options="chartOptions">
 		</chartist>
 		<div class="grid-container">
-            <div/>
             <div>
                 <span class="record">{{$t('record')}}: {{statistics.record}}</span>
                 <button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
@@ -16,7 +15,6 @@
                 <span class="record">{{$t('history')}}: </span>
                 <button class="reset" @click="resetHistory" v-if="statistics.lastScores.length >= 2">❌</button>
             </div>
-            <div/>
 		</div>
 	</div>
 </template>
@@ -46,9 +44,9 @@ export default {
 		},
 		chartOptions(){
 			return {
-			  fullWidth: true,
-			  chartPadding: {
-			    right: 40
+			    fullWidth: true,
+			    chartPadding: {
+			        right: 40
 				},
 				lineSmooth: false
 			};
@@ -78,8 +76,8 @@ button.reset {
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: 80px auto auto 80px;
-    padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 5px;
 }
 </style>
