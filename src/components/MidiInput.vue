@@ -1,7 +1,7 @@
 <template>
   <div class="midi-input">
-    <div class="ready" v-if="midiIsReady && !lastNotePlayed">Play the note on your MIDI keyboard.</div>
-    <div class="last-note" v-if="lastNotePlayed">Last note played: {{lastNotePlayed}}</div>
+    <div class="ready" v-if="midiIsReady && !lastNotePlayed">{{$t('playTheNote')}}</div>
+    <div class="last-note" v-if="lastNotePlayed">{{$t('lastNotePlayed')}}: {{lastNotePlayed}}</div>
     <div class="error-message" v-if="errorMessage">{{errorMessage}}</div>
   </div>
 </template>
@@ -56,11 +56,11 @@ export default {
     WebMidi.enable(error => {
       if (error) {
         console.log(error);
-        this.errorMessage = 'Sorry, your device does not support MIDI.';
+        this.errorMessage = this.$t('noMidiSupport');
       }
       const midiInput = WebMidi.inputs[0];
       if(!midiInput) {
-        this.errorMessage('No input found. Please reconnect the MIDI device.');
+        this.errorMessage = this.$t('noDeviceFound');
         return;
       }
       midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.number % 12));

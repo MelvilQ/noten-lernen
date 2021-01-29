@@ -63,5 +63,10 @@ export default {
   SCORE: "PUNKTE",
 
   record: "Rekord",
-  history: "Historie"
+  history: "Historie",
+
+  noMidiSupport: "Sorry, dein Gerät scheint MIDI nicht zu unterstützen.",
+  noDeviceFound: "Kein Gerät gefunden. Bitte das MIDI-Gerät erneut verbinden.",
+  playTheNote: "Spiele die Note auf deinem MIDI-Keyboard.",
+  lastNotePlayed: "Zuletzt gespielte Note",
 };
