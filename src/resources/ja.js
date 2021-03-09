@@ -66,7 +66,7 @@ export default {
   history: "履歴",
 
   noMidiSupport: "機器はMIDIに対応しないようです。",
-  noDeviceFound: "MIDI機器が見つかりません。再接続してください。",
-  playTheNote: "MIDIキーボードで音符を入力してください",
-  lastNotePlayed: "以前の音符",
+  noDeviceFound: "MIDI機器が見つかりません。再接続してみてください。",
+  playTheNote: "MIDIキーボードで音符を入力してください。",
+  lastNotePlayed: "入力した音符",
 };
