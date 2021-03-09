@@ -33,7 +33,7 @@ export default {
   ROUND_LENGTH: "ラウンドの長さ",
   NOTE_INPUT: "入力方式",
   CLEF: "音部記号",
-  DIFFICULTY: "難度",
+  DIFFICULTY: "難易度",
   ACCIDENTALS: "変化記号",
   LANGUAGE: "言語",
   twentySeconds: "20秒",
