@@ -65,8 +65,8 @@ export default {
   record: "最高得点",
   history: "履歴",
 
-  noMidiSupport: "Sorry, it seems as if your device does not support MIDI.",
-  noDeviceFound: "No device found. Please reconnect the MIDI device.",
-  playTheNote: "Play the note on your MIDI keyboard.",
-  lastNotePlayed: "Last note played",
+  noMidiSupport: "機器はMIDIに対応しないようです。",
+  noDeviceFound: "MIDI機器が見つかりません。再接続してください。",
+  playTheNote: "MIDIキーボードで音符を入力してください",
+  lastNotePlayed: "以前の音符",
 };
