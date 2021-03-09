@@ -17,10 +17,10 @@ export default {
   B: "B",
   BFlat: "B♭",
 
-  correctExcl: "正解！",
+  correctExcl: "正解!",
   wrongExcl: "不正解",
 
-  ABORT: "終了",
+  ABORT: "中止",
 
   lastRound: "以前のラウンド",
   score: "得点",
