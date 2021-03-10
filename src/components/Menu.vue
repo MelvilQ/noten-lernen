@@ -137,6 +137,7 @@ export default {
         { value: "ln", label: "LN" },
         { value: "nl", label: "NL" },
         { value: "hu", label: "HU" },
+        { value: "ja", label: "JA" },
       ];
     }
   },
