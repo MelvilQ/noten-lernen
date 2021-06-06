@@ -132,6 +132,7 @@ export default {
         { value: "en", label: "EN" },
         { value: "de", label: "DE" },
         { value: "fr", label: "FR" },
+        { value: "it", label: "IT" },
         { value: "pl", label: "PL" },
         { value: "cz", label: "CZ" },
         { value: "ln", label: "LN" },
