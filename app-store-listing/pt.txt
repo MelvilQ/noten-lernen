@@ -1,0 +1,16 @@
+Nome da aplicação
+========
+Learn Music Notes
+
+Descrição
+=================
+Aprende notação musical facilmente. Todas as claves. Sem anúncios. Gratuito e Open Source!
+
+Descrição completa
+================
+* Introdução de notas: Botões ou Piano
+* Historial de pontuação (Consegues ver facilmente o teu progresso!)
+* Pratica todas as claves (Sol, Fá, Dó, tenor) que precisas de dominar
+* 3 níveis de dificuldade (quanto mais difícil, mais notas em linhas suplementares)
+* ♯ (sustenido) e ♭ (bemol) acidentes
+* Código fonte da aplicação disponível em https://github.com/MelvilQ/noten-lernen
