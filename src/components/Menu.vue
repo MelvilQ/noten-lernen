@@ -134,6 +134,7 @@ export default {
         { value: "fr", label: "FR" },
         { value: "it", label: "IT" },
         { value: "pl", label: "PL" },
+        { value: "pt", label: "PT" },
         { value: "cz", label: "CZ" },
         { value: "ln", label: "LN" },
         { value: "nl", label: "NL" },
