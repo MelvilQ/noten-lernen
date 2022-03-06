@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ a ♭",
   SOUND: "ZVUK",
+  DISPLAYCORRECTNOTE: "ZOBRAZIŤ SPRÁVNU NOTU",
   on: "Zapnut",
   off: "Vypnut",
 

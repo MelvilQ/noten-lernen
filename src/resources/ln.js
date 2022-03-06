@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ mpé ♭",
   SOUND: "LOKITO",
+  DISPLAYCORRECTNOTE: "ZOBRAZIT SPRÁVNOU NOTU",
   on: "elamúísámí",
   off: "etendísámí",
 

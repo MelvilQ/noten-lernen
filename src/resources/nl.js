@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ en ♭",
   SOUND: "GELUID",
+  DISPLAYCORRECTNOTE: "JUISTE MUZIEKNOOT WEERGEVEN",
   on: "Aan",
   off: "Uit",
 

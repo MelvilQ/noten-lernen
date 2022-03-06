@@ -1,7 +1,7 @@
 <template>
   <div class="midi-input">
     <div class="ready" v-if="midiIsReady && !lastNotePlayed">{{$t('playTheNote')}}</div>
-    <div class="last-note" v-if="lastNotePlayed">{{$t('lastNotePlayed')}}: {{lastNotePlayed}}</div>
+    <div class="last-note" v-if="lastNotePlayed">{{$t('lastNotePlayed')}}: {{ $t(lastNotePlayed) }}</div>
     <div class="error-message" v-if="errorMessage">{{errorMessage}}</div>
   </div>
 </template>
@@ -23,27 +23,7 @@ export default {
   },
   computed: {
     noteNames(){
-      if(this.isSharp){
-        return [
-          this.$t('C'), this.$t('CSharp'), 
-          this.$t('D'), this.$t('DSharp'), 
-          this.$t('E'), 
-          this.$t('F'), this.$t('FSharp'), 
-          this.$t('G'), this.$t('GSharp'), 
-          this.$t('A'), this.$t('ASharp'), 
-          this.$t('B')
-        ];
-      } else {
-        return [
-          this.$t('C'), this.$t('DFlat'), 
-          this.$t('D'), this.$t('EFlat'), 
-          this.$t('E'), 
-          this.$t('F'), this.$t('GFlat'), 
-          this.$t('G'), this.$t('AFlat'), 
-          this.$t('A'), this.$t('BFlat'), 
-          this.$t('B')
-        ];
-      }
+      return Utils.getNoteNamesArray(this.isSharp);
     }
   },
   methods: {

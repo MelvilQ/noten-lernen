@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ & ♭",
   SOUND: "音声",
+  DISPLAYCORRECTNOTE: "正しい音符を表示する",
   on: "有",
   off: "無",
 

@@ -45,8 +45,15 @@
       <div class="setting">
         <SelectOption 
           :label="$t('SOUND')"
-          :items="soundOptions" 
+          :items="onOffOptions" 
           v-model="options.sound"
+        />
+      </div>
+      <div class="setting">
+        <SelectOption 
+          :label="$t('DISPLAYCORRECTNOTE')"
+          :items="onOffOptions" 
+          v-model="options.displayNote"
         />
       </div>
       <div class="setting">
@@ -121,7 +128,7 @@ export default {
         { value: "sharpAndFlat", label: this.$t("sharpAndFlat") }
       ];
     },
-    soundOptions() {
+    onOffOptions() {
       return [
         { value: false, label: this.$t("off") },
         { value: true, label: this.$t("on") }

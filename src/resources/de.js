@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ und ♭",
   SOUND: "SOUND",
+  DISPLAYCORRECTNOTE: "KORREKTE MUSIKNOTE ANZEIGEN",
   on: "An",
   off: "Aus",
 

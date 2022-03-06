@@ -55,6 +55,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ i ♭",
   SOUND: "DŹWIĘK",
+  DISPLAYCORRECTNOTE: "WYŚWIETLAJ POPRAWNĄ NUTĘ",
   on: "Włącz",
   off: "Wyłącz",
 
