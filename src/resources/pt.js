@@ -54,6 +54,7 @@ export default {
   flat: "♭ (bemol)",
   sharpAndFlat: "♯ e ♭",
   SOUND: "SOM",
+  DISPLAYCORRECTNOTE: "MOSTRAR NOTA CORRETA",
   on: "Ligado",
   off: "Desligado",
 

@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ és ♭",
   SOUND: "HANG",
+  DISPLAYCORRECTNOTE: "MEGFELELŐ HANGJEGY MEGJELENÍTÉSE",
   on: "Be",
   off: "Ki",
 

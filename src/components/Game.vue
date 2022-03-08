@@ -10,6 +10,8 @@
     <NoteDisplay 
       :currentExercise="currentExercise"
       @play="playNote(currentExercise.value)" />
+    <FeedbackLineNote 
+      :feedbackNote="feedbackNote" />
     <FeedbackLine 
       :feedback="feedback"
       :uniqueId="numAnswers" />
@@ -32,6 +34,7 @@
 <script>
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
+import FeedbackLineNote from './FeedbackLineNote';
 import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
@@ -49,6 +52,7 @@ export default {
   components: { 
     ScoreLine,
     NoteDisplay,
+    FeedbackLineNote,
     FeedbackLine,
     ButtonInput,
     KeyboardInput,
@@ -67,6 +71,7 @@ export default {
       numWrong: 0,
       timeLeft: 0,
       timer: null,
+      feedbackNote: 'none',
       feedback: 'none',
       sample: null,
     }
@@ -266,15 +271,19 @@ export default {
     checkAnswer(value){
       this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
       if(value === this.currentExercise.value % 12){
-        this.onCorrectAnswer();
+        this.onCorrectAnswer(value, this.currentExercise.isSharp);
         this.generateNewExercise();
       } else {
         this.onWrongAnswer(value);
       }
     },
-    onCorrectAnswer(){
+    onCorrectAnswer(noteValue, isSharp){
       this.numCorrect += 1;
       this.feedback = 'correct';
+
+      if(this.options.displayNote) {
+        this.feedbackNote = Utils.getNoteName(noteValue, isSharp);
+      }
     },
     onWrongAnswer(wrongValue){
       this.numWrong += 1;

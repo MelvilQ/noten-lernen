@@ -7,6 +7,7 @@ export default {
   difficulty: "easy",
   accidentals: "no",
   sound: false,
+  displayNote: true,
   language: null,
 
   loadOptions() {

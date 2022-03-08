@@ -10,5 +10,34 @@ export default {
       v += 12;
     }
     return v;
+  },
+
+  getNoteName(noteValue, isSharp) {
+    var noteNames = this.getNoteNamesArray(isSharp);
+    return noteNames[noteValue];
+  },
+
+  getNoteNamesArray(isSharp){
+      if(isSharp){
+        return [
+          'C', 'CSharp', 
+          'D', 'DSharp', 
+          'E', 
+          'F', 'FSharp', 
+          'G', 'GSharp', 
+          'A', 'ASharp', 
+          'B'
+        ];
+      } else {
+        return [
+          'C', 'DFlat', 
+          'D', 'EFlat', 
+          'E', 
+          'F', 'GFlat', 
+          'G', 'AFlat', 
+          'A', 'BFlat', 
+          'B'
+        ];
+      }
   }
 };

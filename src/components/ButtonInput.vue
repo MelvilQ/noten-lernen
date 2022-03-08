@@ -1,7 +1,7 @@
 <template>
   <div class="button-input">
     <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams[value-1]">
-      <button @click="solve(value-1)">{{noteNames[value-1]}}</button>
+      <button @click="solve(value-1)">{{$t(noteNames[value-1])}}</button>
     </div>
   </div>
 </template>
@@ -16,27 +16,7 @@ export default {
   },
   computed: {
     noteNames(){
-      if(this.isSharp){
-        return [
-          this.$t('C'), this.$t('CSharp'), 
-          this.$t('D'), this.$t('DSharp'), 
-          this.$t('E'), 
-          this.$t('F'), this.$t('FSharp'), 
-          this.$t('G'), this.$t('GSharp'), 
-          this.$t('A'), this.$t('ASharp'), 
-          this.$t('B')
-        ];
-      } else {
-        return [
-          this.$t('C'), this.$t('DFlat'), 
-          this.$t('D'), this.$t('EFlat'), 
-          this.$t('E'), 
-          this.$t('F'), this.$t('GFlat'), 
-          this.$t('G'), this.$t('AFlat'), 
-          this.$t('A'), this.$t('BFlat'), 
-          this.$t('B')
-        ];
-      }
+      return Utils.getNoteNamesArray(this.isSharp);
     },
     gridParams(){
       return Array.from(Array(12).keys()).map(v => ({
