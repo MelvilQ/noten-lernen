@@ -1,0 +1,12 @@
+Mit dieser kostenlosen App kann jeder schnell und kinderleicht Musiknoten lernen!
+
+<i>Noten lernen</i> ist eine fortschrittliche App, mit der man das Lesen und Spielen von geschriebener Musik lernen kann. Die Benutzeroberfläche ist in 11 Sprachen verfügbar. Sie gibt gutes Feedback und zeigt Ihre Entwicklung in einem Diagramm an. Noten können per Name, Klavier und sogar MIDI (mit dem Sie Ihr Klavier direkt anschließen können) eingegeben werden. Sie unterstützt 4 verschiedene Schlüssel, 3 allgemeine Schwierigkeitseinstellungen, vier Optionen für die Vorzeichen und die optionale Anzeige der richtigen Note nach einer falschen Eingabe. Diese App ist weitaus fortschrittlicher als die bestehende App und wird von Klavierlehrern empfohlen.
+
+<br><b>Features:</b>
+
+* deutschsprachig</li>
+* Eingabe-Modi: Buttons oder Klaviertastatur
+* Spielrunden-Historie (so sieht man super, wie schnell man sich verbessert!)
+* Notenschlüssel einstellen (Violinschlüssel, Bassschlüssel, Altschlüssel, Tenorschlüssel)
+* Drei Schwierigkeitsgrade (je schwerer, desto größer der Tonumfang)
+* Vorzeichen einstellen
