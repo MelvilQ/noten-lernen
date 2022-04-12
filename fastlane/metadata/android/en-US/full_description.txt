@@ -1,0 +1,9 @@
+<i>Learn Music Notes</i> is an advanced app which enables to learn reading and playing written music. UI is available in 11 languages. It gives good feedback and shows your development in a graph. Notes can be entered by name, piano and even MIDI (which enables to connect your piano directly). It supports 4 different clefs, 3 overall difficulty settings, four options for the accidentals and the optional display of the correct note after a false entry. This app is far more advanced than the existing app and is recommended by piano teachers.
+
+<br><b>Features:</b>
+
+* Input modes: Buttons or Piano
+* Score history (You’ll see quickly how much you improve!)
+* Practice all clefs (treble, bass, alto, tenor) that you need to master
+* Three difficulty levels (the harder, the more notes with ledger lines you’ll get)
+* ♯ and ♭ accidentals

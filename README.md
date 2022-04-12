@@ -2,7 +2,15 @@
 
 Learn to read sheet music.
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=de.melvil.noten)
+<a href="https://play.google.com/store/apps/details?id=de.melvil.noten">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" title="Get it on Google Play" width="200">
+</a>
+
+<a href="https://apt.izzysoft.de/fdroid/index/apk/de.melvil.noten">
+  <img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" title="Get it on IzzyOnDroid" width="200">
+</a>
+
+
 
 ## Demo
 
