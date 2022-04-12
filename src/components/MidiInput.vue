@@ -72,4 +72,9 @@ export default {
   font-weight: bold;
   color: red;
 }
+
+.restart-button {
+  text-align: center;
+  margin-top: 12px;
+}
 </style>
