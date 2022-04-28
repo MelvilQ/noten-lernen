@@ -11,12 +11,10 @@
   "author": "MelvilQ",
   "license": "MIT",
   "dependencies": {
-    "cordova-plugin-vibration": "^3.1.1",
-    "cordova-plugin-whitelist": "^1.3.5"
+    "cordova-plugin-vibration": "^3.1.1"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {},
       "cordova-plugin-vibration": {}
     },
     "platforms": [
