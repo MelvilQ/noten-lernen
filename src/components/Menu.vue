@@ -145,6 +145,7 @@ export default {
       return [
         { value: "en", label: "EN" },
         { value: "de", label: "DE" },
+        { value: "es", label: "ES" },
         { value: "fr", label: "FR" },
         { value: "it", label: "IT" },
         { value: "pl", label: "PL" },

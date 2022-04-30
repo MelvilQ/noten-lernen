@@ -1,6 +1,7 @@
 import cz from "./cz";
 import de from "./de";
 import en from "./en";
+import es from "./es";
 import fr from "./fr";
 import it from "./it";
 import ln from "./ln";
@@ -10,4 +11,4 @@ import pt from "./pt";
 import hu from "./hu";
 import ja from "./ja";
 
-export default { de, en, fr, it, pl, pt, cz, ln, nl, hu, ja };
+export default { de, en, es, fr, it, pl, pt, cz, ln, nl, hu, ja };

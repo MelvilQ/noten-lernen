@@ -1,6 +1,6 @@
 export default {
   C: "Dó",
-  CSharp: "DÓ♯",
+  CSharp: "Dó♯",
   D: "Ré",
   DFlat: "Ré♭",
   DSharp: "Ré♯",
