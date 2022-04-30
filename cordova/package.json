@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "copy-locales": "cp -r ./locales/android/values-en ./platforms/android/app/src/main/res/",
-    "build": "npm run copy-locales && cordova build android --release"
+    "build": "npm run copy-locales && cordova build android --release -- --packageType apk"
   },
   "author": "MelvilQ",
   "license": "MIT",
