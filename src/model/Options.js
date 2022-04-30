@@ -7,6 +7,7 @@ export default {
   difficulty: "easy",
   accidentals: "no",
   sound: false,
+  vibration: true,
   displayNote: true,
   language: null,
 

@@ -288,7 +288,7 @@ export default {
     onWrongAnswer(wrongValue){
       this.numWrong += 1;
       this.feedback = 'wrong';
-      if('vibrate' in navigator) {
+      if('vibrate' in navigator && this.options.vibration) {
         navigator.vibrate(200);
       }
     },

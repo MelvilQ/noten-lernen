@@ -54,6 +54,7 @@ export default {
   flat: "♭",
   sharpAndFlat: "♯ en ♭",
   SOUND: "GELUID",
+  VIBRATION: "VIBRATIE",
   DISPLAYCORRECTNOTE: "JUISTE MUZIEKNOOT WEERGEVEN",
   on: "Aan",
   off: "Uit",

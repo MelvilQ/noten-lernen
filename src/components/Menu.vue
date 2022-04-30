@@ -51,6 +51,13 @@
       </div>
       <div class="setting">
         <SelectOption 
+          :label="$t('VIBRATION')"
+          :items="onOffOptions" 
+          v-model="options.vibration"
+        />
+      </div>
+      <div class="setting">
+        <SelectOption 
           :label="$t('DISPLAYCORRECTNOTE')"
           :items="onOffOptions" 
           v-model="options.displayNote"
