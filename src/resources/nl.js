@@ -14,8 +14,8 @@ export default {
   A: "A",
   AFlat: "As",
   ASharp: "Ais",
-  B: "H",
-  BFlat: "B",
+  B: "B",
+  BFlat: "Bes",
 
   correctExcl: "Goed!",
   wrongExcl: "Fout!",
