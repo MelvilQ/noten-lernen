@@ -9,6 +9,7 @@
 
 <script>
 import WebMidi from 'webmidi';
+import Utils from '../model/Utils';
 
 export default {
   name: 'MidiInput',
@@ -35,12 +36,14 @@ export default {
           this.errorMessage = this.$t('noMidiSupport');
           return;
         }
-        const midiInput = WebMidi.inputs[0];
-        if(!midiInput) {
+        if (WebMidi.inputs.length < 1) {
           this.errorMessage = this.$t('noDeviceFound');
           return;
-        }
-        midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.number % 12));
+        };
+        WebMidi.inputs.forEach((midiInput) => {
+          console.log("Using ", midiInput);
+          midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.number % 12));
+        });
         this.midiIsReady = true;
       });
     },
