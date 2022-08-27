@@ -43,8 +43,7 @@ export default {
         WebMidi.inputs.forEach((midiInput) => {
           console.log("Using ", midiInput);
           // There are two conventions for note numbers, instead we use octave and offset within octave.
-          midiInput.on('noteon', 'all', stroke => {
-            this.solve(stroke.note.octave * 12 + stroke.note.number % 12)});
+          midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.octave * 12 + stroke.note.number % 12));
         });
         this.midiIsReady = true;
       });
