@@ -41,7 +41,7 @@ export default {
       return (v <= 4) ? Math.floor(v / 2) : (v <= 11) ? Math.floor((v+1) / 2) : 7;
     },
     solve(v){
-      this.$emit('solved', v % 12);
+      this.$emit('solved', v);
     }
   }
 }

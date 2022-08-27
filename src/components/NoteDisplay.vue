@@ -38,19 +38,25 @@ export default {
       }
     },
     note(){
+      // ABC notation reference: https://abcnotation.com/wiki/abc:standard:v2.1#pitch
+      // We are numbering the notes starting with C0 = 0, D0 = 1 and so on. Thus C4 = 48.
       const value = this.currentExercise.value;
       if(value < 12){
-        return this.noteLetter + ',,,';
+        return this.noteLetter + ',,,,';
       } else if(value < 24){
-        return this.noteLetter + ',,';
+        return this.noteLetter + ',,,';
       } else if(value < 36){
-        return this.noteLetter + ',';
+        return this.noteLetter + ',,';
       } else if(value < 48){
-        return this.noteLetter;
+        return this.noteLetter + ',';
       } else if(value < 60){
+        return this.noteLetter;
+      } else if(value < 72){
         return this.noteLetter.toLowerCase();
-      } else {
+      } else if(value < 84){
         return this.noteLetter.toLowerCase() + '\'';
+      } else if(value < 96){
+        return this.noteLetter.toLowerCase() + '\'\'';
       }
     },
     abc(){

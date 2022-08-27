@@ -24,7 +24,7 @@
       @solved="checkAnswer" />
     <MidiInput
       v-if="options.inputMode === 'midi'"
-      @solved="checkAnswer" />
+      @solved="(value) => checkAnswer(value, true)" />
     <MousetrapInput 
       v-if="options.inputMode !== 'midi'"
       @solved="checkAnswer" />
@@ -108,89 +108,89 @@ export default {
     minBassValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 24;
+          return 36;
         case 'normal':
-          return 16;
+          return 28;
         case 'hard':
         default:
-          return 7;
+          return 19;
       }
     },
     maxBassValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 36;
+          return 48;
         case 'normal':
-          return 36;
+          return 48;
         case 'hard':
         default:
-          return 45;
+          return 57;
       }
     },
     minTrebleValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 36;
+          return 48;
         case 'normal':
-          return 36;
+          return 48;
         case 'hard':
         default:
-          return 28;
+          return 40;
       }
     },
     maxTrebleValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 48;
+          return 60;
         case 'normal':
-          return 57;
+          return 69;
         case 'hard':
         default:
-          return 65;
+          return 77;
       }
     },
     minAltoValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 31;
+          return 43;
         case 'normal':
-          return 24;
+          return 36;
         case 'hard':
         default:
-          return 17;
+          return 29;
       }
     },
     maxAltoValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 43;
+          return 55;
         case 'normal':
-          return 48;
+          return 60;
         case 'hard':
         default:
-          return 55;
+          return 67;
       }
     },
     minTenorValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 31;
+          return 43;
         case 'normal':
-          return 24;
+          return 36;
         case 'hard':
         default:
-          return 14;
+          return 26;
       }
     },
     maxTenorValue(){
       switch(this.options.difficulty){
         case 'easy':
-          return 43;
+          return 55;
         case 'normal':
-          return 48;
+          return 60;
         case 'hard':
         default:
-          return 52;
+          return 64;
       }
     }
   },
@@ -268,9 +268,16 @@ export default {
           return _.random(this.minTenorValue, this.maxTenorValue);
       }
     },
-    checkAnswer(value){
+    checkAnswer(value, checkOctave = false){
       this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
-      if(value === this.currentExercise.value % 12){
+      if(checkOctave){
+        var submittedValue = value;
+        var expectedValue = this.currentExercise.value;
+      } else {
+        var submittedValue = value % 12;
+        var expectedValue = this.currentExercise.value % 12;
+      }
+      if(submittedValue === expectedValue){
         this.onCorrectAnswer(value, this.currentExercise.isSharp);
         this.generateNewExercise();
       } else {
