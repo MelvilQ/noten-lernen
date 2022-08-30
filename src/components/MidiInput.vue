@@ -42,13 +42,14 @@ export default {
         };
         WebMidi.inputs.forEach((midiInput) => {
           console.log("Using ", midiInput);
-          midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.number % 12));
+          // There are two conventions for note numbers, instead we use octave and offset within octave.
+          midiInput.on('noteon', 'all', stroke => this.solve(stroke.note.octave * 12 + stroke.note.number % 12));
         });
         this.midiIsReady = true;
       });
     },
     solve(v) {
-      this.lastNotePlayed = this.noteNames[v];
+      this.lastNotePlayed = this.noteNames[v % 12];
       this.$emit('solved', v);
     }
   },

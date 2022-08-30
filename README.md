@@ -38,6 +38,7 @@ You can see the current status of the app on [netlify](https://noten-lernen.netl
 - Rendering music with JavaScript: [abc.js](https://abcjs.net/)
 - Statistics line chart: [chartist.js](https://gionkunz.github.io/chartist-js/)
 - Multilinguality Plugin: [vue-i18n](https://kazupon.github.io/vue-i18n/)
+- WebMIDI, for MIDI keyboard input: [webmidi](https://webmidijs.org/)
 
 ## Development Setup
 
