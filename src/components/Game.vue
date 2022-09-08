@@ -289,7 +289,7 @@ export default {
       this.feedback = 'correct';
 
       if(this.options.displayNote) {
-        this.feedbackNote = Utils.getNoteName(noteValue, isSharp);
+        this.feedbackNote = Utils.getNoteName(noteValue % 12, isSharp);
       }
     },
     onWrongAnswer(wrongValue){
