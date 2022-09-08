@@ -1,32 +1,38 @@
 <template>
   <div class="game-screen">
-    <button class="quit" @click="quit">
-      {{$t('ABORT')}}
-    </button>
-    <ScoreLine 
-      :result="result" 
-      :timeLeft="timeLeft"
-      :isInfiniteRound="!options.gameLength" />
-    <NoteDisplay 
-      :currentExercise="currentExercise"
-      @play="playNote(currentExercise.value)" />
-    <FeedbackLine 
-      :feedback="feedback"
-      :feedbackNote="feedbackNote"
-      :uniqueId="numAnswers" />
-    <ButtonInput 
-      v-if="options.inputMode === 'button'" 
-      :isSharp="currentExercise.isSharp" 
-      @solved="checkAnswer" />  
-    <KeyboardInput 
-      v-if="options.inputMode === 'keyboard'" 
-      @solved="checkAnswer" />
-    <MidiInput
-      v-if="options.inputMode === 'midi'"
-      @solved="(value) => checkAnswer(value, true)" />
-    <MousetrapInput 
-      v-if="options.inputMode !== 'midi'"
-      @solved="checkAnswer" />
+    <div class="game-screen-section">
+      <button class="quit" @click="quit">
+        {{$t('ABORT')}}
+      </button>
+      <ScoreLine 
+        :result="result" 
+        :timeLeft="timeLeft"
+        :isInfiniteRound="!options.gameLength" />
+      <FeedbackLine 
+        :feedback="feedback"
+        :feedbackNote="feedbackNote"
+        :uniqueId="numAnswers" />
+    </div>
+    <div class="game-screen-section">
+      <NoteDisplay 
+        :currentExercise="currentExercise"
+        @play="playNote(currentExercise.value)" />
+    </div>
+    <div class="game-screen-section" id="game-screen-input">
+      <ButtonInput 
+        v-if="options.inputMode === 'button'" 
+        :isSharp="currentExercise.isSharp" 
+        @solved="checkAnswer" />  
+      <KeyboardInput 
+        v-if="options.inputMode === 'keyboard'" 
+        @solved="checkAnswer" />
+      <MidiInput
+        v-if="options.inputMode === 'midi'"
+        @solved="(value) => checkAnswer(value, true)" />
+      <MousetrapInput 
+        v-if="options.inputMode !== 'midi'"
+        @solved="checkAnswer" />
+    </div>
   </div>
 </template>
 
@@ -317,9 +323,20 @@ export default {
 .game-screen {
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: center;
+  flex-flow: row wrap;
   max-width: 720px;
+}
+
+.game-screen-section {
+  display: flex;
+  flex: auto;
+  min-width: 50%;
+  flex-flow: column wrap;
+}
+
+#game-screen-input {
+  min-width: 100%;
 }
 
 button.quit {
