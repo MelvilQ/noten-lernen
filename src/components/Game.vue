@@ -10,10 +10,9 @@
     <NoteDisplay 
       :currentExercise="currentExercise"
       @play="playNote(currentExercise.value)" />
-    <FeedbackLineNote 
-      :feedbackNote="feedbackNote" />
     <FeedbackLine 
       :feedback="feedback"
+      :feedbackNote="feedbackNote"
       :uniqueId="numAnswers" />
     <ButtonInput 
       v-if="options.inputMode === 'button'" 
@@ -34,7 +33,6 @@
 <script>
 import ScoreLine from './ScoreLine';
 import NoteDisplay from './NoteDisplay';
-import FeedbackLineNote from './FeedbackLineNote';
 import FeedbackLine from './FeedbackLine';
 import ButtonInput from './ButtonInput';
 import KeyboardInput from './KeyboardInput';
@@ -52,7 +50,6 @@ export default {
   components: { 
     ScoreLine,
     NoteDisplay,
-    FeedbackLineNote,
     FeedbackLine,
     ButtonInput,
     KeyboardInput,
