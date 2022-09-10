@@ -46,6 +46,7 @@ export default {
   bassClef: "bási",
   altoClef: "alto",
   tenorClef: "tenor",
+  pianoClef: "Mángolá",
   easy: "mwa pɛ́tɛ́",
   normal: "mwa katikáti",
   hard: "mwa mpási",

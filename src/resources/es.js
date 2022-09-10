@@ -46,6 +46,7 @@ export default {
   bassClef: "Fa",
   altoClef: "Alto",
   tenorClef: "Tenor",
+  pianoClef: "Piano",
   easy: "Fácil",
   normal: "Medio",
   hard: "Duro",

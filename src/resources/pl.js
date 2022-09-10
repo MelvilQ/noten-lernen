@@ -46,6 +46,7 @@ export default {
   bassClef: "basowy",
   altoClef: "altowy",
   tenorClef: "tenorowy",
+  pianoClef: "klawiatura",
   both: "Oba",
   easy: "Łatwy",
   normal: "Normalny",

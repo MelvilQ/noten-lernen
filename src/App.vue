@@ -39,6 +39,7 @@ body {
   margin: 0;
   padding: 0;
   user-select: none;
+  height: 100%;
 }
 
 #app {
@@ -46,5 +47,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 100%;
 }
 </style>
