@@ -117,7 +117,8 @@ export default {
         { value: "treble", label: this.$t("trebleClef") },
         { value: "bass", label: this.$t("bassClef") },
         { value: "alto", label: this.$t("altoClef") },
-        { value: "tenor", label: this.$t("tenorClef") }
+        { value: "tenor", label: this.$t("tenorClef") },
+        { value: "piano", label: this.$t("pianoClef") }
       ];
     },
     difficultyOptions() {

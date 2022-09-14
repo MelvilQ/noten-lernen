@@ -46,6 +46,7 @@ export default {
   bassClef: "Basový",
   altoClef: "Altový",
   tenorClef: "Tenorový",
+  pianoClef: "Klávesy",
   easy: "Snadná",
   normal: "Normální",
   hard: "Těžká",

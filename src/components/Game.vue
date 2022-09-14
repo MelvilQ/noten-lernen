@@ -13,7 +13,7 @@
         :feedbackNote="feedbackNote"
         :uniqueId="numAnswers" />
     </div>
-    <div class="game-screen-section">
+    <div class="game-screen-section" id="game-note-display">
       <NoteDisplay 
         :currentExercise="currentExercise"
         @play="playNote(currentExercise.value)" />
@@ -67,6 +67,7 @@ export default {
       options: Options,
       currentExercise: {
         clef: 'treble',
+        staff: 'treble',
         value: 36,
         isSharp: false
       },
@@ -238,8 +239,15 @@ export default {
       this.currentExercise = exercise;
     },
     generateExercise(){
-      const clef = _.sample(this.options.clef);
-      const exercise = { clef, value: this.getRandomNoteForClef(clef) };
+      var clef = _.sample(this.options.clef);
+      if(clef === 'piano'){
+        const staves = ['treble', 'bass'];
+        clef = staves[_.random(0, staves.length - 1)];
+        var staff = 'piano';
+      }else{
+        var staff = clef;
+      }
+      const exercise = { clef, staff, value: this.getRandomNoteForClef(clef) };
       switch(this.options.accidentals){
         case 'no':
           exercise.isSharp = true;
@@ -324,8 +332,10 @@ export default {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: end;
   flex-flow: row wrap;
   max-width: 720px;
+  height: 100%;
 }
 
 .game-screen-section {
@@ -337,6 +347,25 @@ export default {
 
 #game-screen-input {
   min-width: 100%;
+  align-self: start;
+}
+
+#game-note-display {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (orientation: landscape) {
+  #game-note-display, #game-screen-input {
+    min-height: 50%;
+  }
+}
+
+@media (orientation: portrait) {
+  #game-note-display, #game-screen-input {
+    min-height: 33%;
+    min-width: 100%;
+  }
 }
 
 button.quit {

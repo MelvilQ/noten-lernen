@@ -46,6 +46,7 @@ export default {
   bassClef: "バス",
   altoClef: "アルト",
   tenorClef: "テノール",
+  pianoClef: "ピアノ",
   easy: "易",
   normal: "中",
   hard: "難",

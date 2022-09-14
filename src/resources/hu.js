@@ -46,6 +46,7 @@ export default {
   bassClef: "Basszus",
   altoClef: "Alt",
   tenorClef: "Tenor",
+  pianoClef: "Zongora",
   easy: "Könnyű",
   normal: "Közepes",
   hard: "Nehéz",
