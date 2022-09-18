@@ -14,7 +14,9 @@ Learn to read sheet music.
 
 ## Demo
 
-You can see the current status of the app on [netlify](https://noten-lernen.netlify.com/).
+You can see the current status of the app on Netlify:
+* [prod](https://noten-lernen.netlify.com/)
+* [dev](https://dev--noten-lernen.netlify.com/)
 
 ## Screenshots
 
