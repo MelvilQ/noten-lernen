@@ -297,10 +297,12 @@ export default {
     },
     onCorrectAnswer(noteValue, isSharp){
       this.numCorrect += 1;
-      this.feedback = 'correct';
 
       if(this.options.displayNote) {
+        this.feedback = 'correct-note';
         this.feedbackNote = Utils.getNoteName(noteValue % 12, isSharp);
+      }else{
+        this.feedback = 'correct';
       }
     },
     onWrongAnswer(wrongValue){
