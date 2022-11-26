@@ -16,4 +16,4 @@ Cechy:
 * Wszystkie klucze (wiolinowy, basowy, altowy, tenorowy)
 * Trzy poziomy trudności (im trudniej, tym więcej nut z liniami dodanymi)
 * Znaki chromatyczne: ♯ krzyżyki i ♭ bemole
-* Kod źródłowy jest otwarty i dostępny na: https://github.com/MelvilQ/noten-lernen.
+* Kod źródłowy jest otwarty i dostępny na: https://github.com/MelvilQ/noten-lernen
