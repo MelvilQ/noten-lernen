@@ -8,10 +8,10 @@ Naucz się rozpoznawać nuty. Wszystkie klucze. Bez reklam. Open source!
 
 Full description
 ================
-Dzięki tej darmowej aplikacji każdy może szybko i łatwo nauczyć się rozpoznawania nut!
+Dzięki tej darmowej aplikacji każdy może szybko i łatwo nauczyć się rozpoznawania nut na pięciolinii
 
 Cechy:
-* Tryby wprowadzania danych: przyciski lub klawiatura fortepianu
+* Tryby wprowadzania danych: przyciski, klawiatura fortepianu lub MIDI
 * Historia wyników (dzięki temu zobaczysz jakie masz postępy!)
 * Wszystkie klucze (wiolinowy, basowy, altowy, tenorowy)
 * Trzy poziomy trudności (im trudniej, tym więcej nut z liniami dodanymi)
