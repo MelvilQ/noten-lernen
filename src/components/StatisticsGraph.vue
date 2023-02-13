@@ -9,11 +9,13 @@
 		<div class="grid-container">
             <div>
                 <span class="record">{{$t('record')}}: {{statistics.record}}</span>
-                <button class="reset" @click="resetRecord" v-if="statistics.record > 0">❌</button>
+                <button class="reset" @click="showRecordModal" v-if="statistics.record > 2">❌</button>
+				<modal @executeAction="resetRecord" v-if="showRecordModalProp" @closeModal="showRecordModalProp = false" :title="this.$i18n.t('resetRecordModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
             </div>
             <div>
                 <span class="record">{{$t('history')}}: </span>
                 <button class="reset" @click="resetHistory" v-if="statistics.lastScores.length >= 2">❌</button>
+				<modal @executeAction="resetHistory" v-if="showRecordModalProp" @closeModal="showRecordModalProp = false" :title="this.$i18n.t('resetHistoryModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
             </div>
 		</div>
 	</div>
@@ -24,12 +26,15 @@ import Statistics from '../model/Statistics';
 
 import Chartist from 'chartist';
 import 'chartist/dist/chartist.min.css';
+import Modal from './Modal.vue';
 
 export default {
 	name: 'StatisticsGraph',
+	components: { Modal },
 	data(){
 		return {
-			statistics: Statistics
+			statistics: Statistics,
+			showRecordModalProp: false,
 		}
 	},
 	computed: {
@@ -58,6 +63,9 @@ export default {
 		},
 		resetHistory(){
 			Statistics.resetHistory();
+		},
+		showRecordModal() {
+			this.showRecordModalProp = !this.showRecordModalProp;
 		}
 	}
 }
