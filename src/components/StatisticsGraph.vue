@@ -10,12 +10,12 @@
             <div>
                 <span class="record">{{$t('record')}}: {{statistics.record}}</span>
                 <button class="reset" @click="showRecordModal" v-if="statistics.record > 2">❌</button>
-				<modal @executeAction="resetRecord" v-if="showRecordModalProp" @closeModal="showRecordModalProp = false" :title="this.$i18n.t('resetRecordModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
+				<modal v-if="showRecordModalProp" @executeAction="resetRecord" @closeModal="showRecordModalProp = false" :title="this.$i18n.t('resetRecordModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
             </div>
             <div>
                 <span class="record">{{$t('history')}}: </span>
-                <button class="reset" @click="resetHistory" v-if="statistics.lastScores.length >= 2">❌</button>
-				<modal @executeAction="resetHistory" v-if="showRecordModalProp" @closeModal="showRecordModalProp = false" :title="this.$i18n.t('resetHistoryModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
+                <button class="reset" @click="showHistoryModal" v-if="statistics.lastScores.length >= 2">❌</button>
+				<modal v-if="showHistoryModalProp" @executeAction="resetHistory" @closeModal="showHistoryModalProp = false" :title="this.$i18n.t('resetHistoryModalHeading')" :text="this.$i18n.t('resetModalText')" :okButtonText="this.$i18n.t('delete')" :cancelButtonText="this.$i18n.t('cancel')"/>
             </div>
 		</div>
 	</div>
@@ -35,6 +35,7 @@ export default {
 		return {
 			statistics: Statistics,
 			showRecordModalProp: false,
+			showHistoryModalProp: false
 		}
 	},
 	computed: {
@@ -66,6 +67,9 @@ export default {
 		},
 		showRecordModal() {
 			this.showRecordModalProp = !this.showRecordModalProp;
+		},
+		showHistoryModal() {
+			this.showHistoryModalProp = !this.showHistoryModalProp;
 		}
 	}
 }
