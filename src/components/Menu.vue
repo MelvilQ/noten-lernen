@@ -25,7 +25,8 @@
         <SelectOptionMulti 
           :label="$t('CLEF')"
           :items="clefOptions"
-          v-model="options.clef"
+          v-bind:value="options.clef"
+          v-on:input="options.clef = $event.sort()"
         />
       </div>
       <div class="setting">
