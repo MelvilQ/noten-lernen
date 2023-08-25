@@ -67,9 +67,15 @@ export default {
 
   record: "Rekord",
   history: "Historie",
+  resetRecordModalHeading: "Rekord zurücksetzen",
+  resetHistoryModalHeading: "Historie zurücksetzen",
+  resetModalText: "Hinweis: Die Daten werden endgültig gelöscht.",
 
   noMidiSupport: "Sorry, dein Gerät scheint MIDI nicht zu unterstützen.",
   noDeviceFound: "Kein Gerät gefunden. Bitte das MIDI-Gerät erneut verbinden.",
   playTheNote: "Spiele die Note auf deinem MIDI-Keyboard.",
   lastNotePlayed: "Zuletzt gespielte Note",
+
+  delete: "Löschen",
+  cancel: "Abbrechen",
 };

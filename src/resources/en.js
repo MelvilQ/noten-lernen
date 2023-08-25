@@ -67,9 +67,15 @@ export default {
 
   record: "High Score",
   history: "History",
+  resetRecordModalHeading: "Reset high score",
+  resetHistoryModalHeading: "Reset history",
+  resetModalText: "Note: data will be deleted permanently.",
 
   noMidiSupport: "Sorry, it seems as if your device does not support MIDI.",
   noDeviceFound: "No device found. Please reconnect the MIDI device.",
   playTheNote: "Play the note on your MIDI keyboard.",
   lastNotePlayed: "Last note played",
+
+  delete: "Delete",
+  cancel: "Cancel",
 };
