@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Menu from './components/Menu';
-import Game from './components/Game';
-import Settings from './components/Settings';
+import Menu from './views/Menu';
+import Game from './views/Game';
+import Settings from './views/Settings';
 
 export default {
   name: 'App',
@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     navigateToMenu(result) {
-
       this.lastResult = result;
       this.page = 'menu';
     },

@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import SelectOption from "./SelectOption";
-import SelectOptionMulti from "./SelectOptionMulti";
-import SelectOptionDropdown from "./SelectOptionDropdown";
+import SelectOption from "../components/SelectOption";
+import SelectOptionMulti from "../components/SelectOptionMulti";
+import SelectOptionDropdown from "../components/SelectOptionDropdown";
 import Options from "../model/Options";
 
 export default {

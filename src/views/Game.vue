@@ -37,13 +37,13 @@
 </template>
 
 <script>
-import ScoreLine from './ScoreLine';
-import NoteDisplay from './NoteDisplay';
-import FeedbackLine from './FeedbackLine';
-import ButtonInput from './ButtonInput';
-import KeyboardInput from './KeyboardInput';
-import MidiInput from './MidiInput';
-import MousetrapInput from './MousetrapInput';
+import ScoreLine from '../components/ScoreLine';
+import NoteDisplay from '../components/NoteDisplay';
+import FeedbackLine from '../components/FeedbackLine';
+import ButtonInput from '../components/ButtonInput';
+import KeyboardInput from '../components/KeyboardInput';
+import MidiInput from '../components/MidiInput';
+import MousetrapInput from '../components/MousetrapInput';
 
 import Utils from '../model/Utils';
 import Options from '../model/Options';

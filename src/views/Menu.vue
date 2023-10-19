@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import LastResultDisplay from "./LastResultDisplay";
-import StatisticsGraph from "./StatisticsGraph";
+import LastResultDisplay from "../components/LastResultDisplay";
+import StatisticsGraph from "../components/StatisticsGraph";
 
 import Statistics from "../model/Statistics";
 import Options from "../model/Options";
