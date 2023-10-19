@@ -28,8 +28,10 @@ export default {
   correct: "malámu",
   wrong: "lokutá",
 
-  START: "EBANDI",
+  Start: "Ebandi",
   settings: "Mapɔni",
+  navigateBack: "Na nsima",
+  settings: "設定",
   ROUND_LENGTH: "BOWÚMELI BWA MOBÉMBO",
   NOTE_INPUT: "KOKOMISA ELEMBO",
   CLEF: "LIFUNGÓLA",

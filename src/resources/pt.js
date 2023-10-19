@@ -28,8 +28,9 @@ export default {
   correct: "certo",
   wrong: "errado",
 
-  START: "INICIAR",
+  Start: "Iniciar",
   settings: "Definições",
+  navigateBack: "para trás",
   ROUND_LENGTH: "DURAÇÃO",
   NOTE_INPUT: "INTRODUÇÃO DE NOTAS",
   CLEF: "CLAVE",

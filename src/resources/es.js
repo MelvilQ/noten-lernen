@@ -28,8 +28,9 @@ export default {
   correct: "correcto",
   wrong: "errado",
 
-  START: "EMPEZAR",
+  Start: "Empezar",
   settings: "Ajustes",
+  navigateBack: "atrás",
   ROUND_LENGTH: "LONGIDUD DE RONDA",
   NOTE_INPUT: "ENTRADA",
   CLEF: "CLAVE",

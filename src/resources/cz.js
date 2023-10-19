@@ -28,8 +28,9 @@ export default {
   correct: "Správně",
   wrong: "Špatně",
 
-  START: "START",
+  Start: "Start",
   settings: "Nastavení",
+  navigateBack: "zadní",
   ROUND_LENGTH: "DÉLKA CVIČENÍ",
   NOTE_INPUT: "ZADÁVÁNÍ NOT",
   CLEF: "NOTOVÝ KLÍČ",

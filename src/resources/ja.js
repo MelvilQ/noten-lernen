@@ -28,8 +28,9 @@ export default {
   correct: "個 正解",
   wrong: "個 不正解",
 
-  START: "スタート",
+  Start: "スタート",
   settings: "設定",
+  navigateBack: "後方",
   ROUND_LENGTH: "ラウンドの長さ",
   NOTE_INPUT: "入力方式",
   CLEF: "音部記号",
