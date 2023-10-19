@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Menu v-if="page === 'menu'" @startGame="navigateToGame" :lastResult="lastResult" @toSettings="navigateToSettings"/>
-    <Settings v-if="page === 'settings'" @closeSettings="navigateToMenu"/>
-    <Game v-if="page === 'game'" @gameEnded="navigateToMenu"/>
+    <Menu v-if="page === 'menu'" @startGame="navigateToGame" :lastResult="lastResult" @toSettings="navigateToSettings" />
+    <Settings v-if="page === 'settings'" @closeSettings="navigateToMenu" />
+    <Game v-if="page === 'game'" @gameEnded="navigateToMenu" />
   </div>
 </template>
 
@@ -17,23 +17,23 @@ export default {
     Menu,
     Settings,
     Game,
-},
-  data(){
+  },
+  data() {
     return {
       page: 'menu',
       lastResult: null
     }
   },
   methods: {
-    navigateToMenu(result){
-  
+    navigateToMenu(result) {
+
       this.lastResult = result;
       this.page = 'menu';
     },
-    navigateToGame(){
+    navigateToGame() {
       this.page = 'game';
     },
-    navigateToSettings(){
+    navigateToSettings() {
       this.page = 'settings';
     }
   }
