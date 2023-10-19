@@ -28,8 +28,9 @@ export default {
   correct: "poprawne",
   wrong: "złe",
 
-  START: "START",
+  Start: "Start",
   settings: "Ustawienia",
+  navigateBack: "wstecz",
   ROUND_LENGTH: "DŁUGOŚĆ PARTII",
   NOTE_INPUT: "METODA WEJŚCIA",
   CLEF: "KLUCZ",

@@ -28,8 +28,9 @@ export default {
   correct: "correct",
   wrong: "fout",
 
-  START: "START",
+  Start: "Start",
   settings: "Instellingen",
+  navigateBack: "achteruit",
   ROUND_LENGTH: "RONDEDUUR",
   NOTE_INPUT: "NOTENINVOER",
   CLEF: "NOTENSLEUTEL",

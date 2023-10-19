@@ -28,8 +28,9 @@ export default {
   correct: "helyes",
   wrong: "téves",
 
-  START: "KEZDÉS",
+  Start: "Kezdés",
   settings: "Beállítások",
+  navigateBack: "vissza",
   ROUND_LENGTH: "KÖR HOSSZÚSÁGA",
   NOTE_INPUT: "HANG BEVITELE",
   CLEF: "KULCS",

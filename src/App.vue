@@ -1,33 +1,40 @@
 <template>
   <div id="app">
-    <Menu v-if="page === 'menu'" @startGame="startGame" :lastResult="lastResult" />
-    <Game v-if="page === 'game'" @gameEnded="returnToMenu" />
+    <Menu v-if="page === 'menu'" @startGame="navigateToGame" :lastResult="lastResult" @toSettings="navigateToSettings" />
+    <Settings v-if="page === 'settings'" @closeSettings="navigateToMenu" />
+    <Game v-if="page === 'game'" @gameEnded="navigateToMenu" />
   </div>
 </template>
 
 <script>
 import Menu from './components/Menu';
 import Game from './components/Game';
+import Settings from './components/Settings';
 
 export default {
   name: 'App',
   components: {
     Menu,
+    Settings,
     Game,
   },
-  data(){
+  data() {
     return {
       page: 'menu',
       lastResult: null
     }
   },
   methods: {
-    returnToMenu(result){
+    navigateToMenu(result) {
+
       this.lastResult = result;
       this.page = 'menu';
     },
-    startGame(){
+    navigateToGame() {
       this.page = 'game';
+    },
+    navigateToSettings() {
+      this.page = 'settings';
     }
   }
 }

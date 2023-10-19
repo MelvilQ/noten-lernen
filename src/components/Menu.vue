@@ -1,93 +1,24 @@
 <template>
   <div class="menu">
     <div class="start-container">
-      <button class="start" @click="startGame">{{$t('START')}}</button>
+      <button class="start" @click="$emit('startGame')">{{$t('Start')}}</button>
+      <button class="start" @click="$emit('toSettings')">{{$t('settings')}}</Button>
     </div>
     <LastResultDisplay v-if="lastResult" :lastResult="lastResult"/>
     <StatisticsGraph v-if="statistics.lastScores.length >= 2"/>
-    <div class="settings">
-      <h3>{{$t('settings')}}</h3>
-      <div class="setting">
-        <SelectOption
-          :label="$t('ROUND_LENGTH')"
-          :items="gameLengthOptions"
-          v-model="options.gameLength"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption
-          :label="$t('NOTE_INPUT')"
-          :items="inputModeOptions"
-          v-model="options.inputMode"
-        />
-      </div>
-      <div class="setting">
-        <SelectOptionMulti 
-          :label="$t('CLEF')"
-          :items="clefOptions"
-          v-bind:value="options.clef"
-          v-on:input="options.clef = $event.sort()"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption
-          :label="$t('DIFFICULTY')"
-          :items="difficultyOptions"
-          v-model="options.difficulty"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption
-          :label="$t('ACCIDENTALS')"
-          :items="accidentalOptions"
-          v-model="options.accidentals"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption 
-          :label="$t('SOUND')"
-          :items="onOffOptions" 
-          v-model="options.sound"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption 
-          :label="$t('VIBRATION')"
-          :items="onOffOptions" 
-          v-model="options.vibration"
-        />
-      </div>
-      <div class="setting">
-        <SelectOption 
-          :label="$t('DISPLAYCORRECTNOTE')"
-          :items="onOffOptions" 
-          v-model="options.displayNote"
-        />
-      </div>
-      <div class="setting">
-        <SelectOptionDropdown
-          :label="$t('LANGUAGE')"
-          :items="languageOptions"
-          v-model="options.language"
-        />
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import SelectOption from "./SelectOption";
-import SelectOptionMulti from "./SelectOptionMulti";
-import SelectOptionDropdown from "./SelectOptionDropdown";
 import LastResultDisplay from "./LastResultDisplay";
 import StatisticsGraph from "./StatisticsGraph";
 
-import Options from "../model/Options";
 import Statistics from "../model/Statistics";
+import Options from "../model/Options";
 
 export default {
   name: "Menu",
-  components: { SelectOption, SelectOptionMulti, SelectOptionDropdown, LastResultDisplay, StatisticsGraph },
+  components: { LastResultDisplay, StatisticsGraph },
   props: {
     lastResult: Object
   },
@@ -96,69 +27,6 @@ export default {
       options: Options,
       statistics: Statistics
     };
-  },
-  computed: {
-    gameLengthOptions() {
-      return [
-        { value: 20, label: this.$t("twentySeconds") },
-        { value: 60, label: this.$t("oneMinute") },
-        { value: 300, label: this.$t("fiveMinutes") },
-        { value: 0, label: this.$t("infinite") }
-      ];
-    },
-    inputModeOptions() {
-      return [
-        { value: "button", label: this.$t("buttons") },
-        { value: "keyboard", label: this.$t("piano") },
-        { value: "midi", label: 'MIDI' }
-      ];
-    },
-    clefOptions() {
-      return [
-        { value: "treble", label: this.$t("trebleClef") },
-        { value: "bass", label: this.$t("bassClef") },
-        { value: "alto", label: this.$t("altoClef") },
-        { value: "tenor", label: this.$t("tenorClef") },
-        { value: "piano", label: this.$t("pianoClef") }
-      ];
-    },
-    difficultyOptions() {
-      return [
-        { value: "easy", label: this.$t("easy") },
-        { value: "normal", label: this.$t("normal") },
-        { value: "hard", label: this.$t("hard") }
-      ];
-    },
-    accidentalOptions() {
-      return [
-        { value: "no", label: this.$t("none") },
-        { value: "onlySharp", label: this.$t("sharp") },
-        { value: "onlyFlat", label: this.$t("flat") },
-        { value: "sharpAndFlat", label: this.$t("sharpAndFlat") }
-      ];
-    },
-    onOffOptions() {
-      return [
-        { value: false, label: this.$t("off") },
-        { value: true, label: this.$t("on") }
-      ];
-    },
-    languageOptions() {
-      return [
-        { value: "en", label: "EN" },
-        { value: "de", label: "DE" },
-        { value: "es", label: "ES" },
-        { value: "fr", label: "FR" },
-        { value: "it", label: "IT" },
-        { value: "pl", label: "PL" },
-        { value: "pt", label: "PT" },
-        { value: "cz", label: "CZ" },
-        { value: "ln", label: "LN" },
-        { value: "nl", label: "NL" },
-        { value: "hu", label: "HU" },
-        { value: "ja", label: "JA" },
-      ];
-    }
   },
   watch: {
     "options.language": function(lang) {
@@ -175,10 +43,6 @@ export default {
     }
   },
   methods: {
-    startGame() {
-      Options.saveOptions();
-      this.$emit("startGame");
-    },
     updateGameType() {
         Statistics.loadStatistics(Options.clef, Options.difficulty, Options.accidentals);
     }
@@ -211,6 +75,7 @@ button.start {
   cursor: pointer;
   border: none;
   outline: none;
+  margin-top: 10px;
 }
 
 button.start:focus {

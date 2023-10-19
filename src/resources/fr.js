@@ -28,8 +28,9 @@ export default {
   correct: "juste",
   wrong: "faux",
 
-  START: "START",
+  Start: "Start",
   settings: "Options",
+  navigateBack: "ramener",
   ROUND_LENGTH: "DURÉE DE TOURNÉE",
   NOTE_INPUT: "SAISI DE NOTES",
   CLEF: "CLÉ",

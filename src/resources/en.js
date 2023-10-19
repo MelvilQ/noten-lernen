@@ -28,8 +28,9 @@ export default {
   correct: "correct",
   wrong: "wrong",
 
-  START: "START",
+  Start: "Start",
   settings: "Settings",
+  navigateBack: "back",
   ROUND_LENGTH: "ROUND LENGTH",
   NOTE_INPUT: "NOTE INPUT",
   CLEF: "CLEF",
