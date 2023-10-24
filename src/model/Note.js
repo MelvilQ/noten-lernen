@@ -8,7 +8,7 @@ export default class Note {
         this.note = note;
         this.accidental = accidental;
         this.octave = octave;
-        this.value = this.__calculateValue(note, accidental, octave);
+        this.value = Note.__calculateValue(note, accidental, octave);
         if (this.value < 1 || this.value > 88) {
             throw new Error(`The note ${note.toString()}${accidental.toString()}${octave.toString()}(${this.value.toString()}) is out of range`)
         }
@@ -39,7 +39,7 @@ export default class Note {
         return otherNote.note === this.note && otherNote.accidental === this.accidental;
     }
 
-    __calculateValue(note, accidental, octave) {
+    static __calculateValue(note, accidental, octave) {
 
         /*
         we start from the piano key C0 even though
@@ -53,13 +53,13 @@ export default class Note {
 
         let c0NoteValue = -8;
         let noteValue = c0NoteValue + octave * NumberOfNotesInOctave;
-        noteValue += this.__noteToOffsetInOctave(note);
-        noteValue += this.__accidentalToOffset(accidental);
+        noteValue += Note.__noteToOffsetInOctave(note);
+        noteValue += Note.__accidentalToOffset(accidental);
 
         return noteValue;
     }
 
-    __noteToOffsetInOctave(note) {
+    static __noteToOffsetInOctave(note) {
         switch (note) {
             case Notes.C:
                 return 0;
@@ -80,11 +80,16 @@ export default class Note {
         }
     }
 
-    __accidentalToOffset(accidental) {
-        if (accidental === Accidentals.None) {
-            return 0;
+    static __accidentalToOffset(accidental) {
+        switch(accidental)
+        {
+            case(Accidentals.Flat):
+                return -1;
+            case(Accidentals.None):
+                return 0;
+            case(Accidentals.Sharp):
+                return 1;
         }
-        return accidental === Accidentals.Flat ? -1 : 1;
     }
 
     static get NotesInOctave()

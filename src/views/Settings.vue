@@ -37,6 +37,7 @@
 import SelectOption from "../components/SelectOption";
 import SelectOptionMulti from "../components/SelectOptionMulti";
 import SelectOptionDropdown from "../components/SelectOptionDropdown";
+import Options from '../model/Options';
 
 export default {
     name: "Settings",
