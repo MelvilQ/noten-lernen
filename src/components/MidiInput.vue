@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     initMidi() {
+      //TODO: fix midi input to use note system
       WebMidi.enable(error => {
         if (error) {
           console.log(error);
@@ -50,7 +51,7 @@ export default {
     },
     solve(v) {
       this.lastNotePlayed = this.noteNames[v % 12];
-      this.$emit('solved', v);
+      this.$emit('noteInput', v);
     }
   },
   mounted() {

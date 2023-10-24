@@ -2,36 +2,19 @@
   <div class="game-screen">
     <div class="game-screen-section">
       <button class="quit" @click="quit">
-        {{$t('ABORT')}}
+        {{ $t('ABORT') }}
       </button>
-      <ScoreLine 
-        :result="result" 
-        :timeLeft="timeLeft"
-        :isInfiniteRound="!options.gameLength" />
-      <FeedbackLine 
-        :feedback="feedback"
-        :feedbackNote="feedbackNote"
-        :uniqueId="numAnswers" />
+      <ScoreLine :result="result" :timeLeft="timeLeft" :isInfiniteRound="!options.gameLength" />
+      <FeedbackLine :feedback="feedback" :feedbackNote="feedbackNote" :uniqueId="numAnswers" />
     </div>
     <div class="game-screen-section" id="game-note-display">
-      <NoteDisplay 
-        :currentExercise="currentExercise"
-        @play="playNote(currentExercise.value)" />
+      <NoteDisplay :currentExercise="currentExercise" @play="playNote(currentExercise.value)" />
     </div>
     <div class="game-screen-section" id="game-screen-input">
-      <ButtonInput 
-        v-if="options.inputMode === 'button'" 
-        :isSharp="currentExercise.isSharp" 
-        @solved="checkAnswer" />  
-      <KeyboardInput 
-        v-if="options.inputMode === 'keyboard'" 
-        @solved="checkAnswer" />
-      <MidiInput
-        v-if="options.inputMode === 'midi'"
-        @solved="(value) => checkAnswer(value, true)" />
-      <MousetrapInput 
-        v-if="options.inputMode !== 'midi'"
-        @solved="checkAnswer" />
+      <ButtonInput v-if="options.inputMode === 'button'" @noteInput="checkAnswer" />
+      <KeyboardInput v-if="options.inputMode === 'keyboard'" @noteInput="checkAnswer" />
+      <MidiInput v-if="options.inputMode === 'midi'" @noteInput="(value) => checkAnswer(value, true)" />
+      <MousetrapInput v-if="options.inputMode !== 'midi'" @noteInput="checkAnswer" />
     </div>
   </div>
 </template>
@@ -45,15 +28,16 @@ import KeyboardInput from '../components/KeyboardInput';
 import MidiInput from '../components/MidiInput';
 import MousetrapInput from '../components/MousetrapInput';
 
-import Utils from '../model/Utils';
 import Options from '../model/Options';
 import Statistics from '../model/Statistics';
+import Note, { Accidentals,Notes } from '../model/Note';
+import Exercise, { Clefs } from '../model/Exercise';
 
 import * as _ from 'lodash';
 
 export default {
   name: 'Game',
-  components: { 
+  components: {
     ScoreLine,
     NoteDisplay,
     FeedbackLine,
@@ -62,15 +46,10 @@ export default {
     MidiInput,
     MousetrapInput,
   },
-  data () {
+  data() {
     return {
       options: Options,
-      currentExercise: {
-        clef: 'treble',
-        staff: 'treble',
-        value: 36,
-        isSharp: false
-      },
+      currentExercise: new Exercise(new Note(Notes.A,1,Accidentals.None), Clefs.Treble),
       numCorrect: 0,
       numWrong: 0,
       timeLeft: 0,
@@ -78,29 +57,30 @@ export default {
       feedbackNote: 'none',
       feedback: 'none',
       sample: null,
+      noteRangeForRound: null,
     }
   },
   computed: {
-    numAnswers(){
+    numAnswers() {
       return this.numCorrect + this.numWrong;
     },
-    accuracy(){
-      if(this.numAnswers === 0){
+    accuracy() {
+      if (this.numAnswers === 0) {
         return 0;
       }
       return Math.round(100 * this.numCorrect / this.numAnswers);
     },
-    score(){
-      if(this.numAnswers === 0){
+    score() {
+      if (this.numAnswers === 0) {
         return 0;
       }
       return Math.round(this.baseFactor * this.numCorrect * this.numCorrect / this.numAnswers);
     },
-    baseFactor(){
+    baseFactor() {
       // 20s -> 300, 1min -> 100, 5min -> 20
       return this.options.gameLength ? (6000 / this.options.gameLength) : 0;
     },
-    result(){
+    result() {
       return {
         numAnswers: this.numAnswers,
         numCorrect: this.numCorrect,
@@ -108,222 +88,152 @@ export default {
         accuracy: this.accuracy,
         score: this.score
       }
-    },
-    minBassValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 36;
-        case 'normal':
-          return 28;
-        case 'hard':
-        default:
-          return 19;
-      }
-    },
-    maxBassValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 48;
-        case 'normal':
-          return 48;
-        case 'hard':
-        default:
-          return 57;
-      }
-    },
-    minTrebleValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 48;
-        case 'normal':
-          return 48;
-        case 'hard':
-        default:
-          return 40;
-      }
-    },
-    maxTrebleValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 60;
-        case 'normal':
-          return 69;
-        case 'hard':
-        default:
-          return 77;
-      }
-    },
-    minAltoValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 43;
-        case 'normal':
-          return 36;
-        case 'hard':
-        default:
-          return 29;
-      }
-    },
-    maxAltoValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 55;
-        case 'normal':
-          return 60;
-        case 'hard':
-        default:
-          return 67;
-      }
-    },
-    minTenorValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 43;
-        case 'normal':
-          return 36;
-        case 'hard':
-        default:
-          return 26;
-      }
-    },
-    maxTenorValue(){
-      switch(this.options.difficulty){
-        case 'easy':
-          return 55;
-        case 'normal':
-          return 60;
-        case 'hard':
-        default:
-          return 64;
-      }
     }
   },
   methods: {
-    startGame(){
+    generateNoteRangeForExcercise(options) {
+      let localOptions = options;
+      let fullRange = Note.PianoNoteRange;
+      let accidentalsThatCanOccur = [Accidentals.None];
+      //TODO: change the settings class so that it uses the model enums
+      if (localOptions.accidentals.some(acc => acc == "flat")) {
+        accidentalsThatCanOccur.push(Accidentals.Flat);
+      }
+      if (localOptions.accidentals.some(acc => acc == "sharp")) {
+        accidentalsThatCanOccur.push(Accidentals.Sharp);
+      }
+
+      //filter out all notes with accidentals that are disabled in the options
+      let filteredRange = fullRange.filter(note => accidentalsThatCanOccur.includes(note.accidental))
+      return filteredRange;
+    },
+
+    startGame() {
+      this.noteRangeForRound = this.generateNoteRangeForExcercise(this.options)
       this.numCorrect = 0;
       this.numWrong = 0;
       this.timeLeft = this.options.gameLength;
-      if (this.options.gameLength){
+      if (this.options.gameLength) {
         this.timer = setInterval(() => {
-            this.timeLeft -= 1;
-            if(this.timeLeft < 0){
-              this.onGameFinished();
-            }
-          }, 1000);
+          this.timeLeft -= 1;
+          if (this.timeLeft < 0) {
+            this.onGameFinished();
+          }
+        }, 1000);
       }
       this.generateNewExercise();
     },
-    onExit(){
+    onExit() {
       clearInterval(this.timer);
-      if(this.sample){
+      if (this.sample) {
         this.sample.pause();
       }
     },
-    onGameFinished(){
+    onGameFinished() {
       this.onExit();
       Statistics.addScore(this.score,
-                          this.options.clef,
-                          this.options.difficulty,
-                          this.options.accidentals);
-      this.$emit('gameEnded', this.result); 
+        this.options.clef,
+        this.options.difficulty,
+        this.options.accidentals);
+      this.$emit('gameEnded', this.result);
     },
-    quit(){
+    quit() {
       this.onExit();
       this.$emit('gameEnded', null);
     },
-    generateNewExercise(){
-      let exercise = this.currentExercise;
-      while(exercise.value === this.currentExercise.value){
-        exercise = this.generateExercise();
-      }
-      this.currentExercise = exercise;
+    generateNewExercise() {
+      //TODO: put this in the model layer during the refactoring.
+      this.currentExercise = this.generateExercise();
     },
-    generateExercise(){
+    generateExercise() {
       var clef = _.sample(this.options.clef);
-      if(clef === 'piano'){
-        const staves = ['treble', 'bass'];
-        clef = staves[_.random(0, staves.length - 1)];
-        var staff = 'piano';
-      }else{
-        var staff = clef;
-      }
-      const exercise = { clef, staff, value: this.getRandomNoteForClef(clef) };
-      switch(this.options.accidentals){
-        case 'no':
-          exercise.isSharp = true;
-          if(Utils.hasAccidental(exercise.value)){
-            _.sample([true, false]) ? exercise.value++ : exercise.value--;
-          }
+      var clefEnumValue = Clefs.Alto;
+      switch(clef)
+      {
+        case "treble":
+          clefEnumValue = Clefs.Treble;
+        break;
+
+        case "bass":
+          clefEnumValue = Clefs.Bass;
           break;
-        case 'onlySharp':
-          exercise.isSharp = true;
+
+        case "alto":
+          clefEnumValue = Clefs.Alto;
           break;
-        case 'onlyFlat':
-          exercise.isSharp = false;
-          break;
-        case 'sharpAndFlat':
-          exercise.isSharp = _.sample([true, false])
+
+        case "tenor":
+          clefEnumValue = Clefs.Tenor;
           break;
       }
+      const exercise = new Exercise(this.getRandomNoteForClef(clef), clefEnumValue);
       return exercise;
     },
-    getRandomNoteForClef(clef){
-      switch(clef){
-        case 'treble': 
-          return _.random(this.minTrebleValue, this.maxTrebleValue);
+    getRandomNoteForClef(clef) {
+      //TODO: move this into the exercise classes somehow. 
+      //return new Note(Notes.C,5,Accidentals.None);
+      switch (clef) {
+        case 'treble':
+          var legalnotesForClef = this.noteRangeForRound.filter(note => Exercise.minTrebleValue(this.options.difficulty) <= note.value && Exercise.maxTrebleValue(this.options.difficulty) >= note.value);
+          return _.sample(legalnotesForClef);
         case 'bass':
-          return _.random(this.minBassValue, this.maxBassValue);
+          var legalnotesForClef = this.noteRangeForRound.filter(note => Exercise.minBassValue(this.options.difficulty) <= note.value && Exercise.maxBassValue(this.options.difficulty) >= note.value);
+          return _.sample(legalnotesForClef);
         case 'alto':
-          return _.random(this.minAltoValue, this.maxAltoValue);
+          var legalnotesForClef = this.noteRangeForRound.filter(note => Exercise.minAltoValue(this.options.difficulty) <= note.value && Exercise.maxAltoValue(this.options.difficulty) >= note.value);
+          return _.sample(legalnotesForClef);
         case 'tenor':
-          return _.random(this.minTenorValue, this.maxTenorValue);
+          var legalnotesForClef = this.noteRangeForRound.filter(note => Exercise.minTenorValue(this.options.difficulty) <= note.value && Exercise.maxTenorValue(this.options.difficulty) >= note.value);
+          return _.sample(legalnotesForClef);
       }
     },
-    checkAnswer(value, checkOctave = false){
-      this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
-      if(checkOctave){
-        var submittedValue = value;
-        var expectedValue = this.currentExercise.value;
-      } else {
-        var submittedValue = value % 12;
-        var expectedValue = this.currentExercise.value % 12;
+    checkAnswer(notes, checkOctave = false) {
+      //this.playNote(Utils.getNearestNoteOfValue(value, this.currentExercise.value));
+      var isCorrect = false;
+      if (checkOctave) {
+        isCorrect = notes.some(note => note.equalsAbsolute(this.currentExercise.note));
       }
-      if(submittedValue === expectedValue){
-        this.onCorrectAnswer(value, this.currentExercise.isSharp);
+      else {
+        isCorrect = notes.some(note => note.equalsRelative(this.currentExercise.note));
+      }
+
+      if (isCorrect) {
+        this.onCorrectAnswer(this.currentExercise.note.noteName);
         this.generateNewExercise();
-      } else {
-        this.onWrongAnswer(value);
+      }
+      else {
+        this.onWrongAnswer();
       }
     },
-    onCorrectAnswer(noteValue, isSharp){
+    onCorrectAnswer(noteName) {
       this.numCorrect += 1;
 
-      if(this.options.displayNote) {
+      if (this.options.displayNote) {
         this.feedback = 'correct-note';
-        this.feedbackNote = Utils.getNoteName(noteValue % 12, isSharp);
-      }else{
+        this.feedbackNote = noteName;
+      } else {
         this.feedback = 'correct';
       }
     },
-    onWrongAnswer(wrongValue){
+    onWrongAnswer() {
       this.numWrong += 1;
       this.feedback = 'wrong';
-      if('vibrate' in navigator && this.options.vibration) {
+      if ('vibrate' in navigator && this.options.vibration) {
         navigator.vibrate(200);
       }
     },
-    playNote(value){
-      if(!this.options.sound){
+    playNote(value) {
+      if (!this.options.sound) {
         return;
       }
-      if(!!this.sample && !this.sample.paused){
+      if (!!this.sample && !this.sample.paused) {
         this.sample.pause();
       }
       this.sample = new Audio('static/samples/piano/' + value + '.mp3');
       this.sample.play();
     }
   },
-  mounted(){
+  mounted() {
     this.startGame();
   }
 }
@@ -358,13 +268,17 @@ export default {
 }
 
 @media (orientation: landscape) {
-  #game-note-display, #game-screen-input {
+
+  #game-note-display,
+  #game-screen-input {
     min-height: 50%;
   }
 }
 
 @media (orientation: portrait) {
-  #game-note-display, #game-screen-input {
+
+  #game-note-display,
+  #game-screen-input {
     min-height: 33%;
     min-width: 100%;
   }

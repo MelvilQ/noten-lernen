@@ -31,7 +31,7 @@ export default {
   Start: "Ebandi",
   settings: "Mapɔni",
   navigateBack: "Na nsima",
-  settings: "設定",
+  settings: "bisika ya kotya",
   ROUND_LENGTH: "BOWÚMELI BWA MOBÉMBO",
   NOTE_INPUT: "KOKOMISA ELEMBO",
   CLEF: "LIFUNGÓLA",

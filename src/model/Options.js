@@ -5,7 +5,7 @@ export default {
   gameLength: 60,
   clef: ["treble"],
   difficulty: "easy",
-  accidentals: "no",
+  accidentals: [],
   sound: false,
   vibration: true,
   displayNote: true,

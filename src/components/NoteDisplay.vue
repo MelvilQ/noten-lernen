@@ -5,86 +5,93 @@
 </template>
 
 <script>
-import Utils from '../model/Utils';
 
+
+
+import Note, {Accidentals} from '../model/Note';
 import abcjs from 'abcjs';
 
 export default {
   name: 'NoteDisplay',
   props: {
+    //TODO: i should probably decouple the concept of an exercise from the presentation of notes ?
     currentExercise: Object
   },
   computed: {
-    accidental(){
-      if(!Utils.hasAccidental(this.currentExercise.value)){
-        return '';
+    noteAsAbcNote(){
+
+      /*
+       ABC notation reference: https://abcnotation.com/wiki/abc:standard:v2.1#pitch
+       
+       interactive abc editor if you want to play around 
+       https://paulrosen.github.io/abcjs/interactive/interactive-editor.html#available-methods
+      */
+      
+      
+      /*
+       we are converting from our internal note representation to the ABC notation.
+       the abc notation represents the middle C as just "C" which coresponds in our system
+       to "C4". That means we have to convert every note that is not in the fourth octave with prefixes
+       Every octave above 4 adds a "'" and every octave below 4 adds a "," in the abc notation.
+      */
+      const exerciseNote = this.currentExercise.note;
+
+      var abcAccidentalPrefix = "";
+      if(exerciseNote.accidental == Accidentals.Sharp)
+      {
+        abcAccidentalPrefix = "^";
       }
-      return this.currentExercise.isSharp ? '^' : '_';
+      else if(exerciseNote.accidental == Accidentals.Flat){
+        abcAccidentalPrefix = "_";
+      }
+      var abcOctaveModifier = "";
+
+      const middleOctave = 4;
+      let octaveDistanceToMiddleOctave = exerciseNote.octave - middleOctave;
+      if(octaveDistanceToMiddleOctave > 0)
+      {
+        abcOctaveModifier = "'".repeat(Math.abs(octaveDistanceToMiddleOctave));
+      }
+      else if(octaveDistanceToMiddleOctave < 0)
+      {
+        abcOctaveModifier = ",".repeat(Math.abs(octaveDistanceToMiddleOctave));
+      }
+
+      var abcNote = `${abcAccidentalPrefix}${exerciseNote.noteName}${abcOctaveModifier}`;
+    
+      return abcNote;
+      /*
+      TODO: i should probably put this conversion into a separate class or make it part of the note ? 
+      Remark: putting it on the note class would mean i couple a implementation detail of the view into the model !
+      */
     },
-    noteLetter(){
-      const v = this.currentExercise.value % 12;
-      const isSharp = this.currentExercise.isSharp;
-      switch(v){
-        case 0: return 'C';
-        case 1: return isSharp ? 'C' : 'D';
-        case 2: return 'D';
-        case 3: return isSharp ? 'D' : 'E';
-        case 4: return 'E';
-        case 5: return 'F';
-        case 6: return isSharp ? 'F' : 'G';
-        case 7: return 'G';
-        case 8: return isSharp ? 'G' : 'A';
-        case 9: return 'A';
-        case 10: return isSharp ? 'A' : 'B';
-        case 11: return 'B'
-      }
-    },
-    note(){
-      // ABC notation reference: https://abcnotation.com/wiki/abc:standard:v2.1#pitch
-      // We are numbering the notes starting with C0 = 0, D0 = 1 and so on. Thus C4 = 48.
-      const value = this.currentExercise.value;
-      if(value < 12){
-        return this.noteLetter + ',,,,';
-      } else if(value < 24){
-        return this.noteLetter + ',,,';
-      } else if(value < 36){
-        return this.noteLetter + ',,';
-      } else if(value < 48){
-        return this.noteLetter + ',';
-      } else if(value < 60){
-        return this.noteLetter;
-      } else if(value < 72){
-        return this.noteLetter.toLowerCase();
-      } else if(value < 84){
-        return this.noteLetter.toLowerCase() + '\'';
-      } else if(value < 96){
-        return this.noteLetter.toLowerCase() + '\'\'';
-      }
-    },
-    abc(){
-      if (this.currentExercise.staff === 'piano') {
-        return (
-          // Multiple voices notation: https://abcnotation.com/wiki/abc:standard:v2.1#multiple_voices
-          'L:1/4\n'
-          + '%%score {1 2}\n'
-          + 'V:1 clef=treble\n'
-          + 'V:2 clef=bass\n'
-          + 'K:C\n'
-          + '[V:1] ' + (this.currentExercise.clef === 'treble' ? this.accidental + this.note : 'z') + '\n'
-          + '[V:2] ' + (this.currentExercise.clef === 'bass' ? this.accidental + this.note : 'z')
-        )
-      } else {
-        return (
-          'L:1/4\nK:C ' + this.currentExercise.clef
-          + '\n'
-          + this.accidental + this.note
-        );
-      }
+    exerciseAsAbcText(){
+
+      //TODO: add grand staff again.
+      // if (this.currentExercise.staff === 'piano') {
+      //   return (
+      //     // Multiple voices notation: https://abcnotation.com/wiki/abc:standard:v2.1#multiple_voices
+      //     'L:1/4\n'
+      //     + '%%score {1 2}\n'
+      //     + 'V:1 clef=treble\n'
+      //     + 'V:2 clef=bass\n'
+      //     + 'K:C\n'
+      //     + '[V:1] ' + (this.currentExercise.clef === 'treble' ? this.accidental + this.note : 'z') + '\n'
+      //     + '[V:2] ' + (this.currentExercise.clef === 'bass' ? this.accidental + this.note : 'z')
+      //   )
+      // } else
+      var abcText = `
+      L:1/4
+      K:C
+      V:1 clef=${this.currentExercise.clefName}
+      ${this.noteAsAbcNote}
+      `
+      return abcText;
     },
   },
   watch: {
-    abc(value) {
-      abcjs.renderAbc('note-display', this.abc, {
+    exerciseAsAbcText() {
+      abcjs.renderAbc('note-display', this.exerciseAsAbcText, {
         clickListener: () => this.unselect(),
         paddingtop: '0',
         paddingleft: '0',

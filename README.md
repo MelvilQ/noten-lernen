@@ -1,5 +1,7 @@
 # noten-lernen
 
+# :exclamation: This is a fork. The below links are not representing the current state of this repository. They will redirect you to the version of the original creator of this software. 
+
 Learn to read sheet music.
 
 <a href="https://play.google.com/store/apps/details?id=de.melvil.noten">

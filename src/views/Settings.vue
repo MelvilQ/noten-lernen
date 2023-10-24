@@ -8,14 +8,15 @@
             <SelectOption :label="$t('NOTE_INPUT')" :items="inputModeOptions" v-model="options.inputMode" />
         </div>
         <div class="setting">
-            <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-bind:value="options.clef"
-                v-on:input="options.clef = $event.sort()" />
+            <SelectOptionMulti :label="$t('CLEF')" :items="clefOptions" v-bind:selectedItems="options.clef"
+                v-on:selectionChanged="options.clef = $event.sort()" :canHaveEmptySelection="false"/>
         </div>
         <div class="setting">
             <SelectOption :label="$t('DIFFICULTY')" :items="difficultyOptions" v-model="options.difficulty" />
         </div>
         <div class="setting">
-            <SelectOption :label="$t('ACCIDENTALS')" :items="accidentalOptions" v-model="options.accidentals" />
+            <SelectOptionMulti :label="$t('ACCIDENTALS')" :items="accidentalOptions" v-bind:selectedItems="options.accidentals"
+            v-on:selectionChanged="options.accidentals = $event.sort()" :canHaveEmptySelection="true" />
         </div>
         <div class="setting">
             <SelectOption :label="$t('SOUND')" :items="onOffOptions" v-model="options.sound" />
@@ -36,7 +37,6 @@
 import SelectOption from "../components/SelectOption";
 import SelectOptionMulti from "../components/SelectOptionMulti";
 import SelectOptionDropdown from "../components/SelectOptionDropdown";
-import Options from "../model/Options";
 
 export default {
     name: "Settings",
@@ -68,7 +68,7 @@ export default {
                 { value: "bass", label: this.$t("bassClef") },
                 { value: "alto", label: this.$t("altoClef") },
                 { value: "tenor", label: this.$t("tenorClef") },
-                { value: "piano", label: this.$t("pianoClef") }
+                // { value: "piano", label: this.$t("pianoClef") }
             ];
         },
         difficultyOptions() {
@@ -80,10 +80,8 @@ export default {
         },
         accidentalOptions() {
             return [
-                { value: "no", label: this.$t("none") },
-                { value: "onlySharp", label: this.$t("sharp") },
-                { value: "onlyFlat", label: this.$t("flat") },
-                { value: "sharpAndFlat", label: this.$t("sharpAndFlat") }
+                { value: "flat", label: this.$t("flat") },
+                { value: "sharp", label: this.$t("sharp") },
             ];
         },
         onOffOptions() {

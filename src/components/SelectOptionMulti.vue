@@ -1,14 +1,10 @@
 <template>
   <div class="select-option">
-    <div class="label">{{label}}</div>
+    <div class="label">{{ label }}</div>
     <div class="options-container">
-      <div 
-        v-for="item in items" 
-        :key="item.value"
-        class="value-box" 
-        :class="{selected: value.includes(item.value)}"
-        @click="select(item.value)">
-          {{item.label}}
+      <div v-for="item in items" :key="item.value" class="value-box"
+        :class="{ selected: selectedItems.includes(item.value) }" @click="itemClicked(item.value)">
+        {{ item.label }}
       </div>
     </div>
   </div>
@@ -17,13 +13,16 @@
 <script>
 export default {
   name: 'SelectOptionMulti',
-  props: ['label', 'value', 'items'],
+  props: ['label', 'selectedItems', 'items', 'canHaveEmptySelection'],
   methods: {
-    select(value){
-      if (!this.value.includes(value)) {
-        this.$emit('input', [...this.value, value]);
-      } else if (this.value.length > 1) {
-        this.$emit('input', this.value.filter(v => v !== value));
+    itemClicked(itemValue) {
+      if (!this.selectedItems.includes(itemValue)) {
+        //adds a new item to the already selected items
+        this.$emit('selectionChanged', [...this.selectedItems, itemValue]);
+      }
+      else if (this.selectedItems.length > (this.canHaveEmptySelection ? 0 : 1)) {
+        //tries to remove an item from the selected
+        this.$emit('selectionChanged', this.selectedItems.filter(v => v !== itemValue));
       }
     }
   }

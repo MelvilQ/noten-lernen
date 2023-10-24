@@ -1,35 +1,48 @@
 <template>
   <div class="button-input">
     <div v-for="value in 12" :key="value-1" class="button-container" :style="gridParams[value-1]">
-      <button @click="solve(value-1)">{{$t(noteNames[value-1])}}</button>
+      <button @click="solve(value + 3)">{{$t(noteNames[value-1])}}</button>
     </div>
   </div>
 </template>
 
 <script>
 import Utils from '../model/Utils';
+import Note from '../model/Note';
+import InputHelper from '../model/InputHelper';
 
 export default {
   name: 'ButtonInput',
-  props: {
-    isSharp: Boolean
-  },
   computed: {
-    noteNames(){
-      return Utils.getNoteNamesArray(this.isSharp);
+    inputNoteGroups(){
+      return InputHelper.getInputNotes();
     },
     gridParams(){
-      return Array.from(Array(12).keys()).map(v => ({
+      return Array.from(Array(12).keys()).map(v => (
+      {
         'grid-row': Utils.hasAccidental(v) ? 1 : 2,
         'grid-column': (v <= 4 ? v+1 : v+2) + '/ span 2'
-      }));
+      }
+      ));
+    },
+    noteNames() {
+      var inputNoteGroupsLocal = InputHelper.getInputNotes();
+      return inputNoteGroupsLocal.map((noteGroup) => {
+        if(noteGroup.length == 1)
+        {
+          return this.$t(Utils.toLocalizationTag(noteGroup[0]));
+        }
+        return `${this.$t(Utils.toLocalizationTag(noteGroup[0]))}/${this.$t(Utils.toLocalizationTag(noteGroup[1]))}`;
+      });
     }
   },
   methods: {
     solve(v) {
-      this.$emit('solved', v);
+      var notesWithValueEqualToInputedValue = Note.PianoNoteRange.filter(note => note.value === v);
+      this.$emit('noteInput', notesWithValueEqualToInputedValue);
     }
   }
+  
 }
 </script>
 

@@ -6,12 +6,13 @@
       class="key"
       :class="{black: isBlack(value-1), white: !isBlack(value-1)}" 
       :style="keyStyle[value-1]" 
-      @click.stop="solve(value-1)" />
+      @click.stop="inputNote(value-1)" />
   </div>
 </template>
 
 <script>
 import Utils from '../model/Utils';
+import InputHelper from '../model/InputHelper';
 
 export default {
   name: 'KeyboardInput',
@@ -40,8 +41,15 @@ export default {
     keyPos(v){
       return (v <= 4) ? Math.floor(v / 2) : (v <= 11) ? Math.floor((v+1) / 2) : 7;
     },
-    solve(v){
-      this.$emit('solved', v);
+    inputNote(v){
+      
+      var inputNotes = InputHelper.getInputNotes();
+      /*
+      the last key on the rendered keyboard (key 13)
+      is the same as the first. Thus we wrap around 
+      the array access index
+      */
+      this.$emit('noteInput', inputNotes[v%12]);
     }
   }
 }
