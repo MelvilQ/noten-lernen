@@ -151,6 +151,7 @@ export default {
         { value: "pl", label: "PL" },
         { value: "pt", label: "PT" },
         { value: "cz", label: "CZ" },
+        { value: "el", label: "EL" },
         { value: "ln", label: "LN" },
         { value: "nl", label: "NL" },
         { value: "hu", label: "HU" },
