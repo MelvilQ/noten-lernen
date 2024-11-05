@@ -11,7 +11,7 @@
   "author": "MelvilQ",
   "license": "MIT",
   "dependencies": {
-    "cordova-plugin-vibration": "^3.1.1"
+    "cordova-plugin-vibration": "^2.1.6"
   },
   "cordova": {
     "plugins": {
@@ -22,6 +22,6 @@
     ]
   },
   "devDependencies": {
-    "cordova-android": "^12.0.1"
+    "cordova-android": "^13.0.0"
   }
 }
