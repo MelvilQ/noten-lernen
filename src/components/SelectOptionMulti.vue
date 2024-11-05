@@ -21,7 +21,7 @@ export default {
   methods: {
     select(value){
       if (!this.value.includes(value)) {
-        this.$emit('input', [...this.value, value]);
+        this.$emit('input', [...this.value, value].sort());
       } else if (this.value.length > 1) {
         this.$emit('input', this.value.filter(v => v !== value));
       }
