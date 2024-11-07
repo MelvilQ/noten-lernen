@@ -156,6 +156,7 @@ export default {
         { value: "nl", label: "NL" },
         { value: "hu", label: "HU" },
         { value: "ja", label: "JA" },
+        { value: "ua", label: "UA" },
       ];
     }
   },
