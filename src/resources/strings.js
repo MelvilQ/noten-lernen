@@ -11,5 +11,6 @@ import pl from "./pl";
 import pt from "./pt";
 import hu from "./hu";
 import ja from "./ja";
+import zh_CN from "./zh_CN";
 
-export default { de, en, es, el, fr, it, pl, pt, cz, ln, nl, hu, ja };
+export default { de, en, es, el, fr, it, pl, pt, cz, ln, nl, hu, ja, zh_CN };
